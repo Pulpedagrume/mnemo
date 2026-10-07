@@ -77,6 +77,11 @@ export const SCHEMA_V1: Readonly<Record<keyof MnemoTables, string>> = {
   importBatches: 'id, createdAt',
 };
 
+/** v2: review log tombstones (`deletedAt`) are indexed for `ReviewLogStore.changedSince`. */
+export const SCHEMA_V2: Readonly<Partial<Record<keyof MnemoTables, string>>> = {
+  reviewLogs: 'id, cardId, ts, deletedAt',
+};
+
 export interface DexieRepositoryOptions {
   /** Database name; the app uses `DB_NAME`, tests a unique name per run. */
   name: string;
@@ -92,5 +97,6 @@ export function openMnemoDexie(options: DexieRepositoryOptions): MnemoDexie {
   if (options.IDBKeyRange !== undefined) dexieOptions.IDBKeyRange = options.IDBKeyRange;
   const db = new Dexie(options.name, dexieOptions);
   db.version(1).stores(SCHEMA_V1);
+  db.version(2).stores(SCHEMA_V2);
   return db as MnemoDexie;
 }

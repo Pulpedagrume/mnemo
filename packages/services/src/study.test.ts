@@ -116,6 +116,31 @@ describe('studying', () => {
     expect(await ctx.repo.reviewLogs.count()).toBe(0);
     ({ queue } = await loadStudyQueue(ctx, deck.id));
     expect(queue.counts.new).toBe(20);
+    expect(await ctx.repo.reviewLogs.get(res.log.id)).toBeUndefined();
+  });
+
+  it('undoes an already synced review with a log tombstone ignored by stats', async () => {
+    const { ctx, clock, deck } = await setup();
+    await addBasic(ctx, deck.id, 1);
+    const { queue } = await loadStudyQueue(ctx, deck.id);
+    const next = nextCard(queue, clock.now(), 20);
+    if (next.kind !== 'card') throw new Error('expected a card');
+    const res = await answer(ctx, {
+      cardId: next.card.id,
+      rating: 3,
+      hintsUsed: 0,
+      durationMs: 1000,
+      cram: false,
+    });
+    // Sync metadata means the log may have left the device.
+    await ctx.repo.reviewLogs.add({ ...res.log, sync: { hlc: 'h' } });
+    clock.advance(1000);
+    await undoAnswer(ctx, res.undo);
+    await undoAnswer(ctx, res.undo);
+    expect(await ctx.repo.reviewLogs.get(res.log.id)).toMatchObject({ deletedAt: START + 1000 });
+    expect(await ctx.repo.reviewLogs.count()).toBe(0);
+    expect(await ctx.repo.reviewLogs.byCard(next.card.id)).toEqual([]);
+    expect((await statsSummary(ctx)).activity.reduce((n, d) => n + d.reviews, 0)).toBe(0);
   });
 
   it.each(['fsrs', 'sm2', 'anki', 'leitner', 'ladder'])(

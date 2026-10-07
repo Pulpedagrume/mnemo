@@ -5,6 +5,7 @@ export default defineConfig({
   format: 'esm',
   platform: 'node',
   target: 'node22',
-  // Workspace packages ship TypeScript sources: bundle them into the CLI.
-  deps: { alwaysBundle: [/^@mnemo\//] },
+  // Workspace packages ship TypeScript sources: bundle them into the CLI (the server of
+  // `mnemo serve` included). argon2 is a native addon and stays external.
+  deps: { alwaysBundle: [/^@mnemo\//], neverBundle: ['@node-rs/argon2'] },
 });

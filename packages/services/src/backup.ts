@@ -131,7 +131,8 @@ export async function restoreBackupZip(
     await tx.reviewLogs.addMany(data.reviewLogs);
     await tx.media.putMany(data.media);
     for (const [id, content] of media) await tx.media.putContent(id, content);
-    for (const row of data.settings) await tx.settings.put(row);
+    // Sync state (device id, cursor) belongs to the device that made the backup: never restore it.
+    for (const row of data.settings) if (!row.key.startsWith('sync.')) await tx.settings.put(row);
     for (const batch of data.importBatches) await tx.importBatches.put(batch);
   });
   return data;

@@ -68,3 +68,13 @@ export function countTags(notes: Iterable<Note>): { tag: string; count: number }
 export function applyLimit<T>(items: T[], limit: number | undefined): T[] {
   return limit === undefined ? items : items.slice(0, Math.max(0, limit));
 }
+
+/** Change time of a review log for sync: its creation, or its deletion when undone. */
+export function logChangeTime(log: ReviewLog): number {
+  return Math.max(log.ts, log.deletedAt ?? 0);
+}
+
+/** `ReviewLogStore.changedSince` order: change time, then id. */
+export function compareLogChanges(a: ReviewLog, b: ReviewLog): number {
+  return logChangeTime(a) - logChangeTime(b) || compareById(a, b);
+}

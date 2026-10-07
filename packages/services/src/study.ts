@@ -260,13 +260,22 @@ export async function answer(
   });
 }
 
-/** Restores the card (and note) as they were and deletes the review log. */
+/**
+ * Restores the card (and note) as they were and deletes the review log. A log carrying sync
+ * metadata may already have left the device: it becomes a tombstone (`deletedAt`) so the deletion
+ * propagates (docs/SYNC.md); otherwise it is removed.
+ */
 export async function undoAnswer(ctx: ServiceContext, entry: UndoEntry): Promise<Card> {
   return ctx.repo.transaction(async (tx) => {
     const now = ctx.clock.now();
     const restored = { ...entry.cardBefore, updatedAt: now };
     await tx.cards.put(restored);
-    await tx.reviewLogs.remove(entry.logId);
+    const log = await tx.reviewLogs.get(entry.logId);
+    if (log?.sync !== undefined) {
+      if (log.deletedAt === undefined) await tx.reviewLogs.add({ ...log, deletedAt: now });
+    } else {
+      await tx.reviewLogs.remove(entry.logId);
+    }
     if (entry.noteBefore) await tx.notes.put({ ...entry.noteBefore, updatedAt: now });
     return restored;
   });

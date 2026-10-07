@@ -213,3 +213,16 @@ describe('backup', () => {
     await expect(readBackupZip(new Uint8Array([1, 2, 3]))).rejects.toBeInstanceOf(BackupError);
   });
 });
+
+describe('backup and sync state', () => {
+  it('does not restore the sync state of another device', async () => {
+    const ctx = setup();
+    await ctx.repo.settings.put({ key: 'sync.state', value: { deviceId: 'other' }, updatedAt: 1 });
+    await ctx.repo.settings.put({ key: 'theme', value: 'dark', updatedAt: 1 });
+    const zip = await createBackupZip(ctx);
+    const target = setup();
+    await restoreBackupZip(target, zip);
+    expect(await target.repo.settings.get('sync.state')).toBeUndefined();
+    expect((await target.repo.settings.get('theme'))?.value).toBe('dark');
+  });
+});

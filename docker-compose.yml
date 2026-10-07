@@ -1,0 +1,28 @@
+# Mnemo self-hosted server. Copy .env.example to .env, fill SESSION_SECRET, then:
+#   docker compose up -d
+# Put it behind an HTTPS reverse proxy (see deploy/Caddyfile) before exposing it to the Internet.
+services:
+  mnemo:
+    build: .
+    image: mnemo:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8787
+      DATA_DIR: /data
+    ports:
+      # Bound to localhost: the reverse proxy (Caddy…) is the only public entry point.
+      - '127.0.0.1:8787:8787'
+    volumes:
+      - mnemo-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  mnemo-data:

@@ -40,3 +40,13 @@ describe('check-licenses', () => {
     expect(isAllowed('MIT AND Apache-2.0', allowed)).toBe(true);
   });
 });
+
+describe('changelog-section', async () => {
+  const { changelogSection } = await import('./changelog-section.mjs');
+  it('extracts one version section', () => {
+    const md =
+      '# Changelog\n\n## [Unreleased]\n\n## [0.1.0] - 2026-10-07\n\n### Added\n- A\n\n## [0.0.1]\n- old\n';
+    expect(changelogSection(md, '0.1.0')).toBe('### Added\n- A');
+    expect(changelogSection(md, '9.9.9')).toBeUndefined();
+  });
+});

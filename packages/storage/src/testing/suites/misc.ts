@@ -34,6 +34,32 @@ export function miscSuite(repo: RepoRef): void {
       expect(await repo().reviewLogs.between(40, 40)).toEqual([]);
       expect(await repo().reviewLogs.between(50, 10)).toEqual([]);
     });
+
+    it('skips tombstones in byCard, between and count; get still returns them', async () => {
+      const dead = makeReviewLog({ id: 'x', cardId: 'k', ts: 10, deletedAt: 50 });
+      await repo().reviewLogs.addMany([makeReviewLog({ id: 'y', cardId: 'k', ts: 20 }), dead]);
+      expect(idsOf(await repo().reviewLogs.byCard('k'))).toEqual(['y']);
+      expect(idsOf(await repo().reviewLogs.between(0, 100))).toEqual(['y']);
+      expect(await repo().reviewLogs.count()).toBe(1);
+      expect(await repo().reviewLogs.get('x')).toStrictEqual(dead);
+    });
+
+    it('changedSince orders logs by max(ts, deletedAt) then id, tombstones included', async () => {
+      await repo().reviewLogs.addMany([
+        makeReviewLog({ id: 'a', ts: 10 }),
+        makeReviewLog({ id: 'b', ts: 30 }),
+        makeReviewLog({ id: 'c', ts: 5, deletedAt: 40 }),
+        makeReviewLog({ id: 'd', ts: 30 }),
+        makeReviewLog({ id: 'e', ts: 1, deletedAt: 2 }),
+      ]);
+      expect(idsOf(await repo().reviewLogs.changedSince(0))).toEqual(['e', 'a', 'b', 'd', 'c']);
+      expect(idsOf(await repo().reviewLogs.changedSince(10))).toEqual(['b', 'd', 'c']);
+      expect(idsOf(await repo().reviewLogs.changedSince(10, 2))).toEqual(['b', 'd']);
+      expect(await repo().reviewLogs.changedSince(10, 0)).toEqual([]);
+      expect(await repo().reviewLogs.changedSince(40)).toEqual([]);
+      const [c] = await repo().reviewLogs.changedSince(30);
+      expect(c?.deletedAt).toBe(40);
+    });
   });
 
   describe('media', () => {

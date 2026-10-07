@@ -6,7 +6,14 @@ import type {
   Stores,
 } from '../repository';
 import { isLive } from '../query/match';
-import { applyLimit, compareBatchesDesc, compareLogs, compareStrings } from '../query/order';
+import {
+  applyLimit,
+  compareBatchesDesc,
+  compareLogChanges,
+  compareLogs,
+  compareStrings,
+  logChangeTime,
+} from '../query/order';
 import { memoryCardStore, memoryEntityStore, memoryNoteStore } from './entities';
 import { clone, run, type MemoryState } from './state';
 import type { Journal } from './table';
@@ -29,15 +36,23 @@ function reviewLogStore(state: MemoryState, journal: Journal | undefined): Revie
       run(() => {
         table.delete(id, journal);
       }),
-    byCard: (cardId) => run(() => table.lookup('cardId', cardId).sort(compareLogs).map(clone)),
+    byCard: (cardId) =>
+      run(() => table.lookup('cardId', cardId).filter(isLive).sort(compareLogs).map(clone)),
     between: (from, to) =>
       run(() =>
         [...table.values()]
-          .filter((l) => l.ts >= from && l.ts < to)
+          .filter((l) => isLive(l) && l.ts >= from && l.ts < to)
           .sort(compareLogs)
           .map(clone),
       ),
-    count: () => run(() => table.size),
+    count: () => run(() => [...table.values()].filter(isLive).length),
+    changedSince: (since, limit) =>
+      run(() =>
+        applyLimit(
+          [...table.values()].filter((l) => logChangeTime(l) > since).sort(compareLogChanges),
+          limit,
+        ).map(clone),
+      ),
   };
 }
 

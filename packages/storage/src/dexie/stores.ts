@@ -6,7 +6,7 @@ import type {
   Stores,
 } from '../repository';
 import { isLive } from '../query/match';
-import { compareLogs } from '../query/order';
+import { applyLimit, compareLogChanges, compareLogs } from '../query/order';
 import { dexieCardStore, dexieEntityStore, dexieNoteStore } from './entities';
 import type { MnemoTables } from './schema';
 
@@ -25,11 +25,20 @@ function reviewLogStore(db: MnemoTables): ReviewLogStore {
     get: (id) => logs.get(id),
     remove: (id) => logs.delete(id),
     byCard: async (cardId) =>
-      (await logs.where('cardId').equals(cardId).toArray()).sort(compareLogs),
+      (await logs.where('cardId').equals(cardId).filter(isLive).toArray()).sort(compareLogs),
     // Index order is ts then primary key, matching `compareLogs`.
     between: (from, to) =>
-      from < to ? logs.where('ts').between(from, to, true, false).toArray() : Promise.resolve([]),
-    count: () => logs.count(),
+      from < to
+        ? logs.where('ts').between(from, to, true, false).filter(isLive).toArray()
+        : Promise.resolve([]),
+    count: () => logs.filter(isLive).count(),
+    // A log changes when created (ts) and when undone (deletedAt): union of both indexes.
+    changedSince: async (since, limit) => {
+      const created = await logs.where('ts').above(since).toArray();
+      const deleted = await logs.where('deletedAt').above(since).toArray();
+      const byId = new Map([...created, ...deleted].map((l) => [l.id, l]));
+      return applyLimit([...byId.values()].sort(compareLogChanges), limit);
+    },
   };
 }
 

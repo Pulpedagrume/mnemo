@@ -46,6 +46,7 @@ export function memoryEntityStore<T extends Synced>(
   return {
     get: (id) => run(() => clone(live(id))),
     getMany: (ids) => run(() => ids.map((id) => clone(live(id)))),
+    getRaw: (ids) => run(() => ids.map((id) => clone(table.get(id)))),
     put: (entity) =>
       run(() => {
         write(entity);

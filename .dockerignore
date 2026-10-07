@@ -1,0 +1,16 @@
+# Keep the build context small and free of local data or secrets.
+**/node_modules
+**/dist
+**/dev-dist
+**/coverage
+**/playwright-report
+**/test-results
+.git
+.github
+.claude
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+data/

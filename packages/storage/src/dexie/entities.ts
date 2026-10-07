@@ -27,6 +27,7 @@ export function dexieEntityStore<T extends Synced>(table: Table<T, Id>): EntityS
   return {
     get: async (id) => liveOrUndefined(await table.get(id)),
     getMany: async (ids) => (await table.bulkGet([...ids])).map(liveOrUndefined),
+    getRaw: (ids) => table.bulkGet([...ids]),
     put: async (entity) => {
       await table.put(entity);
     },

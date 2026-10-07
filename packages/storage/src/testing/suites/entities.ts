@@ -51,6 +51,14 @@ function entityTests<T extends Synced>(repo: RepoRef, c: EntityCase<T>): void {
       expect(await store().getMany([])).toStrictEqual([]);
     });
 
+    it('getRaw returns tombstones too, in the order of ids', async () => {
+      const a = make('a');
+      const d = make('d', T0, { deletedAt: T0 + 1 } as Partial<T>);
+      await store().putMany([a, d]);
+      expect(await store().getRaw(['d', 'x', 'a'])).toStrictEqual([d, undefined, a]);
+      expect(await store().getRaw([])).toStrictEqual([]);
+    });
+
     it('lists and counts live entities ordered by id', async () => {
       expect(await store().list()).toStrictEqual([]);
       expect(await store().count()).toBe(0);

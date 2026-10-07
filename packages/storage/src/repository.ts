@@ -20,6 +20,8 @@ export interface EntityStore<T extends { id: Id }> {
   get(id: Id): Promise<T | undefined>;
   /** Same order as `ids`; missing or deleted entries are `undefined`. */
   getMany(ids: readonly Id[]): Promise<(T | undefined)[]>;
+  /** Same as `getMany` but tombstones are returned too (sync merges, sticky deletions). */
+  getRaw(ids: readonly Id[]): Promise<(T | undefined)[]>;
   put(entity: T): Promise<void>;
   putMany(entities: readonly T[]): Promise<void>;
   /** All non-deleted entities. */
@@ -74,7 +76,11 @@ export interface CardStore extends EntityStore<Card> {
   maxNewPosition(): Promise<number>;
 }
 
-/** Review logs are append-only; `remove` exists only for undo. */
+/**
+ * Review logs are append-only; `remove` exists only to undo a never-synced review. An already
+ * synced log is undone by `add`-ing it again with `deletedAt` (tombstone, docs/SYNC.md): `get` and
+ * `changedSince` return tombstones, every other read skips them.
+ */
 export interface ReviewLogStore {
   add(log: ReviewLog): Promise<void>;
   addMany(logs: readonly ReviewLog[]): Promise<void>;
@@ -84,6 +90,11 @@ export interface ReviewLogStore {
   /** Logs with `from <= ts < to`, sorted by ts. */
   between(from: number, to: number): Promise<ReviewLog[]>;
   count(): Promise<number>;
+  /**
+   * Logs, tombstones included, whose change time `max(ts, deletedAt ?? 0)` is `> since`; ordered
+   * by change time then id; at most `limit` (`undefined` = no limit). For sync.
+   */
+  changedSince(since: number, limit?: number): Promise<ReviewLog[]>;
 }
 
 export interface MediaStore extends EntityStore<Media> {

@@ -6,6 +6,7 @@ import { processIo } from './io';
 import { registerImport } from './commands/import';
 import { registerPrompt } from './commands/prompt';
 import { registerSchema } from './commands/schema';
+import { registerServe } from './commands/serve';
 import { registerValidate } from './commands/validate';
 
 /** Builds the CLI. Commands report their exit code through `setExit`. */
@@ -20,5 +21,6 @@ export function buildProgram(
   registerImport(program, io, setExit);
   registerPrompt(program, io, setExit);
   registerSchema(program, io);
+  registerServe(program, io, setExit);
   return program;
 }

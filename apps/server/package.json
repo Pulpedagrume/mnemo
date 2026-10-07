@@ -4,8 +4,13 @@
   "private": true,
   "license": "MIT",
   "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown",
+    "start": "node dist/server.mjs"
   },
   "dependencies": {
     "@fastify/cookie": "^11.1.2",

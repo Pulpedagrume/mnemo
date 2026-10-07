@@ -196,3 +196,28 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
 - **Contexte** : un test e2e (A4) a montré qu’un import en mode « Mettre à jour » utilisait le mode
   initial : la fonction passée à `useMutation` était mémorisée au premier rendu.
 - **Décision** : le hook garde la dernière fonction dans une référence mise à jour à chaque rendu.
+
+## ADR-027 — `node:sqlite` à la place de `better-sqlite3`
+
+- **Contexte** : la pile imposait `better-sqlite3`. Son installation exige un binaire précompilé
+  (absent pour Node 24 sous Windows au moment de l’écriture) ou une chaîne de compilation C++.
+- **Décision** : utiliser le module intégré `node:sqlite` (`DatabaseSync`, Node ≥ 22.13, sans
+  dépendance native). Le moteur Node minimal passe à 22.13. Même SQLite, mêmes requêtes
+  préparées ; l’image Docker n’a plus besoin d’outils de compilation.
+- **Conséquences** : API synchrone ; les transactions asynchrones du `Repository` sont
+  sérialisées par une file d’attente. Revenir à `better-sqlite3` ne toucherait que
+  `packages/storage/src/sqlite`.
+
+## ADR-028 — Une base SQLite par compte côté serveur
+
+- **Décision** : `DATA_DIR/accounts.sqlite` (comptes, sessions, jetons, invitations, journal
+  d’audit) et `DATA_DIR/users/<id>.sqlite` (collection + journal de synchronisation) par compte.
+- **Conséquences** : isolation forte entre comptes, export et suppression RGPD triviaux,
+  sauvegarde par simple copie du dossier.
+
+## ADR-029 — Publication : workflow de release maison
+
+- **Décision** : un tag `v*` lance `release.yml` (vérifications complètes, image Docker sur GHCR,
+  déploiement GitHub Pages avec `BASE_PATH=/<dépôt>/`, GitHub Release dont les notes sont
+  extraites de `CHANGELOG.md`). Pas de changesets/release-please : une seule version pour tout
+  le dépôt, changelog tenu à la main (Keep a Changelog).

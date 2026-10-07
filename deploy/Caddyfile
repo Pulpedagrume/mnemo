@@ -1,0 +1,20 @@
+# Example Caddy reverse proxy with automatic HTTPS (Let's Encrypt).
+# Replace mnemo.example.org with your domain (its DNS must point to this machine) and set
+# BASE_URL=https://mnemo.example.org and TRUST_PROXY=1 in .env.
+#
+#   caddy run --config deploy/Caddyfile
+
+mnemo.example.org {
+	encode zstd gzip
+
+	# Mnemo sets its own security headers (CSP, HSTS behind HTTPS, nosniff...); Caddy only
+	# removes its banner.
+	header -Server
+
+	# Imports are limited by MAX_UPLOAD_MB on the server; keep the proxy limit a bit above.
+	request_body {
+		max_size 25MB
+	}
+
+	reverse_proxy 127.0.0.1:8787
+}

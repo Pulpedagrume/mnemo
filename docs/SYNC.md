@@ -43,14 +43,14 @@ n’ont rien à faire de particulier.
 
 ## Règles de fusion
 
-| entité | règle |
-|---|---|
-| `ReviewLog` | ajout seulement : union par identifiant, aucun conflit possible |
-| notes, paquets, presets, types de notes, médias (métadonnées), lots d’import | dernière écriture gagnante **par champ** (HLC du champ) |
-| réglages | dernière écriture gagnante par clé |
-| cartes — champs de planification (`state`, `due`, `interval`, `ease`, `stability`, `difficulty`, `reps`, `lapses`, `step`, `box`, `lastReview`, `schedulerData`) | on garde l’état dont la **dernière révision (`lastReview`) est la plus récente** ; à égalité, la HLC la plus récente |
-| cartes — autres champs (`suspended`, `flag`, `buriedUntil`, `deckId`, `leech`) | dernière écriture gagnante par champ |
-| suppression contre modification | la **suppression l’emporte** : une entité supprimée le reste, même si un autre appareil l’a modifiée ensuite (comportement prévisible, réversible depuis une sauvegarde) |
+| entité                                                                                                                                                           | règle                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ReviewLog`                                                                                                                                                      | ajout seulement : union par identifiant, aucun conflit possible                                                                                                          |
+| notes, paquets, presets, types de notes, médias (métadonnées), lots d’import                                                                                     | dernière écriture gagnante **par champ** (HLC du champ)                                                                                                                  |
+| réglages                                                                                                                                                         | dernière écriture gagnante par clé                                                                                                                                       |
+| cartes — champs de planification (`state`, `due`, `interval`, `ease`, `stability`, `difficulty`, `reps`, `lapses`, `step`, `box`, `lastReview`, `schedulerData`) | on garde l’état dont la **dernière révision (`lastReview`) est la plus récente** ; à égalité, la HLC la plus récente                                                     |
+| cartes — autres champs (`suspended`, `flag`, `buriedUntil`, `deckId`, `leech`)                                                                                   | dernière écriture gagnante par champ                                                                                                                                     |
+| suppression contre modification                                                                                                                                  | la **suppression l’emporte** : une entité supprimée le reste, même si un autre appareil l’a modifiée ensuite (comportement prévisible, réversible depuis une sauvegarde) |
 
 Fonction de maintenance : **reconstruire l’état d’une carte depuis ses journaux** (rejouer les
 `ReviewLog` non-bachotage dans l’ordre avec l’algorithme du preset), utile si deux appareils ont
@@ -128,3 +128,20 @@ quelques secondes pour que l’annulation immédiate ne quitte presque jamais l�
 5. horloges désynchronisées (un appareil en retard de plusieurs heures) : l’ordre des écritures
    reste correct grâce à la HLC ;
 6. coupure pendant un `pull` : reprise depuis le curseur sans perte.
+
+## Notes d’implémentation (`packages/sync`)
+
+- `hlc.ts` (horloge), `merge.ts` + `paths.ts` (fusion pure, partagée client/serveur), `stamp.ts`
+  (décorateur `withSyncStamps`), `apply.ts` (application d’un lot de changements), `server.ts`
+  (`applyPush`, `handlePull`, interfaces `ChangeLog`/`BatchRegistry`/`MediaBlobStore` et leurs
+  versions en mémoire), `client.ts` (`createSyncClient`), `state.ts` (curseur et repères d’envoi,
+  stockés sous la clé réservée `sync.state`), `rebuild.ts` (`rebuildCardFromLogs`).
+- Les champs d’une note (`fields`) sont datés **par nom de champ** (`sync.fields["fields.recto"]`) :
+  deux appareils qui modifient le recto et le verso gardent les deux modifications.
+- `sync.fields["*"]` est l’horloge de base : celle de tout champ que l’entité n’a pas réécrit depuis
+  (ex. champ facultatif ajouté plus tard sur un autre appareil). Recherche d’une horloge : le champ,
+  puis (champ de note) l’horloge de `fields`, puis `*`, puis `sync.hlc`, puis `updatedAt`.
+- Le serveur n’ajoute au journal que les changements qui modifient son état (les échos sont
+  ignorés) et ne garde que la dernière version de chaque entité dans le journal en mémoire.
+- Les repères d’envoi (`lastPushUpdatedAt`, `lastPushLogTs`) sont des lectures de l’horloge locale
+  prises **avant** de collecter les changements ; réglages et lots d’import utilisent un repère HLC.

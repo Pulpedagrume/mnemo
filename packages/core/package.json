@@ -1,6 +1,6 @@
 {
   "name": "@mnemo/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Pure domain logic: models, schedulers, study queue, stats, simulator. No DOM, no Node.",
   "license": "MIT",

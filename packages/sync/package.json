@@ -1,6 +1,6 @@
 {
   "name": "@mnemo/sync",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Sync protocol: types, merge rules, conflict tests.",
   "license": "MIT",

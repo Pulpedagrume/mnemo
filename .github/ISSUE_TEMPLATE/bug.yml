@@ -1,0 +1,41 @@
+name: Bogue / Bug report
+description: Quelque chose ne fonctionne pas. / Something does not work.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Que s’est-il passé ? / What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Étapes pour reproduire / Steps to reproduce
+      placeholder: |
+        1. …
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Résultat attendu / Expected result
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options: [Web (PWA), mnemo serve (local), Serveur auto-hébergé / self-hosted, CLI, MCP]
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Navigateur, système, version / Browser, OS, version
+  - type: textarea
+    id: logs
+    attributes:
+      label: Journaux ou captures / Logs or screenshots
+      render: text

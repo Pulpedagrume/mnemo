@@ -1,0 +1,21 @@
+name: Idée de fonctionnalité / Feature request
+description: Proposer une amélioration. / Suggest an improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Quel besoin ? / What need?
+      description: Décrivez la situation d’apprentissage ou d’usage qui pose problème.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposition / Proposal
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives envisagées / Alternatives considered

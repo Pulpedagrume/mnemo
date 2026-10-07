@@ -66,16 +66,20 @@ commits (Conventional Commits) sont faits. Les décisions sont dans [DECISIONS.m
 
 ## Phase 4 — Intégrations
 
-- [ ] API d’import à jetons, OpenAPI
-- [ ] Serveur MCP (stdio + HTTP) avec dry-run obligatoire
-- [ ] Import/export `.apkg`
-- [ ] Simulateur avancé (comparaison de presets, Web Worker)
-- [ ] Optimiseur FSRS (si faisable), Tauri (si le temps le permet)
-- [ ] Scénario A6 automatisé
+- [x] API d’import à jetons (`POST /api/v1/import`, portée `import`), OpenAPI (`/api/v1/openapi.json`)
+- [x] Serveur MCP `mnemo-mcp` (stdio + HTTP) : 7 outils, 3 ressources, essai à blanc obligatoire avant tout import
+- [x] Import/export Anki `.apkg` (anki2/anki21, médias, planification facultative ; message clair pour anki21b)
+- [x] Simulateur avancé (comparaison de presets, Web Worker) — livré dès la phase 1
+- [ ] Optimiseur FSRS — reporté (ADR-034)
+- [ ] Application Tauri — reportée (ADR-035)
+- [x] Scénario A6 automatisé
 
 ## Phase 5 — Publication v0.1.0
 
-- [ ] README fr/en avec captures (`pnpm screenshots`), docs complètes, exemples
-- [ ] Revue de sécurité (§6.3), budgets performance et accessibilité (Lighthouse), A7
-- [ ] `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, modèles GitHub
-- [ ] Tag `v0.1.0` préparé (non poussé) et commandes de publication
+- [x] README fr/en avec captures (`pnpm screenshots`), documentation complète, exemples
+- [x] `CHANGELOG.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, modèles d’issues (dont « problème d’import IA »), modèle de PR, CODEOWNERS, Dependabot
+- [x] Revue de sécurité (§6.3) : argon2id, cookies HttpOnly/SameSite, CSRF, jetons hachés à portées, limites de débit, CSP sans script en ligne, validation Zod, SQL préparé, limites d’upload, audit des imports, gitleaks en CI
+- [x] Accessibilité (A7) : axe-core WCAG 2.1 AA sur tous les écrans en clair et en sombre, session complète au clavier
+- [x] Performance : bundle initial 117 ko gzip, routes chargées à la demande, 10 000 notes analysées en < 1 s, file d’étude de 100 000 cartes en < 1,5 s
+- [ ] Score Lighthouse mesuré sur la version publiée (à faire après la mise en ligne sur Pages)
+- [x] Version 0.1.0 et tag `v0.1.0` préparés localement (non poussés)

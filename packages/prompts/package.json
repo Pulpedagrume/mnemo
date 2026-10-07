@@ -1,6 +1,6 @@
 {
   "name": "@mnemo/prompts",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "AI prompt templates (fr/en) and prompt composer.",
   "license": "MIT",

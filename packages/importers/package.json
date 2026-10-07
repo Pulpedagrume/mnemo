@@ -1,6 +1,6 @@
 {
   "name": "@mnemo/importers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Format detection, tolerant cleanup, parsers, validation, error reports and exports.",
   "license": "MIT",

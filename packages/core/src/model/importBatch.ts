@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { IdSchema, TimestampSchema } from './common';
+import { IdSchema, SyncMetaSchema, TimestampSchema } from './common';
 import { NoteSchema } from './note';
 import { CardSchema } from './card';
 
@@ -23,5 +23,6 @@ export const ImportBatchSchema = z.object({
   /** Cards as they were before the import (updated notes, replaced decks), to undo it. */
   previousCards: z.array(CardSchema).optional(),
   undoneAt: TimestampSchema.optional(),
+  sync: SyncMetaSchema.optional(),
 });
 export type ImportBatch = z.infer<typeof ImportBatchSchema>;

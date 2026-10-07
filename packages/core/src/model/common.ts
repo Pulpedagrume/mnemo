@@ -10,11 +10,22 @@ export type Timestamp = z.infer<typeof TimestampSchema>;
 
 export const I18nStringSchema = z.object({ fr: z.string(), en: z.string() });
 
+/**
+ * Sync metadata (docs/SYNC.md): hybrid logical clock of the last write and of each field.
+ * Stamped by the sync layer; absent on data that never went through it.
+ */
+export const SyncMetaSchema = z.object({
+  hlc: z.string().min(1).max(200),
+  fields: z.record(z.string(), z.string()).optional(),
+});
+export type SyncMeta = z.infer<typeof SyncMetaSchema>;
+
 /** Fields carried by every synchronisable entity (soft delete via tombstones). */
 export const syncFields = {
   createdAt: TimestampSchema,
   updatedAt: TimestampSchema,
   deletedAt: TimestampSchema.optional(),
+  sync: SyncMetaSchema.optional(),
 };
 
 /** Stable user/AI-provided identifier used for idempotent re-imports. */

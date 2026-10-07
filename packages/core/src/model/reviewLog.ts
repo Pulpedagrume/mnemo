@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { CardStateSchema, RatingSchema } from './card';
-import { IdSchema, TimestampSchema } from './common';
+import { IdSchema, SyncMetaSchema, TimestampSchema } from './common';
 
 /** Append-only record of one review. Never modified (undo deletes it). */
 export const ReviewLogSchema = z.object({
@@ -24,5 +24,8 @@ export const ReviewLogSchema = z.object({
   hintUsed: z.number().int().nonnegative(),
   /** Typed or chosen answer, if any. */
   answer: z.string().max(5_000).optional(),
+  /** Set when an already-synced review is undone: the tombstone travels like the log. */
+  deletedAt: TimestampSchema.optional(),
+  sync: SyncMetaSchema.optional(),
 });
 export type ReviewLog = z.infer<typeof ReviewLogSchema>;

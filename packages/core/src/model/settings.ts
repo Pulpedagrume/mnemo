@@ -25,6 +25,8 @@ export const SettingRowSchema = z.object({
   key: z.string().min(1).max(100),
   value: z.unknown(),
   updatedAt: TimestampSchema,
+  /** HLC of the last write (sync: last writer wins per key). */
+  hlc: z.string().optional(),
 });
 export type SettingRow = z.infer<typeof SettingRowSchema>;
 

@@ -86,3 +86,37 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
 - **Décision** : `Rng` (flottants dans [0, 1)) implémenté par mulberry32 ; `Clock` avec
   `manualClock` pour les tests/simulations et `systemClock` comme seule lecture de l’horloge réelle.
 - **Conséquences** : simulations et fuzz reproductibles via une graine affichée.
+
+## ADR-012 — Paquet `@mnemo/services` (couche applicative)
+
+- **Contexte** : la structure imposée n’a pas de place pour la logique qui orchestre `core` et
+  `storage` (créer une note et ses cartes, session d’étude, sauvegarde…), alors qu’elle doit être
+  partagée par le web, la CLI, le serveur et le MCP (parité des surfaces).
+- **Décision** : ajout de `packages/services` (dépend de `core` et `storage`). Les composants React
+  n’appellent que ces services ; `core` reste pur.
+- **Conséquences** : un paquet de plus ; aucune logique métier dans l’interface.
+
+## ADR-013 — Contenu structuré des notes interactives (`Note.data`)
+
+- **Contexte** : le modèle prévoit `fields: Record<string, string>` (Markdown), insuffisant pour
+  les QCM (bonne réponse et explication par proposition), appariements, ordonnancements, listes,
+  vrai/faux et réponses saisies (variantes, casse, accents).
+- **Décision** : le texte libre reste dans `fields` (cherchable, rendu en Markdown) ; la partie
+  structurée va dans `Note.data`, union discriminée par `kind` validée par Zod.
+- **Conséquences** : l’import et l’export convertissent `choices`, `pairs`, `steps`… vers `data`.
+
+## ADR-014 — Conventions des types de notes
+
+- Les clés de champs sont stockées en minuscules (`front`, `back`, `text`, `extra`, `question`,
+  `statement`) ; la recherche de champ est insensible à la casse.
+- Le verso d’une carte reprend la question puis la réponse (séparées par `---`), comme Anki.
+- Sans `Rng` fourni, l’ordre des propositions (QCM, ordonnancement) est déterministe, dérivé du
+  contenu ; l’écran d’étude fournit un `Rng` pour varier l’ordre.
+- Cloze : `\{` et `\}` sont des accolades littérales ; l’indice commence au premier `::` hors
+  accolades ; trous imbriqués refusés en v1.
+
+## ADR-015 — Sangsues gérées hors des planificateurs
+
+- **Décision** : le seuil et l’action « sangsue » (`behavior.leechThreshold`, `leechAction`) sont
+  appliqués par la couche d’étude générique (`answerCard`), pour tous les algorithmes. Le
+  paramètre `leechThreshold` n’existe donc pas dans les paramètres propres à `anki`.

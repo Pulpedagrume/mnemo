@@ -1,0 +1,25 @@
+{
+  "name": "@mnemo/services",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Application services shared by web, CLI, server and MCP: decks, notes, presets, study sessions, stats, backup.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mnemo/core": "workspace:*",
+    "@mnemo/storage": "workspace:*",
+    "jszip": "^3.10.2",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.5",
+    "vitest": "^5.0.3"
+  }
+}

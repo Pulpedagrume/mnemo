@@ -7,7 +7,10 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./memory": "./src/memory/index.ts",
+    "./dexie": "./src/dexie/index.ts",
+    "./testing": "./src/testing/index.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
@@ -18,6 +21,7 @@
   },
   "devDependencies": {
     "fake-indexeddb": "^6.2.5",
-    "fast-check": "^4.10.2"
+    "fast-check": "^4.10.2",
+    "vitest": "^5.0.3"
   }
 }

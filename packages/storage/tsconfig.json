@@ -1,4 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    // Dexie's typings reference IndexedDB (DOM) types.
+    "lib": ["ES2023", "DOM"]
+  },
   "include": ["src"]
 }

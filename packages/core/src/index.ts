@@ -8,3 +8,5 @@ export * from './util/hash';
 export * from './model';
 export * from './scheduling';
 export * from './notetypes';
+export * from './study';
+export * from './stats';

@@ -12,7 +12,9 @@ export const IMPORT_EXTENSIONS = {
   markdown: ['.md', '.markdown', '.txt'],
   csv: ['.csv', '.tsv'],
   bundle: ['.zip'],
+  anki: ['.apkg'],
 } as const;
 export * from './parse';
 export * from './export';
 export * from './bundle';
+export * from './apkg';

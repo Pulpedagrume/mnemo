@@ -83,6 +83,8 @@ export default defineConfig({
     }),
   ],
   worker: { format: 'es' },
+  // Pre-bundled so the first .apkg import does not trigger a dev-server reload.
+  optimizeDeps: { include: ['sql.js'] },
   test: {
     environment: 'jsdom',
     include: ['src/**/*.test.{ts,tsx}'],

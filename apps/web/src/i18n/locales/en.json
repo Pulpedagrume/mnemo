@@ -755,7 +755,7 @@
     "longSteps": "1. First ask for the plan (below). 2. Generate each batch in the same conversation. 3. Have the whole set reviewed. 4. Import the files one by one: the same uids update without duplicates.",
     "copyPlan": "Copy the “Plan” prompt",
     "answerTitle": "I have the AI’s answer",
-    "dropHere": "Drop the AI’s file here (.md, .yaml, .json, .csv or .zip).",
+    "dropHere": "Drop the AI’s file here (.md, .yaml, .json, .csv, .zip) or an Anki package (.apkg).",
     "chooseFile": "Choose a file",
     "pasteLabel": "Or paste the AI’s answer",
     "analyse": "Analyse",
@@ -773,14 +773,16 @@
       "yaml": "YAML",
       "json": "JSON",
       "csv": "CSV (spreadsheet)",
-      "zip": ".zip archive with media"
+      "zip": ".zip archive with media",
+      "apkg": ".apkg (Anki)"
     },
     "formatHelp": {
       "markdown": "Readable and editable by hand or by an AI.",
       "yaml": "Faithful, ideal for LaTeX and code.",
       "json": "The strictest, for scripts.",
       "csv": "Basic cards, cloze and multiple choice only.",
-      "zip": "JSON file and images, to find everything elsewhere."
+      "zip": "JSON file and images, to find everything elsewhere.",
+      "apkg": "Anki package: basic, reversed and cloze cards, with images. Other types become basic cards; scheduling is not exported."
     },
     "download": "Download",
     "done_one": "{{count}} note exported.",

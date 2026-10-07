@@ -7,6 +7,8 @@ const SERVER_DATA = `../../.e2e-data/run-${String(Date.now())}`;
 
 export default defineConfig({
   testDir: './e2e',
+  // README screenshots run only through `pnpm screenshots`.
+  grepInvert: process.env.SCREENSHOTS ? undefined : /@screenshots/,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,

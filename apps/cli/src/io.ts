@@ -16,7 +16,17 @@ export const processIo: Io = {
   },
 };
 
-const IMPORTABLE = new Set(['.json', '.yaml', '.yml', '.md', '.markdown', '.txt', '.csv', '.tsv']);
+const IMPORTABLE = new Set([
+  '.json',
+  '.yaml',
+  '.yml',
+  '.md',
+  '.markdown',
+  '.txt',
+  '.csv',
+  '.tsv',
+  '.apkg',
+]);
 
 /** A file, or every importable file of a directory (sorted, non-recursive). */
 export async function listInputFiles(path: string): Promise<string[]> {

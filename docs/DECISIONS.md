@@ -250,3 +250,37 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
 - **Décision** : le journal devient une tombe (`deletedAt`) qui se propage. Limite connue : les
   autres appareils gardent l’état de la carte issu de la révision annulée (« la révision la plus
   récente gagne ») ; la fonction de maintenance `rebuildCardFromLogs` permet de le recalculer.
+
+## ADR-034 — Optimiseur FSRS reporté
+
+- **Contexte** : la phase 4 prévoit un optimiseur des poids FSRS « si faisable ». `ts-fsrs` ne
+  fournit pas d’optimiseur ; les implémentations existantes sont natives (Rust/napi) ou WASM, et
+  un réglage n’est fiable qu’avec plusieurs centaines de révisions par utilisateur.
+- **Décision** : reporté après la v0.1.0. Les poids restent modifiables à la main (réglages
+  avancés, bouton « Réinitialiser les paramètres ») et l’historique complet (`ReviewLog`) est
+  déjà conservé pour un optimiseur futur.
+
+## ADR-035 — Application de bureau Tauri reportée
+
+- **Décision** : non livrée en v0.1.0 (facultative dans le cahier des charges ; pas de chaîne
+  Rust sur la machine de développement). La PWA installable et `mnemo serve` couvrent l’usage
+  sur ordinateur. Piste notée dans la feuille de route.
+
+## ADR-036 — Serveur MCP : confirmation obligatoire et HTTP sans état
+
+- **Décision** : `mnemo_import_notes` est toujours un essai à blanc ; l’import réel exige
+  `confirm: true` et un essai à blanc identique (empreinte SHA-256 du texte et des options),
+  récent (30 min) et non encore utilisé. Le transport HTTP est sans état (une instance par
+  requête), lié à 127.0.0.1 par défaut, protégé contre le rebinding DNS, et exige un jeton
+  (`MNEMO_MCP_TOKEN`) hors boucle locale. Le serveur MCP partage la collection de `mnemo serve`.
+
+## ADR-037 — Anki `.apkg` : moteur SQL injecté
+
+- **Décision** : `@mnemo/importers` lit et écrit les paquets Anki à travers une interface
+  `SqlEngine` : `sql.js` (WASM, MIT) chargé à la demande dans le navigateur, `node:sqlite` dans
+  la CLI. Un paquet est converti en document `mnemo/1` et passe par le même pipeline que les
+  autres formats (aperçu, validation, fusion, annulation). Le format compressé `anki21b` est
+  refusé avec un message expliquant l’export « compatible avec les anciennes versions ».
+- **Conséquences** : à l’export, les types sans équivalent Anki (QCM, appariement…) deviennent
+  des cartes Basic (une note par carte) ; les identifiants Anki portent le préfixe `mnemo:` pour
+  retrouver l’`uid` au réimport. Le WASM n’est pas précaché (téléchargé au premier usage).

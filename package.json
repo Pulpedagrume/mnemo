@@ -23,7 +23,8 @@
     "check:licenses": "node scripts/check-licenses.mjs",
     "knip": "knip",
     "rename-app": "node scripts/rename-app.mjs",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "screenshots": "SCREENSHOTS=1 pnpm --filter @mnemo/web exec playwright test --grep @screenshots --project=chromium"
   },
   "devDependencies": {
     "@eslint/js": "^10",

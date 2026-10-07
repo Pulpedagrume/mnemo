@@ -1,18 +1,34 @@
+import { readFile } from 'node:fs/promises';
 import { basename } from 'node:path';
 import type { Command } from 'commander';
 import type { ImportMode } from '@mnemo/core';
 import { IMPORT_MODES } from '@mnemo/core';
-import { parseImport } from '@mnemo/importers';
+import { parseImport, readApkg, type ApkgParseResult } from '@mnemo/importers';
 import { recordServerWrites } from '@mnemo/server';
-import { applyImport, planImport } from '@mnemo/services';
+import { applyApkgScheduling, applyImport, planImport, type MediaPayload } from '@mnemo/services';
 import type { Io } from '../io';
 import { listInputFiles, readText } from '../io';
+import { nodeSqlEngine } from '../sqlite-engine';
 import { withCollection, type CollectionOptions } from './collection';
 
 interface ImportOptions extends CollectionOptions {
   deck?: string;
   mode?: string;
   dryRun?: boolean;
+  withScheduling?: boolean;
+}
+
+const isApkg = (file: string): boolean => /\.apkg$/i.test(file);
+
+async function readApkgFile(file: string, withScheduling: boolean): Promise<ApkgParseResult> {
+  return readApkg(new Uint8Array(await readFile(file)), nodeSqlEngine, {
+    fileName: basename(file),
+    withScheduling,
+  });
+}
+
+function apkgMedia(result: ApkgParseResult): Map<string, MediaPayload> {
+  return new Map([...result.mediaFiles].map(([id, m]) => [id, { ...m }] as const));
 }
 
 /**
@@ -27,10 +43,13 @@ export async function importCommand(path: string, opts: ImportOptions, io: Io): 
   const outcome = { failed: false };
   await withCollection(opts, async (c) => {
     for (const file of files) {
-      const result = parseImport(await readText(file), { fileName: basename(file) });
+      const apkg = isApkg(file)
+        ? await readApkgFile(file, opts.withScheduling === true)
+        : undefined;
+      const result = apkg ?? parseImport(await readText(file), { fileName: basename(file) });
       const counts = result.report.counts;
       if (counts.errors > 0) outcome.failed = true;
-      const summary = `${basename(file)} [${result.format}]: ${String(counts.valid)}/${String(counts.notes)} valid notes, ${String(counts.errors)} errors, ${String(counts.warnings)} warnings`;
+      const summary = `${basename(file)} [${apkg ? 'apkg' : result.format}]: ${String(counts.valid)}/${String(counts.notes)} valid notes, ${String(counts.errors)} errors, ${String(counts.warnings)} warnings`;
       if (opts.dryRun) {
         const plan = await planImport(c.ctx, result, { mode, targetDeck });
         io.out(
@@ -43,7 +62,10 @@ export async function importCommand(path: string, opts: ImportOptions, io: Io): 
         mode,
         targetDeck,
         fileName: basename(file),
+        ...(apkg ? { media: apkgMedia(apkg) } : {}),
       });
+      const scheduled = apkg ? await applyApkgScheduling(c.ctx, batch, apkg.scheduling) : 0;
+      if (scheduled > 0) io.out(`${String(scheduled)} cards keep their Anki scheduling`);
       // Devices synced with this collection receive the imported notes on their next pull.
       await recordServerWrites(c, since, batch);
       io.out(
@@ -62,6 +84,7 @@ export function registerImport(program: Command, io: Io, setExit: (code: number)
     .option('--deck <path>', 'target deck for notes without a deck', 'Import')
     .option('--mode <mode>', `duplicates handling (${IMPORT_MODES.join(', ')})`, 'skip-duplicates')
     .option('--dry-run', 'analyse only, write nothing')
+    .option('--with-scheduling', 'Anki packages (.apkg): keep the Anki scheduling of the cards')
     .option('--data-dir <dir>', 'data directory (default: $DATA_DIR or ~/.mnemo)')
     .option('--user <id>', 'collection owner on a multi-user server', 'local')
     .action(async (path: string, opts: ImportOptions) => {

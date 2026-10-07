@@ -1,10 +1,18 @@
 import type { Deck, Id, Media, Note, NoteType } from '@mnemo/core';
 import { APP_SLUG, indexDecks } from '@mnemo/core';
-import { buildImportDocument, exportDocument, mediaFileNames, writeBundle } from '@mnemo/importers';
+import {
+  apkgExportWarnings,
+  buildImportDocument,
+  exportDocument,
+  mediaFileNames,
+  writeApkg,
+  writeBundle,
+  type SqlEngine,
+} from '@mnemo/importers';
 import type { ServiceContext } from './context';
 import { resolveNoteType } from './notes';
 
-export type ExportFormat = 'json' | 'yaml' | 'markdown' | 'csv' | 'zip';
+export type ExportFormat = 'json' | 'yaml' | 'markdown' | 'csv' | 'zip' | 'apkg';
 
 export interface ExportResult {
   fileName: string;
@@ -15,7 +23,7 @@ export interface ExportResult {
   notes: number;
 }
 
-const EXT: Record<Exclude<ExportFormat, 'zip'>, { ext: string; mime: string }> = {
+const EXT: Record<Exclude<ExportFormat, 'zip' | 'apkg'>, { ext: string; mime: string }> = {
   json: { ext: 'json', mime: 'application/json' },
   yaml: { ext: 'yaml', mime: 'application/yaml' },
   markdown: { ext: 'md', mime: 'text/markdown' },
@@ -47,7 +55,7 @@ function mediaRefs(note: Note): string[] {
  */
 export async function exportNotes(
   ctx: ServiceContext,
-  opts: { deckId?: Id; format: ExportFormat },
+  opts: { deckId?: Id; format: ExportFormat; /** Required for `apkg`. */ sqlEngine?: SqlEngine },
 ): Promise<ExportResult> {
   const r = ctx.repo;
   const decks = await r.decks.list();
@@ -75,6 +83,26 @@ export async function exportNotes(
   const root = opts.deckId ? byId.get(opts.deckId)?.name : undefined;
   const base = root ? slug(root) : `${APP_SLUG}-collection`;
 
+  if (opts.format === 'apkg') {
+    if (!opts.sqlEngine) throw new Error('The apkg export needs a SQL engine');
+    const files: { id: string; name: string; bytes: Uint8Array }[] = [];
+    for (const m of media) {
+      const bytes = await r.media.getContent(m.id);
+      if (bytes) files.push({ id: m.id, name: m.name, bytes });
+    }
+    const decksOut = exportedDecks.map((d) => ({ path: d.path, description: d.description }));
+    const content = await writeApkg(
+      { notes: items, media: files, decks: decksOut, now: ctx.clock.now() },
+      opts.sqlEngine,
+    );
+    return {
+      fileName: `${base}.apkg`,
+      mime: 'application/apkg',
+      content,
+      warnings: apkgExportWarnings(items),
+      notes: items.length,
+    };
+  }
   if (opts.format !== 'zip') {
     const { text, warnings } = exportDocument(doc, opts.format);
     const { ext, mime } = EXT[opts.format];

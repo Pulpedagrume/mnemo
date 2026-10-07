@@ -54,7 +54,7 @@ export function AnswerDropZone({ busy, onFile, onText }: Props) {
         <input
           ref={fileRef}
           type="file"
-          accept=".md,.markdown,.txt,.yaml,.yml,.json,.csv,.tsv,.zip"
+          accept=".md,.markdown,.txt,.yaml,.yml,.json,.csv,.tsv,.zip,.apkg"
           className="sr-only"
           tabIndex={-1}
           aria-label={t('wizard.chooseFile')}

@@ -1,7 +1,8 @@
 import type { ImportParseResult, ParseOptions } from '@mnemo/importers';
-import { parseImport, readBundle } from '@mnemo/importers';
+import { parseImport, readApkg, readBundle } from '@mnemo/importers';
 import type { MediaPayload } from '@mnemo/services';
 import type { ParseRequest, ParseResponse } from '../../workers/import.worker';
+import { sqlJsEngine } from '../../lib/sqljs';
 
 let worker: Worker | null = null;
 let nextId = 1;
@@ -34,7 +35,7 @@ export interface LoadedImport {
   media: Map<string, MediaPayload>;
 }
 
-/** Loads pasted text, a text file or a .zip bundle, and parses it. */
+/** Loads pasted text, a text file, a .zip bundle or an Anki .apkg package, and parses it. */
 export async function loadImport(
   input: { text: string; fileName?: string } | { file: File },
   options: Omit<ParseOptions, 'fileName'> = {},
@@ -45,6 +46,17 @@ export async function loadImport(
     return { fileName, text: input.text, result, media: new Map() };
   }
   const { file } = input;
+  if (/\.apkg$/i.test(file.name)) {
+    // Anki packages are SQLite databases: read on the main thread with sql.js (loaded lazily).
+    const apkg = await readApkg(new Uint8Array(await file.arrayBuffer()), sqlJsEngine, {
+      fileName: file.name,
+      ...(options.strict === undefined ? {} : { strict: options.strict }),
+      ...(options.maxNotes === undefined ? {} : { maxNotes: options.maxNotes }),
+    });
+    const { mediaFiles, ...result } = apkg;
+    const media = new Map<string, MediaPayload>([...mediaFiles].map(([id, m]) => [id, { ...m }]));
+    return { fileName: file.name, text: '', result, media };
+  }
   if (/\.zip$/i.test(file.name)) {
     const bundle = await readBundle(new Uint8Array(await file.arrayBuffer()));
     const text = bundle.main?.text ?? '';

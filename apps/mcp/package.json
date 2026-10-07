@@ -2,12 +2,32 @@
   "name": "@mnemo/mcp",
   "version": "0.0.0",
   "private": true,
+  "description": "MCP server of Mnemo: validate, import and browse flashcards from an AI assistant",
   "license": "MIT",
   "type": "module",
+  "bin": {
+    "mnemo-mcp": "./dist/main.mjs"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown",
+    "start": "node dist/main.mjs"
   },
   "dependencies": {
-    "@mnemo/core": "workspace:*"
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "tsdown": "^0.23.0",
+    "vitest": "^5.0.3",
+    "@mnemo/core": "workspace:*",
+    "@mnemo/importers": "workspace:^",
+    "@mnemo/prompts": "workspace:^",
+    "@mnemo/server": "workspace:^",
+    "@mnemo/services": "workspace:^",
+    "@mnemo/storage": "workspace:^"
   }
 }

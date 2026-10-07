@@ -4,9 +4,10 @@ import type { Command } from 'commander';
 import type { ExportFormat } from '@mnemo/services';
 import { exportNotes } from '@mnemo/services';
 import type { Io } from '../io';
+import { nodeSqlEngine } from '../sqlite-engine';
 import { withCollection, type CollectionOptions } from './collection';
 
-const FORMATS: readonly ExportFormat[] = ['markdown', 'yaml', 'json', 'csv', 'zip'];
+const FORMATS: readonly ExportFormat[] = ['markdown', 'yaml', 'json', 'csv', 'zip', 'apkg'];
 
 interface ExportOptions extends CollectionOptions {
   format: string;
@@ -18,7 +19,7 @@ export async function exportCommand(deck: string, opts: ExportOptions, io: Io): 
   const wanted = opts.format === 'md' ? 'markdown' : opts.format;
   const format = FORMATS.find((f) => f === wanted);
   if (!format) {
-    io.err(`Unknown format "${opts.format}" (md, yaml, json, csv, zip).`);
+    io.err(`Unknown format "${opts.format}" (md, yaml, json, csv, zip, apkg).`);
     return 2;
   }
   return withCollection(opts, async (c) => {
@@ -30,7 +31,11 @@ export async function exportCommand(deck: string, opts: ExportOptions, io: Io): 
         return 2;
       }
     }
-    const res = await exportNotes(c.ctx, { format, ...(deckId ? { deckId } : {}) });
+    const res = await exportNotes(c.ctx, {
+      format,
+      ...(deckId ? { deckId } : {}),
+      ...(format === 'apkg' ? { sqlEngine: nodeSqlEngine } : {}),
+    });
     const target = resolve(opts.out ?? join(process.cwd(), res.fileName));
     await writeFile(target, res.content);
     io.out(`${String(res.notes)} notes → ${target}`);
@@ -42,9 +47,9 @@ export async function exportCommand(deck: string, opts: ExportOptions, io: Io): 
 export function registerExport(program: Command, io: Io, setExit: (code: number) => void): void {
   program
     .command('export')
-    .description('Export a deck (full name) or "all" to md, yaml, json, csv or zip')
+    .description('Export a deck (full name) or "all" to md, yaml, json, csv, zip or apkg (Anki)')
     .argument('<deck>', 'deck full name, e.g. "Réseaux::Ethernet", or "all"')
-    .requiredOption('--format <format>', 'md, yaml, json, csv or zip')
+    .requiredOption('--format <format>', 'md, yaml, json, csv, zip or apkg')
     .option('--out <file>', 'output file (default: a name derived from the deck)')
     .option('--data-dir <dir>', 'data directory (default: $DATA_DIR or ~/.mnemo)')
     .option('--user <id>', 'collection owner on a multi-user server', 'local')

@@ -210,3 +210,62 @@ conversation avec l’IA.
 
 Paquet ou collection en JSON, YAML, Markdown, CSV, ou bundle `.zip` avec médias, dans ce même
 format : `import(export(x))` redonne `x`.
+
+## 8. Anki (.apkg)
+
+Mnemo importe et exporte les paquets Anki `.apkg` (application web : glisser le fichier dans la
+zone d’import ; CLI : `mnemo import paquet.apkg`, `mnemo export <paquet> --format apkg`). Le
+lecteur est écrit à partir de la description publique du format de collection (base SQLite
+`collection.anki21` ou `collection.anki2`, tables `col`, `notes`, `cards`) : aucun code d’Anki
+n’est repris. Le paquet est converti en document `mnemo/1` puis passe par la même validation, le
+même aperçu, les mêmes modes de fusion et la même annulation que les autres formats.
+
+**Format récent non pris en charge.** Les exports récents d’Anki (`collection.anki21b`,
+compressé) sont refusés avec un message clair : dans Anki, réexportez en cochant
+« Prendre en charge les anciennes versions d’Anki » (« Support older Anki versions »).
+
+### Import
+
+| Anki                                                       | Mnemo                                         |
+| ---------------------------------------------------------- | --------------------------------------------- |
+| type de note « texte à trous » (cloze)                     | `cloze` (Text ; les autres champs → `extra`)  |
+| 2 champs, 1 modèle `{{Recto}}` / `{{Verso}}` (« Basique ») | `basic`                                       |
+| idem avec un 2ᵉ modèle inversé                             | `basic_reversed`                              |
+| « Basique (saisir la réponse) » `{{Recto}} {{type:Verso}}` | `typed` (réponse = texte brut du verso)       |
+| tout autre type de note                                    | `custom:anki-<nom>-<id>` + définition du type |
+| paquets `A::B`, étiquettes, `guid` de la note              | chemin de paquet, tags, `uid: anki-<guid>`    |
+
+- **Champs** : le HTML courant est converti en Markdown (gras, italique, listes, liens, retours à
+  la ligne, `<div>`/`<p>`, code) ; `<u>`, `<sub>`, `<sup>` restent en HTML ; les styles en ligne
+  (`<span style>`, `<font>`) sont retirés (info) ; le reste (tableaux…) est gardé en HTML et
+  nettoyé à l’affichage (info `html_sanitized`). MathJax `\(…\)` / `\[…\]` devient `$…$` /
+  `$$…$$`.
+- **Images** : `<img src="x.png">` devient `![](media:x.png)` ; le fichier est pris dans le paquet
+  (même contrôle de type réel et de taille que les bundles `.zip`). Image absente : retirée
+  (avertissement).
+- **Sons** : `[sound:…]` n’est pas pris en charge (avertissement) ; la note est importée sans le
+  son.
+- **Modèles personnalisés** : `{{Champ}}`, `{{#Champ}}…{{/Champ}}`, `{{^Champ}}`, `{{FrontSide}}`,
+  `{{cloze:}}`, `{{type:}}`, `{{hint:}}`, `{{text:}}` sont conservés ; les autres filtres
+  (`furigana:`, `tts`…) et champs spéciaux (`{{Tags}}`, `{{Deck}}`…) sont retirés
+  (avertissement). Le CSS du type de note est conservé.
+- **Réimport** : l’`uid` vient du `guid` Anki, donc réimporter le même paquet met à jour ou ignore
+  les notes au lieu de les dupliquer.
+- **Planification** (option, désactivée par défaut : les cartes repartent comme nouvelles) :
+  CLI `--with-scheduling`. État, échéance, intervalle, facilité (`factor / 1000`), répétitions,
+  oublis et cartes suspendues sont repris pour les notes créées par l’import (une note mise à jour
+  garde sa planification). Les états non reconnus (aperçu…) repartent comme nouveaux
+  (avertissement). L’historique des révisions (`revlog`) n’est pas importé.
+
+### Export
+
+- `basic`, `basic_reversed` et `cloze` deviennent les types standards d’Anki « Basic »,
+  « Basic (and reversed card) » et « Cloze » ; le Markdown est converti en HTML et les images
+  sont jointes au paquet.
+- Les autres types (QCM, vrai/faux, association, ordre, liste, saisie, types personnalisés)
+  deviennent une note « Basic » **par carte**, avec le recto et le verso rendus : l’interactivité
+  est perdue (avertissement).
+- Les explications et le champ `extra` sont ajoutés à la réponse ; les indices ne sont pas
+  exportés (avertissement). Les cartes sont exportées comme nouvelles (sans planification).
+- Le `guid` Anki est stable : `mnemo:<uid>` (ou l’`uid` d’origine pour une note venue d’Anki), si
+  bien que l’aller-retour Mnemo → Anki → Mnemo retrouve les mêmes notes.

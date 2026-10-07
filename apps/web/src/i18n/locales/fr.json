@@ -781,7 +781,7 @@
     "longSteps": "1. Demande d’abord le plan (ci-dessous). 2. Génère chaque lot dans la même conversation. 3. Fais contrôler l’ensemble. 4. Importe les fichiers un par un : les mêmes uid mettent à jour sans doublon.",
     "copyPlan": "Copier le prompt « Plan »",
     "answerTitle": "J’ai la réponse de l’IA",
-    "dropHere": "Glisse ici le fichier de l’IA (.md, .yaml, .json, .csv ou .zip).",
+    "dropHere": "Glisse ici le fichier de l’IA (.md, .yaml, .json, .csv, .zip) ou un paquet Anki (.apkg).",
     "chooseFile": "Choisir un fichier",
     "pasteLabel": "Ou colle la réponse de l’IA",
     "analyse": "Analyser",
@@ -799,14 +799,16 @@
       "yaml": "YAML",
       "json": "JSON",
       "csv": "CSV (tableur)",
-      "zip": "Archive .zip avec médias"
+      "zip": "Archive .zip avec médias",
+      "apkg": ".apkg (Anki)"
     },
     "formatHelp": {
       "markdown": "Lisible et modifiable à la main ou par une IA.",
       "yaml": "Fidèle, idéal pour le LaTeX et le code.",
       "json": "Le plus strict, pour les scripts.",
       "csv": "Cartes simples, textes à trous et QCM seulement.",
-      "zip": "Fichier JSON et images, pour tout retrouver ailleurs."
+      "zip": "Fichier JSON et images, pour tout retrouver ailleurs.",
+      "apkg": "Paquet Anki : cartes simples, inversées et à trous, avec images. Les autres types deviennent des cartes simples ; la planification n’est pas exportée."
     },
     "download": "Télécharger",
     "done_one": "{{count}} note exportée.",

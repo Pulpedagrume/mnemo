@@ -9,8 +9,9 @@ import { Button } from '../../components/ui/Button';
 import { Dialog } from '../../components/ui/Dialog';
 import { toast } from '../../components/ui/Toaster';
 import { downloadFile } from '../../lib/download';
+import { sqlJsEngine } from '../../lib/sqljs';
 
-const FORMATS: ExportFormat[] = ['markdown', 'yaml', 'json', 'csv', 'zip'];
+const FORMATS: ExportFormat[] = ['markdown', 'yaml', 'json', 'csv', 'zip', 'apkg'];
 
 /** Exports a deck subtree (or the collection) in an import-compatible format. */
 export function ExportDialog({
@@ -28,7 +29,11 @@ export function ExportDialog({
   const [busy, setBusy] = useState(false);
   const run = () => {
     setBusy(true);
-    exportNotes(ctx, { format, ...(deck ? { deckId: deck.id } : {}) })
+    exportNotes(ctx, {
+      format,
+      ...(deck ? { deckId: deck.id } : {}),
+      ...(format === 'apkg' ? { sqlEngine: sqlJsEngine } : {}),
+    })
       .then((res) => {
         downloadFile(res.content, res.fileName, res.mime);
         toast(t('export.done', { count: res.notes }), 'success');

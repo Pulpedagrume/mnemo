@@ -5,7 +5,9 @@ import { DAY_MS } from '@mnemo/core';
 import { getSettings } from '@mnemo/services';
 import { useQuery, useServices } from './services';
 
-const DISMISS_KEY = 'mnemo.storageWarningDismissed';
+const DISMISS_KEY = 'mnemo.storageWarningDismissedAt';
+/** A dismissed warning comes back after this delay (data can still be erased meanwhile). */
+const DISMISS_MS = 30 * DAY_MS;
 
 /** Asks for persistent storage once; reports whether the browser may evict our data. */
 function usePersistence(): 'unknown' | 'persisted' | 'best-effort' {
@@ -33,7 +35,8 @@ export function StorageWarning() {
   const settings = useQuery((ctx) => getSettings(ctx), []);
   const [dismissed, setDismissed] = useState(() => {
     try {
-      return sessionStorage.getItem(DISMISS_KEY) === '1';
+      const at = Number(localStorage.getItem(DISMISS_KEY));
+      return at > 0 && clock.now() - at < DISMISS_MS;
     } catch {
       return false;
     }
@@ -68,7 +71,7 @@ export function StorageWarning() {
           className="underline"
           onClick={() => {
             try {
-              sessionStorage.setItem(DISMISS_KEY, '1');
+              localStorage.setItem(DISMISS_KEY, String(clock.now()));
             } catch {
               // Storage unavailable: the banner just comes back next time.
             }

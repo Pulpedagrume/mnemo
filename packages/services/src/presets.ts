@@ -282,3 +282,14 @@ export async function changePresetAlgorithm(
     return updated;
   });
 }
+
+/** Creates a preset from an imported draft (see parsePresetExport). */
+export async function createPresetFromDraft(
+  ctx: ServiceContext,
+  draft: Pick<Preset, 'name' | 'algorithm' | 'params' | 'limits' | 'behavior'>,
+): Promise<Preset> {
+  const now = ctx.clock.now();
+  const preset = validatePreset({ ...draft, id: ctx.newId(), createdAt: now, updatedAt: now });
+  await ctx.repo.presets.put(preset);
+  return preset;
+}

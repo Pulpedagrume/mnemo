@@ -14,3 +14,18 @@ The complete, up-to-date list can be produced with `pnpm licenses list --prod`.
 - i18next, react-i18next (MIT) — i18next contributors
 - commander (MIT) — TJ Holowaychuk and contributors
 - Tailwind CSS (MIT) — Tailwind Labs, Inc. (generated CSS only)
+- Zod (MIT) — Colin McDonnell and contributors
+- ts-fsrs (MIT) — open-spaced-repetition
+- Dexie.js (Apache-2.0) — David Fahlander and contributors
+- markdown-it (MIT) — Vitaly Puzrin, Alex Kocharin; argparse (PSF-2.0) is a CLI-only dependency
+- DOMPurify (Apache-2.0 or MPL-2.0, used under Apache-2.0) — Cure53
+- KaTeX (MIT) — Khan Academy and contributors
+- highlight.js (BSD-3-Clause) — Ivan Sagalaev and contributors
+- JSZip (MIT, dual-licensed with GPLv3; used under MIT) — Stuart Knightley and contributors
+- pako (MIT and Zlib) — Andrei Tuputcyn, Vitaly Puzrin
+- Radix UI (MIT) — WorkOS
+- lucide-react (ISC) — Lucide contributors
+- Zustand (MIT) — Poimandres
+- React Router (MIT) — Remix Software
+- TanStack Virtual (MIT) — Tanner Linsley
+- Workbox (MIT) — Google LLC

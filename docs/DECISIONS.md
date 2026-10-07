@@ -120,3 +120,40 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
 - **Décision** : le seuil et l’action « sangsue » (`behavior.leechThreshold`, `leechAction`) sont
   appliqués par la couche d’étude générique (`answerCard`), pour tous les algorithmes. Le
   paramètre `leechThreshold` n’existe donc pas dans les paramètres propres à `anki`.
+
+## ADR-016 — Routage par hash et écrans chargés à la demande
+
+- **Contexte** : la PWA doit fonctionner sur un hébergement statique (GitHub Pages, sous-chemin)
+  et hors ligne, sans réécriture d’URL côté serveur. Budget : première interaction < 1 s.
+- **Décision** : `createHashRouter` (React Router 7). Les écrans secondaires (étude, navigateur,
+  éditeur, presets, statistiques, réglages) sont découpés (`lazy`) ; le bundle initial passe de
+  283 ko à 117 ko gzip. KaTeX, markdown-it et highlight.js ne sont chargés qu’avec l’étude ou
+  l’éditeur.
+- **Conséquences** : URL de la forme `/#/study/<id>` ; aucun réglage serveur nécessaire.
+
+## ADR-017 — Points d’entrée du stockage
+
+- **Décision** : `@mnemo/storage` exporte l’interface et l’implémentation mémoire ;
+  `@mnemo/storage/dexie` l’implémentation IndexedDB (types DOM) ; `@mnemo/storage/testing` la
+  suite de conformité. La CLI et le serveur n’embarquent donc jamais Dexie.
+- **Conséquences** : dans une transaction Dexie, les magasins sont liés à la transaction ; seules
+  des opérations de stockage peuvent y être attendues (sinon IndexedDB valide automatiquement).
+
+## ADR-018 — Correspondance exacte des boutons et du flou (fuzz)
+
+- **Décision** : l’aperçu des intervalles et la planification réelle utilisent la même graine
+  `rngForReview(cardId, reps)` ; les libellés des boutons correspondent donc exactement à
+  l’intervalle appliqué. FSRS (`ts-fsrs`) dérive son flou de l’état de la carte : déterministe.
+
+## ADR-019 — Pluriels français
+
+- **Contexte** : `Intl.PluralRules('fr')` renvoie `many` pour les très grands nombres.
+- **Décision** : les clés françaises à pluriel ont les formes `_one`, `_many` et `_other` ; le test
+  de parité fr/en ignore les suffixes de pluriel et compare aussi les variables d’interpolation.
+
+## ADR-020 — Licences Zlib et PSF-2.0 acceptées
+
+- **Contexte** : `pako` (compression, via `jszip`) est sous « MIT AND Zlib » ; `argparse`
+  (dépendance de la ligne de commande de `markdown-it`, non embarquée dans la PWA) est sous PSF-2.0.
+- **Décision** : ajout de `Zlib` et `PSF-2.0` à la liste blanche de production : licences
+  permissives, compatibles avec une redistribution sous MIT, mention dans `NOTICE`.

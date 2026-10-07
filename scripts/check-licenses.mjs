@@ -16,6 +16,8 @@ const PROD_ALLOWED = new Set([
   'CC0-1.0',
   'Unlicense',
   'BlueOak-1.0.0',
+  'Zlib',
+  'PSF-2.0',
 ]);
 
 /** Build/test-only tools are not redistributed, so file-level copyleft and data licenses are fine. */

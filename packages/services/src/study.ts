@@ -323,3 +323,14 @@ export async function deckTreeWithCounts(ctx: ServiceContext): Promise<DeckTreeE
   });
   return buildDeckTree(decks).map(toEntry);
 }
+
+/** Earliest future due date (learning or review) in a deck subtree, if any. */
+export async function nextDueAfterNow(
+  ctx: ServiceContext,
+  deckId: Id,
+): Promise<number | undefined> {
+  const now = ctx.clock.now();
+  const index = indexDecks(await ctx.repo.decks.list());
+  const cards = await ctx.repo.cards.dueBefore(index.subtree(deckId), Number.MAX_SAFE_INTEGER);
+  return cards.find((c) => c.due > now)?.due;
+}

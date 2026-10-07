@@ -1,13 +1,619 @@
 {
   "app": {
-    "tagline": "Répétition espacée paramétrable, avec import pensé pour l’IA.",
-    "language": "Langue",
-    "comingSoon": "Les premières fonctionnalités arrivent bientôt.",
     "decksCount_one": "{{count}} paquet",
+    "decksCount_many": "{{count}} paquets",
     "decksCount_other": "{{count}} paquets"
   },
   "language": {
     "fr": "Français",
     "en": "English"
+  },
+  "common": {
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "create": "Créer",
+    "delete": "Supprimer",
+    "dismiss": "Masquer",
+    "loading": "Chargement…",
+    "save": "Enregistrer",
+    "saved": "Modifications enregistrées."
+  },
+  "nav": {
+    "main": "Navigation principale",
+    "skipToContent": "Aller au contenu",
+    "decks": "Paquets",
+    "browse": "Parcourir",
+    "stats": "Statistiques",
+    "presets": "Presets",
+    "settings": "Réglages"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "back": "Revenir aux paquets"
+  },
+  "storage": {
+    "mayBeErased": "Votre navigateur peut effacer les données de ce site s’il manque de place (c’est fréquent sur Safari). Exportez une sauvegarde régulièrement.",
+    "backupReminder": "Votre dernière sauvegarde date de plus de {{days}} jours.",
+    "backupNow": "Sauvegarder maintenant"
+  },
+  "pwa": {
+    "updateAvailable": "Une nouvelle version est disponible. Rechargez quand vous aurez fini votre révision.",
+    "offlineReady": "L’application fonctionne maintenant hors ligne.",
+    "reload": "Recharger"
+  },
+  "errors": {
+    "unexpected": "Une erreur inattendue s’est produite : {{message}}",
+    "note": {
+      "unknown-note-type": "Ce type de note est inconnu.",
+      "no-cards": "Cette note ne produirait aucune carte : complétez les champs obligatoires.",
+      "invalid-cloze": "Le texte à trous contient une erreur (voir l’aperçu).",
+      "invalid": "Certains champs sont invalides.",
+      "not-found": "Cette note n’existe plus."
+    },
+    "deck": {
+      "empty-name": "Le nom du paquet est vide.",
+      "not-found": "Ce paquet n’existe plus.",
+      "name-taken": "Un paquet porte déjà ce nom.",
+      "cycle": "Un paquet ne peut pas être déplacé dans l’un de ses sous-paquets."
+    },
+    "preset": {
+      "not-found": "Ce preset n’existe plus.",
+      "invalid": "Les réglages du preset sont invalides.",
+      "is-default": "Le preset par défaut ne peut pas être supprimé."
+    },
+    "backup": {
+      "not-a-zip": "Ce fichier n’est pas une archive .zip valide.",
+      "missing-manifest": "Cette archive n’est pas une sauvegarde (backup.json absent).",
+      "invalid-manifest": "La sauvegarde est corrompue ou d’une version incompatible.",
+      "too-large": "La sauvegarde est trop volumineuse."
+    }
+  },
+  "cardState": {
+    "new": "Nouvelle",
+    "learning": "En apprentissage",
+    "review": "À réviser",
+    "relearning": "En réapprentissage",
+    "suspended": "Suspendue"
+  },
+  "rating": {
+    "1": "À revoir",
+    "2": "Difficile",
+    "3": "Correct",
+    "4": "Facile"
+  },
+  "decks": {
+    "title": "Paquets",
+    "create": "Nouveau paquet",
+    "created": "Paquet créé.",
+    "deleted": "Paquet supprimé.",
+    "addNote": "Ajouter une note",
+    "search": "Rechercher un paquet",
+    "noMatch": "Aucun paquet ne correspond.",
+    "listLabel": "Liste des paquets",
+    "new": "Nouvelles",
+    "learning": "En apprentissage",
+    "review": "À réviser",
+    "newShort": "Nouv.",
+    "learningShort": "Appr.",
+    "reviewShort": "Rév.",
+    "study": "Étudier",
+    "expand": "Déplier {{name}}",
+    "collapse": "Replier {{name}}",
+    "actions": "Actions pour {{name}}",
+    "action": {
+      "add": "Ajouter une note",
+      "custom": "Étude personnalisée",
+      "options": "Options du paquet",
+      "rename": "Renommer ou déplacer",
+      "stats": "Statistiques",
+      "delete": "Supprimer"
+    },
+    "name": "Nom complet",
+    "nameHelp": "Utilisez « :: » pour créer un sous-paquet, par exemple « Réseaux::Ethernet ».",
+    "optionsTitle": "Options de « {{name}} »",
+    "preset": "Preset",
+    "presetHelp": "Un sous-paquet utilise le preset de son parent tant que vous n’en choisissez pas un.",
+    "inherit": "Hériter du paquet parent",
+    "description": "Description",
+    "deleteTitle": "Supprimer « {{name}} » ?",
+    "deleteWarning": "Le paquet, ses sous-paquets et toutes leurs notes seront supprimés. Pensez à exporter une sauvegarde avant."
+  },
+  "custom": {
+    "title": "Étude personnalisée",
+    "mode": "Que voulez-vous réviser ?",
+    "mistakes": "Mes erreurs récentes",
+    "mistakesHelp": "Les cartes notées « À revoir » ces derniers jours. Ne modifie pas la planification.",
+    "ahead": "Réviser en avance",
+    "aheadHelp": "Les cartes prévues dans les prochains jours. Modifie la planification.",
+    "tag": "Par étiquette",
+    "tagHelp": "Toutes les cartes portant une étiquette. Ne modifie pas la planification.",
+    "cram": "Bachotage",
+    "cramHelp": "Toutes les cartes déjà vues, dans le désordre. Ne modifie pas la planification.",
+    "days": "Nombre de jours",
+    "noTags": "Aucune étiquette dans ce paquet.",
+    "start": "Commencer"
+  },
+  "study": {
+    "title": "Étude",
+    "showAnswer": "Afficher la réponse",
+    "showHint": "Afficher un indice",
+    "hint": "Indice",
+    "nextHint_one": "Indice suivant ({{count}} restant)",
+    "nextHint_many": "Indice suivant ({{count}} restants)",
+    "nextHint_other": "Indice suivant ({{count}} restants)",
+    "hintNumber": "Indice {{n}} :",
+    "questionSide": "Question",
+    "answerSide": "Réponse",
+    "explanation": "Explication",
+    "rate": "Évaluer votre réponse",
+    "suggested": "Note proposée d’après la correction : {{rating}}. Vous pouvez en choisir une autre.",
+    "suggestedShort": "(proposée)",
+    "undo": "Annuler la dernière réponse",
+    "flag": "Marquer la carte",
+    "unflag": "Retirer le marqueur",
+    "shortcuts": "Raccourcis clavier",
+    "progress": "Progression de la session",
+    "remaining": "Cartes restantes : nouvelles, en apprentissage, à réviser",
+    "cram": "Bachotage",
+    "finished": "Bravo, vous avez terminé pour aujourd’hui !",
+    "waitTitle": "Plus de cartes pour l’instant",
+    "waitUntil": "Des cartes en apprentissage reviennent à {{time}}.",
+    "checkAgain": "Vérifier à nouveau",
+    "backToDecks": "Retour aux paquets",
+    "nextDue": "Prochaine échéance : {{date}}.",
+    "noUpcoming": "Aucune carte n’est programmée dans ce paquet.",
+    "summary": {
+      "reviewed": "Cartes revues",
+      "success": "Réussite",
+      "time": "Temps",
+      "hints": "Indices utilisés",
+      "minutes_one": "{{count}} min",
+      "minutes_many": "{{count}} min",
+      "minutes_other": "{{count}} min"
+    }
+  },
+  "shortcuts": {
+    "space": {
+      "key": "Espace",
+      "label": "Afficher la réponse, puis « Correct »"
+    },
+    "digits": {
+      "key": "1 à 4",
+      "label": "À revoir, Difficile, Correct, Facile"
+    },
+    "i": {
+      "key": "I",
+      "label": "Afficher un indice"
+    },
+    "z": {
+      "key": "Z",
+      "label": "Annuler la dernière réponse"
+    },
+    "e": {
+      "key": "E",
+      "label": "Modifier la note"
+    },
+    "s": {
+      "key": "S",
+      "label": "Suspendre la carte"
+    },
+    "b": {
+      "key": "B",
+      "label": "Mettre la carte de côté jusqu’à demain"
+    },
+    "f": {
+      "key": "F",
+      "label": "Marquer ou démarquer la carte"
+    },
+    "question": {
+      "key": "?",
+      "label": "Afficher cette aide"
+    }
+  },
+  "grade": {
+    "validate": "Valider",
+    "allCorrect": "Tout est juste !",
+    "someWrong": "Il y a des erreurs.",
+    "status": {
+      "correct": "Bonne réponse",
+      "wrong": "Erreur",
+      "missing": "Manquant"
+    }
+  },
+  "mcq": {
+    "chooseOne": "Choisissez une réponse.",
+    "chooseSeveral": "Plusieurs réponses possibles : cochez toutes les bonnes."
+  },
+  "truefalse": {
+    "prompt": "Vrai ou faux ?",
+    "true": "Vrai",
+    "false": "Faux",
+    "expected": "La bonne réponse était : {{answer}}."
+  },
+  "matching": {
+    "choose": "Choisir…",
+    "expected": "Réponse attendue : {{answer}}"
+  },
+  "ordering": {
+    "moveUp": "Monter « {{item}} »",
+    "moveDown": "Descendre « {{item}} »",
+    "moved": "« {{item}} » est maintenant en position {{position}}.",
+    "correctOrder": "Ordre correct :"
+  },
+  "typed": {
+    "label": "Votre réponse",
+    "diffLegend": "Comparaison : les caractères soulignés manquaient, les caractères barrés étaient en trop.",
+    "missing": "manquant :",
+    "extra": "en trop :",
+    "expected": "Réponse attendue : {{answer}}"
+  },
+  "list": {
+    "typeItems_one": "Saisissez l’élément attendu (un par ligne).",
+    "typeItems_many": "Saisissez les {{count}} éléments attendus (un par ligne).",
+    "typeItems_other": "Saisissez les {{count}} éléments attendus (un par ligne).",
+    "extra": "En trop :"
+  },
+  "editor": {
+    "newTitle": "Nouvelle note",
+    "editTitle": "Modifier la note",
+    "notFound": "Cette note n’existe pas ou a été supprimée.",
+    "needDeck": "Créez d’abord un paquet.",
+    "noteType": "Type de note",
+    "deck": "Paquet",
+    "preview": "Aperçu",
+    "field": {
+      "front": "Recto (question)",
+      "back": "Verso (réponse)",
+      "text": "Texte à trous",
+      "extra": "Complément",
+      "question": "Question",
+      "statement": "Affirmation"
+    },
+    "clozeHelp": "Entourez la réponse : {{example}} ou, avec un indice, {{exampleHint}}. Des numéros différents (c1, c2…) donnent des cartes différentes.",
+    "addCloze": "Ajouter un trou",
+    "hints": "Indices",
+    "hintsHelp": "Du plus discret au plus explicite. Un indice oriente sans jamais donner la réponse.",
+    "addHint": "Ajouter un indice",
+    "hintN": "Indice {{n}}",
+    "explanation": "Explication (affichée avec la réponse)",
+    "tags": "Étiquettes",
+    "tagsHelp": "Séparées par des espaces ou des virgules.",
+    "source": "Source",
+    "sourceSection": "Section",
+    "sourcePage": "Page",
+    "sourceDoc": "Document",
+    "sourceUrl": "Lien",
+    "needsReview": "À vérifier (contenu incertain)",
+    "moveUp": "Monter {{item}}",
+    "moveDown": "Descendre {{item}}",
+    "remove": "Retirer {{item}}",
+    "cardsPreview": "Aperçu des cartes",
+    "cardsPreviewCount_one": "{{count}} carte générée",
+    "cardsPreviewCount_many": "{{count}} cartes générées",
+    "cardsPreviewCount_other": "{{count}} cartes générées",
+    "cardN": "Carte {{n}}",
+    "resetPreview": "Recommencer",
+    "noCards": "Remplissez les champs pour voir les cartes générées.",
+    "error": "Erreur :",
+    "warning": "Attention :",
+    "created": "Note créée. Vous pouvez en saisir une autre.",
+    "saved": "Note enregistrée.",
+    "typed": {
+      "answers": "Réponses acceptées",
+      "addAnswer": "Ajouter une variante",
+      "answerN": "Réponse acceptée {{n}}",
+      "caseSensitive": "Respecter les majuscules",
+      "ignoreAccents": "Ignorer les accents"
+    },
+    "mcq": {
+      "choices": "Propositions",
+      "addChoice": "Ajouter une proposition",
+      "choiceN": "Proposition {{n}}",
+      "correct": "Bonne réponse",
+      "explanationN": "Explication de la proposition {{n}}",
+      "explanationPlaceholder": "Pourquoi c’est juste ou faux (facultatif)",
+      "needCorrect": "Cochez au moins une bonne réponse.",
+      "shuffle": "Mélanger les propositions à chaque révision"
+    },
+    "truefalse": {
+      "answer": "L’affirmation est…"
+    },
+    "matching": {
+      "pairs": "Paires",
+      "addPair": "Ajouter une paire",
+      "pairN": "paire {{n}}",
+      "left": "Élément",
+      "right": "Correspondance",
+      "leftN": "Élément de la paire {{n}}",
+      "rightN": "Correspondance de la paire {{n}}",
+      "distractors": "Leurres (correspondances en trop)",
+      "addDistractor": "Ajouter un leurre",
+      "distractorN": "Leurre {{n}}"
+    },
+    "ordering": {
+      "steps": "Étapes, dans le bon ordre",
+      "addStep": "Ajouter une étape",
+      "stepN": "Étape {{n}}"
+    },
+    "list": {
+      "items": "Éléments",
+      "addItem": "Ajouter un élément",
+      "itemN": "Élément {{n}}",
+      "ordered": "L’ordre compte"
+    }
+  },
+  "browse": {
+    "title": "Parcourir les notes",
+    "searchText": "Rechercher dans les notes",
+    "filter": {
+      "deck": "Paquet",
+      "tag": "Étiquette",
+      "type": "Type de note",
+      "state": "État des cartes",
+      "suspended": "Suspendues",
+      "leech": "Sangsues",
+      "needsReview": "À vérifier"
+    },
+    "allDecks": "Tous les paquets",
+    "allTags": "Toutes les étiquettes",
+    "allTypes": "Tous les types",
+    "allStates": "Tous les états",
+    "sort": "Trier",
+    "sortBy": {
+      "created-desc": "Plus récentes d’abord",
+      "created-asc": "Plus anciennes d’abord",
+      "updated-desc": "Modifiées récemment",
+      "updated-asc": "Modifiées il y a longtemps"
+    },
+    "bulkActions": "Actions sur la sélection",
+    "count_one": "{{count}} note, {{selected}} sélectionnée(s)",
+    "count_many": "{{count}} notes, {{selected}} sélectionnée(s)",
+    "count_other": "{{count}} notes, {{selected}} sélectionnée(s)",
+    "selectAll": "Tout sélectionner",
+    "selectNone": "Tout désélectionner",
+    "selectNote": "Sélectionner « {{text}} »",
+    "moveTo": "Déplacer vers…",
+    "moved": "Notes déplacées.",
+    "addTag": "Ajouter une étiquette",
+    "addTagPrompt": "Étiquette(s) à ajouter :",
+    "tagged": "Étiquettes ajoutées.",
+    "removeTag": "Retirer une étiquette",
+    "removeTagPrompt": "Étiquette(s) à retirer :",
+    "untagged": "Étiquettes retirées.",
+    "suspend": "Suspendre",
+    "suspended": "Cartes suspendues.",
+    "unsuspend": "Réactiver",
+    "unsuspended": "Cartes réactivées.",
+    "study": "Étudier la sélection",
+    "deleteTitle_one": "Supprimer {{count}} note ?",
+    "deleteTitle_many": "Supprimer {{count}} notes ?",
+    "deleteTitle_other": "Supprimer {{count}} notes ?",
+    "deleteWarning": "Les notes et leurs cartes seront supprimées.",
+    "deleted": "Notes supprimées.",
+    "results": "Résultats",
+    "empty": "Aucune note ne correspond à ces critères.",
+    "untitled": "(sans texte)",
+    "needsReviewBadge": "À vérifier",
+    "truncated": "Seules les {{count}} premières notes sont affichées : affinez la recherche."
+  },
+  "presets": {
+    "title": "Presets",
+    "list": "Liste des presets",
+    "default": "(par défaut)",
+    "import": "Importer un preset",
+    "importInvalid": "Ce fichier n’est pas un JSON valide.",
+    "importErrors": "Preset invalide : {{errors}}",
+    "imported": "Preset importé.",
+    "export": "Exporter",
+    "duplicate": "Dupliquer",
+    "duplicated": "Preset dupliqué.",
+    "copyName": "{{name}} (copie)",
+    "makeDefault": "Utiliser par défaut",
+    "defaultSet": "Preset par défaut modifié.",
+    "revert": "Annuler les modifications",
+    "resetParams": "Réinitialiser les paramètres",
+    "deleted": "Preset supprimé.",
+    "deleteTitle": "Supprimer « {{name}} » ?",
+    "deleteWarning": "Les paquets qui l’utilisent reprendront le preset de leur parent ou le preset par défaut.",
+    "algorithmSection": "Algorithme",
+    "name": "Nom du preset",
+    "algorithm": "Algorithme de répétition",
+    "advanced": "Réglages avancés",
+    "durationsHelp": "Durées séparées par des virgules : 10m, 1d, 1w, 1mo (ou 1j, 1sem, 1mois).",
+    "limitsSection": "Limites quotidiennes",
+    "limitsInheritance": "Les limites d’un paquet s’appliquent aussi à tous ses sous-paquets réunis.",
+    "newPerDay": "Nouvelles cartes par jour",
+    "newPerDayHelp": "Chaque nouvelle carte entraîne des révisions les jours suivants.",
+    "reviewsPerDay": "Révisions par jour (maximum)",
+    "reviewsPerDayHelp": "Au-delà, les révisions sont reportées : gardez une valeur large.",
+    "newOrder": "Ordre des nouvelles cartes",
+    "newOrders": {
+      "added": "Ordre d’ajout",
+      "random": "Aléatoire",
+      "deck": "Par paquet"
+    },
+    "mix": "Place des nouvelles cartes",
+    "mixes": {
+      "after": "Après les révisions",
+      "before": "Avant les révisions",
+      "mixed": "Mélangées aux révisions"
+    },
+    "learnAhead": "Anticipation de l’apprentissage (minutes)",
+    "learnAheadHelp": "S’il ne reste que des cartes en apprentissage, celles dues dans ce délai sont montrées tout de suite.",
+    "behaviorSection": "Comportement",
+    "buryNew": "Ne pas montrer deux nouvelles cartes d’une même note le même jour",
+    "buryReview": "Ne pas montrer deux révisions d’une même note le même jour",
+    "buttons": "Boutons de notation",
+    "buttonsN": {
+      "2": "2 boutons (À revoir, Correct)",
+      "3": "3 boutons (À revoir, Correct, Facile)",
+      "4": "4 boutons (À revoir, Difficile, Correct, Facile)"
+    },
+    "hintPolicy": "Effet des indices",
+    "hintPolicyHelp": "Ouvrir un indice signifie que la réponse n’était pas immédiate.",
+    "hintPolicies": {
+      "none": "Aucun effet",
+      "capGood": "Plafonne la note à « Correct »",
+      "forceHard": "Force la note « Difficile »"
+    },
+    "leechThreshold": "Seuil de sangsue (oublis)",
+    "leechThresholdHelp": "Nombre d’oublis à partir duquel une carte est signalée comme difficile à retenir (0 : désactivé).",
+    "leechAction": "Que faire d’une sangsue ?",
+    "leechActions": {
+      "tag": "Ajouter l’étiquette « leech »",
+      "suspend": "Suspendre la carte"
+    },
+    "maxAnswer": "Durée maximale comptée par réponse (secondes)",
+    "maxAnswerHelp": "Évite qu’une pause fausse les statistiques de temps.",
+    "changeAlgoTitle": "Changer d’algorithme ?",
+    "changeAlgoDescription_one": "{{count}} carte sera convertie. Voici l’effet attendu sur les révisions à venir :",
+    "changeAlgoDescription_many": "{{count}} cartes seront converties. Voici l’effet attendu sur les révisions à venir :",
+    "changeAlgoDescription_other": "{{count}} cartes seront converties. Voici l’effet attendu sur les révisions à venir :",
+    "changeAlgoConfirm": "Convertir les cartes",
+    "algoChanged": "Algorithme changé et cartes converties.",
+    "forecast": "Cartes dues",
+    "before": "Avant",
+    "after": "Après",
+    "due": {
+      "today": "Aujourd’hui",
+      "tomorrow": "D’ici demain",
+      "next7Days": "D’ici 7 jours"
+    }
+  },
+  "sim": {
+    "title": "Simuler la charge de travail",
+    "help": "Estime le nombre de révisions par jour avec ce preset, pour un utilisateur qui retient une part donnée de ses cartes.",
+    "days": "Durée (jours)",
+    "newPerDay": "Nouvelles cartes par jour",
+    "retention": "Rétention estimée (0,5 à 0,99)",
+    "seed": "Graine",
+    "compare": "Comparer avec",
+    "noCompare": "(aucun)",
+    "run": "Lancer la simulation",
+    "running": "Simulation en cours…",
+    "average": "{{reviews}} révisions par jour en moyenne, environ {{minutes}} min",
+    "chartTitle": "Révisions par jour",
+    "chartSummary": "Courbe des révisions quotidiennes simulées (graine {{seed}}).",
+    "day": "Jour",
+    "seedNote": "Graine {{seed}} : la même graine donne toujours le même résultat."
+  },
+  "stats": {
+    "title": "Statistiques",
+    "scope": "Paquet",
+    "allDecks": "Toute la collection",
+    "exportCsv": "Exporter en CSV",
+    "streak": "Série",
+    "days_one": "{{count}} jour",
+    "days_many": "{{count}} jours",
+    "days_other": "{{count}} jours",
+    "daysShort": "j",
+    "timeToday": "Temps aujourd’hui",
+    "minutes_one": "{{count}} min",
+    "minutes_many": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "retentionMonth": "Rétention (30 jours)",
+    "totalCards": "Cartes",
+    "activity": "Activité (26 dernières semaines)",
+    "activitySummary_one": "{{count}} révision sur l’année.",
+    "activitySummary_many": "{{count}} révisions sur l’année.",
+    "activitySummary_other": "{{count}} révisions sur l’année.",
+    "reviewsCount_one": "{{count}} révision",
+    "reviewsCount_many": "{{count}} révisions",
+    "reviewsCount_other": "{{count}} révisions",
+    "date": "Date",
+    "reviews": "Révisions",
+    "forecast": "Prévision des 30 prochains jours",
+    "forecastSummary_one": "{{count}} carte due dans les 30 jours.",
+    "forecastSummary_many": "{{count}} cartes dues dans les 30 jours.",
+    "forecastSummary_other": "{{count}} cartes dues dans les 30 jours.",
+    "today": "Auj.",
+    "day": "Jour",
+    "cardsDue": "Cartes dues",
+    "states": "États des cartes",
+    "state": "État",
+    "cards": "Cartes",
+    "intervals": "Intervalles",
+    "intervalsSummary": "Répartition des intervalles des cartes en révision.",
+    "interval": "Intervalle",
+    "more": "Plus",
+    "retention": "Rétention réelle",
+    "period": "Période",
+    "rate": "Taux",
+    "periods": {
+      "week": "7 jours",
+      "month": "30 jours",
+      "year": "1 an"
+    },
+    "buttons": "Boutons (30 jours)",
+    "bucket": "Cartes",
+    "buckets": {
+      "learning": "En apprentissage",
+      "young": "Jeunes",
+      "mature": "Mûres (≥ 21 j)"
+    },
+    "time": "Temps passé",
+    "timeWeek": "7 derniers jours : {{time}}",
+    "timeMonth": "30 derniers jours : {{time}}",
+    "hints": "Indices",
+    "hintsUsed": "{{count}} révisions avec indice sur {{total}}.",
+    "hintsPass": "Réussite avec indice : {{with}} ; sans indice : {{without}}.",
+    "leeches_one": "Sangsue ({{count}})",
+    "leeches_many": "Sangsues ({{count}})",
+    "leeches_other": "Sangsues ({{count}})",
+    "noLeeches": "Aucune sangsue, bravo.",
+    "leechItem_one": "Carte oubliée {{count}} fois",
+    "leechItem_many": "Carte oubliée {{count}} fois",
+    "leechItem_other": "Carte oubliée {{count}} fois"
+  },
+  "charts": {
+    "showTable": "Voir en tableau",
+    "showChart": "Voir le graphique"
+  },
+  "units": {
+    "minutes": "minutes",
+    "days": "jours",
+    "percent": "%",
+    "ratio": "ratio",
+    "multiplier": "×",
+    "cards": "cartes"
+  },
+  "settings": {
+    "title": "Réglages",
+    "appearance": "Affichage",
+    "language": "Langue",
+    "theme": "Thème",
+    "themes": {
+      "system": "Comme le système",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "textSize": "Taille du texte",
+    "showTimer": "Afficher un chronomètre pendant l’étude",
+    "studyDay": "Journée d’étude",
+    "timeZone": "Fuseau horaire",
+    "timeZoneHelp": "Fuseau de l’appareil : {{zone}}.",
+    "deviceZone": "Fuseau de l’appareil ({{zone}})",
+    "rolloverHour": "Heure de changement de jour",
+    "rolloverHelp": "Les révisions faites avant cette heure comptent pour la veille.",
+    "backup": "Sauvegarde",
+    "backupHelp": "Vos données restent sur cet appareil. Exportez une sauvegarde complète (notes, cartes, historique, médias, réglages) pour la conserver ou la transférer.",
+    "exportBackup": "Exporter une sauvegarde (.zip)",
+    "backupDone": "Sauvegarde exportée.",
+    "restoreBackup": "Restaurer une sauvegarde",
+    "restoreTitle": "Restaurer cette sauvegarde ?",
+    "restoreWarning": "Toutes les données actuelles seront remplacées par celles de la sauvegarde.",
+    "restoreConfirm": "Remplacer mes données",
+    "restored_one": "Sauvegarde restaurée ({{count}} note).",
+    "restored_many": "Sauvegarde restaurée ({{count}} notes).",
+    "restored_other": "Sauvegarde restaurée ({{count}} notes).",
+    "backupReminder": "Rappel de sauvegarde",
+    "never": "Jamais",
+    "everyNDays_one": "Tous les {{count}} jours",
+    "everyNDays_many": "Tous les {{count}} jours",
+    "everyNDays_other": "Tous les {{count}} jours",
+    "lastBackup": "Dernière sauvegarde : {{date}}",
+    "about": "À propos",
+    "aboutText": "{{app}} est un logiciel libre (licence MIT) de répétition espacée.",
+    "privacy": "Aucune donnée n’est envoyée : pas de compte, pas de télémétrie."
   }
 }

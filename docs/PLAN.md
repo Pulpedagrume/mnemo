@@ -18,24 +18,24 @@ commits (Conventional Commits) sont faits. Les décisions sont dans [DECISIONS.m
 
 ## Phase 1 — Cœur, stockage, planificateurs, étude (MVP local)
 
-- [ ] Modèle de données Zod (Deck, Preset, NoteType, Note, Card, ReviewLog, Media, ImportBatch, Settings), UUIDv7, `dayIndex`
-- [ ] Interface `Repository` + implémentation Dexie + suite de conformité commune
-- [ ] Interface `Scheduler`, registre `registerScheduler`, `ParamSpec`
-- [ ] Planificateurs `anki`, `sm2`, `fsrs` (adaptateur `ts-fsrs` + tests dorés), `leitner`, `ladder`
-- [ ] Tests de propriétés (fast-check) et simulation 1 000 cartes × 365 jours par algorithme
-- [ ] Conversion entre algorithmes (`docs/SCHEDULERS.md`) avec aperçu de l’effet
-- [ ] Presets, limites, comportement, héritage parent → enfant, presets fournis, import/export de preset
-- [ ] File d’étude `buildQueue` (fuseaux, minuit, changement d’heure, 100 000 cartes) et compteurs
-- [ ] Types de notes intégrés et génération des cartes (basic, reversed, typed, cloze, mcq, truefalse, matching, ordering, list, template)
-- [ ] Rendu Markdown sûr (markdown-it + DOMPurify + KaTeX + coloration de code)
-- [ ] Liste des paquets (arbre, compteurs, recherche), navigateur de notes, éditeur de note
-- [ ] Écran d’étude : notation, intervalles prévus, ampoule d’indices + `hintPolicy`, types interactifs, raccourcis, annulation ×10, étude personnalisée, résumé de fin
-- [ ] Réglages des presets générés depuis `paramSpec`
-- [ ] Statistiques de base (SVG accessibles)
-- [ ] PWA hors ligne (vite-plugin-pwa), stockage persistant, mise à jour non intrusive
-- [ ] Sauvegarde et restauration `.zip`
-- [ ] Thème clair/sombre/système, taille de texte
-- [ ] Couverture ≥ 90 % sur `core`, e2e : créer un paquet, une note de chaque type, étudier hors ligne
+- [x] Modèle de données Zod (Deck, Preset, NoteType, Note, Card, ReviewLog, Media, ImportBatch, Settings), UUIDv7, `dayIndex`
+- [x] Interface `Repository` + implémentations mémoire et Dexie + suite de conformité commune (148 tests)
+- [x] Interface `Scheduler`, registre `registerScheduler`, `ParamSpec`
+- [x] Planificateurs `anki`, `sm2`, `fsrs` (adaptateur `ts-fsrs` + tests dorés), `leitner`, `ladder`
+- [x] Tests de propriétés (fast-check) et simulation 1 000 cartes × 365 jours par algorithme
+- [x] Conversion entre algorithmes (`docs/SCHEDULERS.md`) avec écran de confirmation (avant / après)
+- [x] Presets, limites, comportement, héritage parent → enfant, presets fournis, import/export de preset
+- [x] File d’étude `buildQueue` (fuseaux, minuit, changement d’heure, 100 000 cartes) et compteurs
+- [x] Types de notes intégrés et génération des cartes (basic, reversed, typed, cloze, mcq, truefalse, matching, ordering, list, template)
+- [x] Rendu Markdown sûr (markdown-it + DOMPurify + KaTeX + coloration de code)
+- [x] Liste des paquets (arbre, compteurs, recherche), navigateur de notes (panneau latéral d’édition), éditeur de note
+- [x] Écran d’étude : notation, intervalles prévus, ampoule d’indices + `hintPolicy`, types interactifs, raccourcis, annulation ×10, étude personnalisée, résumé de fin
+- [x] Réglages des presets générés depuis `paramSpec` + simulateur de charge (Web Worker, comparaison de presets)
+- [x] Statistiques (SVG accessibles avec alternative en tableau, export CSV)
+- [x] PWA hors ligne (vite-plugin-pwa), stockage persistant, mise à jour proposée sans rechargement forcé
+- [x] Sauvegarde et restauration `.zip`
+- [x] Thème clair/sombre/système, taille de texte, i18n fr/en complète
+- [x] Couverture ≥ 90 % sur `core` (99 % des lignes, seuil vérifié en CI) ; e2e : paquet, note de chaque type, étude, hors ligne, presets, sauvegarde
 
 ## Phase 2 — Import, export, assistant IA
 

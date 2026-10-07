@@ -1,37 +1,103 @@
-import { useId } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { APP_NAME, LOCALES, isLocale } from '@mnemo/core';
+import { createHashRouter, RouterProvider, Link } from 'react-router';
+import type { ServiceContext } from '@mnemo/services';
+import { getSettings } from '@mnemo/services';
+import { AppShell } from './app/AppShell';
+import { ServicesProvider, useQuery } from './app/services';
+import { applyAppearance } from './app/theme';
+import { PageTitle } from './components/PageTitle';
+import { DeckListPage } from './routes/DeckListPage';
 
-export function App() {
-  const { t, i18n } = useTranslation();
-  const languageId = useId();
-
+function NotFound() {
+  const { t } = useTranslation();
   return (
-    <div className="min-h-dvh bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <header className="flex items-center justify-between gap-4 border-b border-slate-200 px-4 py-3 dark:border-slate-800">
-        <h1 className="text-xl font-semibold">{APP_NAME}</h1>
-        <div className="flex items-center gap-2 text-sm">
-          <label htmlFor={languageId}>{t('app.language')}</label>
-          <select
-            id={languageId}
-            className="rounded border border-slate-300 bg-transparent px-2 py-1 focus-visible:outline-2 focus-visible:outline-indigo-600 dark:border-slate-700"
-            value={i18n.resolvedLanguage}
-            onChange={(e) => {
-              if (isLocale(e.target.value)) void i18n.changeLanguage(e.target.value);
-            }}
-          >
-            {LOCALES.map((l) => (
-              <option key={l} value={l}>
-                {t(`language.${l}`)}
-              </option>
-            ))}
-          </select>
-        </div>
-      </header>
-      <main className="mx-auto max-w-2xl px-4 py-8">
-        <p className="text-lg">{t('app.tagline')}</p>
-        <p className="mt-4 text-slate-600 dark:text-slate-400">{t('app.comingSoon')}</p>
-      </main>
-    </div>
+    <>
+      <PageTitle title={t('notFound.title')} />
+      <Link to="/" className="underline">
+        {t('notFound.back')}
+      </Link>
+    </>
+  );
+}
+
+/** Keeps theme, text size and language in sync with the stored settings. */
+function SettingsSync() {
+  const { i18n } = useTranslation();
+  const settings = useQuery((ctx) => getSettings(ctx), []);
+  const s = settings.data;
+  useEffect(
+    () => (s ? applyAppearance(s.theme, s.textScale) : undefined),
+    [s?.theme, s?.textScale, s],
+  );
+  useEffect(() => {
+    if (s && i18n.language !== s.locale) void i18n.changeLanguage(s.locale);
+  }, [s, i18n]);
+  return null;
+}
+
+function Shell() {
+  return (
+    <>
+      <SettingsSync />
+      <AppShell />
+    </>
+  );
+}
+
+/** Secondary screens are code-split so the deck list and study screen load first. */
+/** Hash routing: works on static hosting (GitHub Pages) and offline without server rewrites. */
+export function createAppRouter() {
+  return createHashRouter([
+    {
+      path: '/',
+      element: <Shell />,
+      children: [
+        { index: true, element: <DeckListPage /> },
+        {
+          path: 'study/:deckId',
+          lazy: async () => ({ Component: (await import('./routes/StudyPage')).StudyPage }),
+        },
+        {
+          path: 'browse',
+          lazy: async () => ({ Component: (await import('./routes/BrowsePage')).BrowsePage }),
+        },
+        {
+          path: 'notes/new',
+          lazy: async () => ({ Component: (await import('./routes/NoteEditPage')).NoteEditPage }),
+        },
+        {
+          path: 'notes/:id',
+          lazy: async () => ({ Component: (await import('./routes/NoteEditPage')).NoteEditPage }),
+        },
+        {
+          path: 'presets',
+          lazy: async () => ({ Component: (await import('./routes/PresetsPage')).PresetsPage }),
+        },
+        {
+          path: 'stats',
+          lazy: async () => ({ Component: (await import('./routes/StatsPage')).StatsPage }),
+        },
+        {
+          path: 'settings',
+          lazy: async () => ({ Component: (await import('./routes/SettingsPage')).SettingsPage }),
+        },
+        { path: '*', element: <NotFound /> },
+      ],
+    },
+  ]);
+}
+
+export function App({
+  ctx,
+  router = createAppRouter(),
+}: {
+  ctx: ServiceContext;
+  router?: ReturnType<typeof createAppRouter>;
+}) {
+  return (
+    <ServicesProvider value={ctx}>
+      <RouterProvider router={router} />
+    </ServicesProvider>
   );
 }

@@ -111,9 +111,6 @@ importers:
       i18next:
         specifier: ^26.4.2
         version: 26.4.2(typescript@6.0.3)
-      jszip:
-        specifier: ^3.10.2
-        version: 3.10.2
       katex:
         specifier: ^0.19.0
         version: 0.19.0
@@ -175,9 +172,6 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.1.2
         version: 6.1.2(vite@8.3.3(@types/node@24.19.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
-      fake-indexeddb:
-        specifier: ^6.2.5
-        version: 6.2.5
       jsdom:
         specifier: ^30.1.2
         version: 30.1.2
@@ -230,9 +224,6 @@ importers:
         specifier: ^4.6.5
         version: 4.6.5
     devDependencies:
-      fake-indexeddb:
-        specifier: ^6.2.5
-        version: 6.2.5
       vitest:
         specifier: ^5.0.3
         version: 5.0.3(@types/node@24.19.1)(@vitest/coverage-v8@5.0.3)(jsdom@30.1.2)(vite@8.3.3(@types/node@24.19.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))

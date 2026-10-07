@@ -1,13 +1,602 @@
 {
   "app": {
-    "tagline": "Configurable spaced repetition, with AI-friendly import.",
-    "language": "Language",
-    "comingSoon": "The first features are coming soon.",
     "decksCount_one": "{{count}} deck",
     "decksCount_other": "{{count}} decks"
   },
   "language": {
     "fr": "Français",
     "en": "English"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "create": "Create",
+    "delete": "Delete",
+    "dismiss": "Dismiss",
+    "loading": "Loading…",
+    "save": "Save",
+    "saved": "Changes saved."
+  },
+  "nav": {
+    "main": "Main navigation",
+    "skipToContent": "Skip to content",
+    "decks": "Decks",
+    "browse": "Browse",
+    "stats": "Statistics",
+    "presets": "Presets",
+    "settings": "Settings"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "back": "Back to decks"
+  },
+  "storage": {
+    "mayBeErased": "Your browser may erase this site's data when it runs low on space (common on Safari). Export a backup regularly.",
+    "backupReminder": "Your last backup is more than {{days}} days old.",
+    "backupNow": "Back up now"
+  },
+  "pwa": {
+    "updateAvailable": "A new version is available. Reload when you have finished studying.",
+    "offlineReady": "The app now works offline.",
+    "reload": "Reload"
+  },
+  "errors": {
+    "unexpected": "An unexpected error occurred: {{message}}",
+    "note": {
+      "unknown-note-type": "This note type is unknown.",
+      "no-cards": "This note would not produce any card: fill in the required fields.",
+      "invalid-cloze": "The cloze text contains an error (see the preview).",
+      "invalid": "Some fields are invalid.",
+      "not-found": "This note no longer exists."
+    },
+    "deck": {
+      "empty-name": "The deck name is empty.",
+      "not-found": "This deck no longer exists.",
+      "name-taken": "A deck with this name already exists.",
+      "cycle": "A deck cannot be moved into one of its sub-decks."
+    },
+    "preset": {
+      "not-found": "This preset no longer exists.",
+      "invalid": "The preset settings are invalid.",
+      "is-default": "The default preset cannot be deleted."
+    },
+    "backup": {
+      "not-a-zip": "This file is not a valid .zip archive.",
+      "missing-manifest": "This archive is not a backup (backup.json missing).",
+      "invalid-manifest": "The backup is corrupted or from an incompatible version.",
+      "too-large": "The backup is too large."
+    }
+  },
+  "cardState": {
+    "new": "New",
+    "learning": "Learning",
+    "review": "Review",
+    "relearning": "Relearning",
+    "suspended": "Suspended"
+  },
+  "rating": {
+    "1": "Again",
+    "2": "Hard",
+    "3": "Good",
+    "4": "Easy"
+  },
+  "decks": {
+    "title": "Decks",
+    "create": "New deck",
+    "created": "Deck created.",
+    "deleted": "Deck deleted.",
+    "addNote": "Add a note",
+    "search": "Search decks",
+    "noMatch": "No deck matches.",
+    "listLabel": "Deck list",
+    "new": "New",
+    "learning": "Learning",
+    "review": "Due",
+    "newShort": "New",
+    "learningShort": "Learn",
+    "reviewShort": "Due",
+    "study": "Study",
+    "expand": "Expand {{name}}",
+    "collapse": "Collapse {{name}}",
+    "actions": "Actions for {{name}}",
+    "action": {
+      "add": "Add a note",
+      "custom": "Custom study",
+      "options": "Deck options",
+      "rename": "Rename or move",
+      "stats": "Statistics",
+      "delete": "Delete"
+    },
+    "name": "Full name",
+    "nameHelp": "Use “::” to create a sub-deck, e.g. “Networks::Ethernet”.",
+    "optionsTitle": "Options of “{{name}}”",
+    "preset": "Preset",
+    "presetHelp": "A sub-deck uses its parent's preset until you choose one.",
+    "inherit": "Inherit from parent deck",
+    "description": "Description",
+    "deleteTitle": "Delete “{{name}}”?",
+    "deleteWarning": "The deck, its sub-decks and all their notes will be deleted. Consider exporting a backup first."
+  },
+  "custom": {
+    "title": "Custom study",
+    "mode": "What do you want to review?",
+    "mistakes": "My recent mistakes",
+    "mistakesHelp": "Cards answered “Again” in the last days. Does not change the schedule.",
+    "ahead": "Study ahead",
+    "aheadHelp": "Cards due in the next days. Changes the schedule.",
+    "tag": "By tag",
+    "tagHelp": "All cards with a tag. Does not change the schedule.",
+    "cram": "Cram",
+    "cramHelp": "All cards seen before, shuffled. Does not change the schedule.",
+    "days": "Number of days",
+    "noTags": "No tags in this deck.",
+    "start": "Start"
+  },
+  "study": {
+    "title": "Study",
+    "showAnswer": "Show answer",
+    "showHint": "Show a hint",
+    "hint": "Hint",
+    "nextHint_one": "Next hint ({{count}} left)",
+    "nextHint_other": "Next hint ({{count}} left)",
+    "hintNumber": "Hint {{n}}:",
+    "questionSide": "Question",
+    "answerSide": "Answer",
+    "explanation": "Explanation",
+    "rate": "Rate your answer",
+    "suggested": "Suggested from the check: {{rating}}. You can pick another rating.",
+    "suggestedShort": "(suggested)",
+    "undo": "Undo last answer",
+    "flag": "Flag card",
+    "unflag": "Remove flag",
+    "shortcuts": "Keyboard shortcuts",
+    "progress": "Session progress",
+    "remaining": "Remaining cards: new, learning, due",
+    "cram": "Cram",
+    "finished": "Well done, you are finished for today!",
+    "waitTitle": "No more cards for now",
+    "waitUntil": "Learning cards come back at {{time}}.",
+    "checkAgain": "Check again",
+    "backToDecks": "Back to decks",
+    "nextDue": "Next due: {{date}}.",
+    "noUpcoming": "No card is scheduled in this deck.",
+    "summary": {
+      "reviewed": "Cards reviewed",
+      "success": "Success",
+      "time": "Time",
+      "hints": "Hints used",
+      "minutes_one": "{{count}} min",
+      "minutes_other": "{{count}} min"
+    }
+  },
+  "shortcuts": {
+    "space": {
+      "key": "Space",
+      "label": "Show the answer, then “Good”"
+    },
+    "digits": {
+      "key": "1 to 4",
+      "label": "Again, Hard, Good, Easy"
+    },
+    "i": {
+      "key": "I",
+      "label": "Show a hint"
+    },
+    "z": {
+      "key": "Z",
+      "label": "Undo last answer"
+    },
+    "e": {
+      "key": "E",
+      "label": "Edit the note"
+    },
+    "s": {
+      "key": "S",
+      "label": "Suspend the card"
+    },
+    "b": {
+      "key": "B",
+      "label": "Bury the card until tomorrow"
+    },
+    "f": {
+      "key": "F",
+      "label": "Flag or unflag the card"
+    },
+    "question": {
+      "key": "?",
+      "label": "Show this help"
+    }
+  },
+  "grade": {
+    "validate": "Check",
+    "allCorrect": "All correct!",
+    "someWrong": "There are mistakes.",
+    "status": {
+      "correct": "Correct",
+      "wrong": "Wrong",
+      "missing": "Missing"
+    }
+  },
+  "mcq": {
+    "chooseOne": "Choose one answer.",
+    "chooseSeveral": "Several answers possible: tick all the correct ones."
+  },
+  "truefalse": {
+    "prompt": "True or false?",
+    "true": "True",
+    "false": "False",
+    "expected": "The correct answer was: {{answer}}."
+  },
+  "matching": {
+    "choose": "Choose…",
+    "expected": "Expected: {{answer}}"
+  },
+  "ordering": {
+    "moveUp": "Move “{{item}}” up",
+    "moveDown": "Move “{{item}}” down",
+    "moved": "“{{item}}” is now at position {{position}}.",
+    "correctOrder": "Correct order:"
+  },
+  "typed": {
+    "label": "Your answer",
+    "diffLegend": "Comparison: underlined characters were missing, struck-through ones were extra.",
+    "missing": "missing:",
+    "extra": "extra:",
+    "expected": "Expected: {{answer}}"
+  },
+  "list": {
+    "typeItems_one": "Type the expected item (one per line).",
+    "typeItems_other": "Type the {{count}} expected items (one per line).",
+    "extra": "Extra:"
+  },
+  "editor": {
+    "newTitle": "New note",
+    "editTitle": "Edit note",
+    "notFound": "This note does not exist or was deleted.",
+    "needDeck": "Create a deck first.",
+    "noteType": "Note type",
+    "deck": "Deck",
+    "preview": "Preview",
+    "field": {
+      "front": "Front (question)",
+      "back": "Back (answer)",
+      "text": "Cloze text",
+      "extra": "Extra",
+      "question": "Question",
+      "statement": "Statement"
+    },
+    "clozeHelp": "Wrap the answer: {{example}} or, with a hint, {{exampleHint}}. Different numbers (c1, c2…) make different cards.",
+    "addCloze": "Add a cloze",
+    "hints": "Hints",
+    "hintsHelp": "From the most subtle to the most explicit. A hint guides without ever giving the answer.",
+    "addHint": "Add a hint",
+    "hintN": "Hint {{n}}",
+    "explanation": "Explanation (shown with the answer)",
+    "tags": "Tags",
+    "tagsHelp": "Separated by spaces or commas.",
+    "source": "Source",
+    "sourceSection": "Section",
+    "sourcePage": "Page",
+    "sourceDoc": "Document",
+    "sourceUrl": "Link",
+    "needsReview": "Needs review (uncertain content)",
+    "moveUp": "Move {{item}} up",
+    "moveDown": "Move {{item}} down",
+    "remove": "Remove {{item}}",
+    "cardsPreview": "Cards preview",
+    "cardsPreviewCount_one": "{{count}} card generated",
+    "cardsPreviewCount_other": "{{count}} cards generated",
+    "cardN": "Card {{n}}",
+    "resetPreview": "Start over",
+    "noCards": "Fill in the fields to see the generated cards.",
+    "error": "Error:",
+    "warning": "Warning:",
+    "created": "Note created. You can type another one.",
+    "saved": "Note saved.",
+    "typed": {
+      "answers": "Accepted answers",
+      "addAnswer": "Add a variant",
+      "answerN": "Accepted answer {{n}}",
+      "caseSensitive": "Case sensitive",
+      "ignoreAccents": "Ignore accents"
+    },
+    "mcq": {
+      "choices": "Choices",
+      "addChoice": "Add a choice",
+      "choiceN": "Choice {{n}}",
+      "correct": "Correct answer",
+      "explanationN": "Explanation of choice {{n}}",
+      "explanationPlaceholder": "Why it is right or wrong (optional)",
+      "needCorrect": "Tick at least one correct answer.",
+      "shuffle": "Shuffle choices at each review"
+    },
+    "truefalse": {
+      "answer": "The statement is…"
+    },
+    "matching": {
+      "pairs": "Pairs",
+      "addPair": "Add a pair",
+      "pairN": "pair {{n}}",
+      "left": "Item",
+      "right": "Match",
+      "leftN": "Item of pair {{n}}",
+      "rightN": "Match of pair {{n}}",
+      "distractors": "Distractors (extra matches)",
+      "addDistractor": "Add a distractor",
+      "distractorN": "Distractor {{n}}"
+    },
+    "ordering": {
+      "steps": "Steps, in the correct order",
+      "addStep": "Add a step",
+      "stepN": "Step {{n}}"
+    },
+    "list": {
+      "items": "Items",
+      "addItem": "Add an item",
+      "itemN": "Item {{n}}",
+      "ordered": "Order matters"
+    }
+  },
+  "browse": {
+    "title": "Browse notes",
+    "searchText": "Search notes",
+    "filter": {
+      "deck": "Deck",
+      "tag": "Tag",
+      "type": "Note type",
+      "state": "Card state",
+      "suspended": "Suspended",
+      "leech": "Leeches",
+      "needsReview": "Needs review"
+    },
+    "allDecks": "All decks",
+    "allTags": "All tags",
+    "allTypes": "All types",
+    "allStates": "All states",
+    "sort": "Sort",
+    "sortBy": {
+      "created-desc": "Newest first",
+      "created-asc": "Oldest first",
+      "updated-desc": "Recently modified",
+      "updated-asc": "Least recently modified"
+    },
+    "bulkActions": "Actions on selection",
+    "count_one": "{{count}} note, {{selected}} selected",
+    "count_other": "{{count}} notes, {{selected}} selected",
+    "selectAll": "Select all",
+    "selectNone": "Deselect all",
+    "selectNote": "Select “{{text}}”",
+    "moveTo": "Move to…",
+    "moved": "Notes moved.",
+    "addTag": "Add a tag",
+    "addTagPrompt": "Tag(s) to add:",
+    "tagged": "Tags added.",
+    "removeTag": "Remove a tag",
+    "removeTagPrompt": "Tag(s) to remove:",
+    "untagged": "Tags removed.",
+    "suspend": "Suspend",
+    "suspended": "Cards suspended.",
+    "unsuspend": "Unsuspend",
+    "unsuspended": "Cards unsuspended.",
+    "study": "Study selection",
+    "deleteTitle_one": "Delete {{count}} note?",
+    "deleteTitle_other": "Delete {{count}} notes?",
+    "deleteWarning": "The notes and their cards will be deleted.",
+    "deleted": "Notes deleted.",
+    "results": "Results",
+    "empty": "No note matches these criteria.",
+    "untitled": "(no text)",
+    "needsReviewBadge": "Needs review",
+    "truncated": "Only the first {{count}} notes are shown: refine your search."
+  },
+  "presets": {
+    "title": "Presets",
+    "list": "Preset list",
+    "default": "(default)",
+    "import": "Import a preset",
+    "importInvalid": "This file is not valid JSON.",
+    "importErrors": "Invalid preset: {{errors}}",
+    "imported": "Preset imported.",
+    "export": "Export",
+    "duplicate": "Duplicate",
+    "duplicated": "Preset duplicated.",
+    "copyName": "{{name}} (copy)",
+    "makeDefault": "Use as default",
+    "defaultSet": "Default preset changed.",
+    "revert": "Discard changes",
+    "resetParams": "Reset parameters",
+    "deleted": "Preset deleted.",
+    "deleteTitle": "Delete “{{name}}”?",
+    "deleteWarning": "Decks using it will fall back to their parent's preset or the default preset.",
+    "algorithmSection": "Algorithm",
+    "name": "Preset name",
+    "algorithm": "Scheduling algorithm",
+    "advanced": "Advanced settings",
+    "durationsHelp": "Comma-separated durations: 10m, 1d, 1w, 1mo.",
+    "limitsSection": "Daily limits",
+    "limitsInheritance": "A deck's limits also apply to all its sub-decks combined.",
+    "newPerDay": "New cards per day",
+    "newPerDayHelp": "Each new card leads to reviews on the following days.",
+    "reviewsPerDay": "Reviews per day (maximum)",
+    "reviewsPerDayHelp": "Beyond it, reviews are postponed: keep this value generous.",
+    "newOrder": "New card order",
+    "newOrders": {
+      "added": "Order added",
+      "random": "Random",
+      "deck": "By deck"
+    },
+    "mix": "New cards placement",
+    "mixes": {
+      "after": "After reviews",
+      "before": "Before reviews",
+      "mixed": "Mixed with reviews"
+    },
+    "learnAhead": "Learn ahead limit (minutes)",
+    "learnAheadHelp": "When only learning cards remain, those due within this delay are shown right away.",
+    "behaviorSection": "Behavior",
+    "buryNew": "Do not show two new cards of the same note on the same day",
+    "buryReview": "Do not show two reviews of the same note on the same day",
+    "buttons": "Rating buttons",
+    "buttonsN": {
+      "2": "2 buttons (Again, Good)",
+      "3": "3 buttons (Again, Good, Easy)",
+      "4": "4 buttons (Again, Hard, Good, Easy)"
+    },
+    "hintPolicy": "Effect of hints",
+    "hintPolicyHelp": "Opening a hint means the answer was not immediate.",
+    "hintPolicies": {
+      "none": "No effect",
+      "capGood": "Caps the rating at “Good”",
+      "forceHard": "Forces the rating “Hard”"
+    },
+    "leechThreshold": "Leech threshold (lapses)",
+    "leechThresholdHelp": "Number of lapses after which a card is flagged as hard to remember (0: disabled).",
+    "leechAction": "What to do with a leech?",
+    "leechActions": {
+      "tag": "Add the “leech” tag",
+      "suspend": "Suspend the card"
+    },
+    "maxAnswer": "Maximum answer time counted (seconds)",
+    "maxAnswerHelp": "Prevents a break from skewing time statistics.",
+    "changeAlgoTitle": "Change algorithm?",
+    "changeAlgoDescription_one": "{{count}} card will be converted. Expected effect on upcoming reviews:",
+    "changeAlgoDescription_other": "{{count}} cards will be converted. Expected effect on upcoming reviews:",
+    "changeAlgoConfirm": "Convert cards",
+    "algoChanged": "Algorithm changed and cards converted.",
+    "forecast": "Cards due",
+    "before": "Before",
+    "after": "After",
+    "due": {
+      "today": "Today",
+      "tomorrow": "By tomorrow",
+      "next7Days": "Within 7 days"
+    }
+  },
+  "sim": {
+    "title": "Simulate workload",
+    "help": "Estimates daily reviews with this preset, for a user who remembers a given share of their cards.",
+    "days": "Duration (days)",
+    "newPerDay": "New cards per day",
+    "retention": "Estimated retention (0.5 to 0.99)",
+    "seed": "Seed",
+    "compare": "Compare with",
+    "noCompare": "(none)",
+    "run": "Run simulation",
+    "running": "Simulating…",
+    "average": "{{reviews}} reviews per day on average, about {{minutes}} min",
+    "chartTitle": "Reviews per day",
+    "chartSummary": "Simulated daily reviews (seed {{seed}}).",
+    "day": "Day",
+    "seedNote": "Seed {{seed}}: the same seed always gives the same result."
+  },
+  "stats": {
+    "title": "Statistics",
+    "scope": "Deck",
+    "allDecks": "Whole collection",
+    "exportCsv": "Export CSV",
+    "streak": "Streak",
+    "days_one": "{{count}} day",
+    "days_other": "{{count}} days",
+    "daysShort": "d",
+    "timeToday": "Time today",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "retentionMonth": "Retention (30 days)",
+    "totalCards": "Cards",
+    "activity": "Activity (last 26 weeks)",
+    "activitySummary_one": "{{count}} review this year.",
+    "activitySummary_other": "{{count}} reviews this year.",
+    "reviewsCount_one": "{{count}} review",
+    "reviewsCount_other": "{{count}} reviews",
+    "date": "Date",
+    "reviews": "Reviews",
+    "forecast": "Forecast for the next 30 days",
+    "forecastSummary_one": "{{count}} card due within 30 days.",
+    "forecastSummary_other": "{{count}} cards due within 30 days.",
+    "today": "Today",
+    "day": "Day",
+    "cardsDue": "Cards due",
+    "states": "Card states",
+    "state": "State",
+    "cards": "Cards",
+    "intervals": "Intervals",
+    "intervalsSummary": "Distribution of review card intervals.",
+    "interval": "Interval",
+    "more": "More",
+    "retention": "True retention",
+    "period": "Period",
+    "rate": "Rate",
+    "periods": {
+      "week": "7 days",
+      "month": "30 days",
+      "year": "1 year"
+    },
+    "buttons": "Buttons (30 days)",
+    "bucket": "Cards",
+    "buckets": {
+      "learning": "Learning",
+      "young": "Young",
+      "mature": "Mature (≥ 21 d)"
+    },
+    "time": "Time spent",
+    "timeWeek": "Last 7 days: {{time}}",
+    "timeMonth": "Last 30 days: {{time}}",
+    "hints": "Hints",
+    "hintsUsed": "{{count}} reviews with a hint out of {{total}}.",
+    "hintsPass": "Success with hint: {{with}}; without: {{without}}.",
+    "leeches_one": "Leech ({{count}})",
+    "leeches_other": "Leeches ({{count}})",
+    "noLeeches": "No leeches, well done.",
+    "leechItem_one": "Card forgotten {{count}} time",
+    "leechItem_other": "Card forgotten {{count}} times"
+  },
+  "charts": {
+    "showTable": "Show as table",
+    "showChart": "Show chart"
+  },
+  "units": {
+    "minutes": "minutes",
+    "days": "days",
+    "percent": "%",
+    "ratio": "ratio",
+    "multiplier": "×",
+    "cards": "cards"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Display",
+    "language": "Language",
+    "theme": "Theme",
+    "themes": {
+      "system": "Same as system",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "textSize": "Text size",
+    "showTimer": "Show a timer while studying",
+    "studyDay": "Study day",
+    "timeZone": "Time zone",
+    "timeZoneHelp": "Device time zone: {{zone}}.",
+    "deviceZone": "Device time zone ({{zone}})",
+    "rolloverHour": "Day rollover hour",
+    "rolloverHelp": "Reviews done before this hour count for the previous day.",
+    "backup": "Backup",
+    "backupHelp": "Your data stays on this device. Export a full backup (notes, cards, history, media, settings) to keep or transfer it.",
+    "exportBackup": "Export a backup (.zip)",
+    "backupDone": "Backup exported.",
+    "restoreBackup": "Restore a backup",
+    "restoreTitle": "Restore this backup?",
+    "restoreWarning": "All current data will be replaced with the backup's content.",
+    "restoreConfirm": "Replace my data",
+    "restored_one": "Backup restored ({{count}} note).",
+    "restored_other": "Backup restored ({{count}} notes).",
+    "backupReminder": "Backup reminder",
+    "never": "Never",
+    "everyNDays_one": "Every {{count}} day",
+    "everyNDays_other": "Every {{count}} days",
+    "lastBackup": "Last backup: {{date}}",
+    "about": "About",
+    "aboutText": "{{app}} is free software (MIT license) for spaced repetition.",
+    "privacy": "No data is sent anywhere: no account, no telemetry."
   }
 }

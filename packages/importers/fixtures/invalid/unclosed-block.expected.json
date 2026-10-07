@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "unclosed_block",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 2,
+    "valid": 1
+  }
+}

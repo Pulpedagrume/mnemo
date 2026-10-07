@@ -39,17 +39,18 @@ commits (Conventional Commits) sont faits. Les décisions sont dans [DECISIONS.m
 
 ## Phase 2 — Import, export, assistant IA
 
-- [ ] `ImportDocument` canonique (Zod) + JSON Schema généré (`schema/mnemo-import.schema.json`)
-- [ ] Nettoyage tolérant (BOM, blocs de code, guillemets, jsonrepair, troncature, alias)
-- [ ] Parseurs JSON, YAML, Mnemo Markdown, CSV/TSV, bundles zip
-- [ ] Validation par note, contrôles sémantiques, rapport d’erreurs (texte, JSON, prompt de correction)
-- [ ] Fusion (skip-duplicates, update, add, replace-deck), empreintes, `ImportBatch`, annulation
-- [ ] Exports JSON/YAML/Markdown/CSV/zip et test d’aller-retour
-- [ ] Fixtures valides/invalides, tests dorés, fuzz, performance 10 000 notes < 3 s
-- [ ] Composeur de prompts + gabarits fr/en (T1–T15) + `docs/AI_PROMPTS.md`
-- [ ] Assistant « Importer avec l’IA » (4 étapes) + aperçu fidèle + Guide IA
-- [ ] CLI `validate`, `import`, `prompt`, `schema`
-- [ ] Scénarios d’acceptation A1–A4 automatisés
+- [x] `ImportDocument` canonique (Zod) + JSON Schema généré (`schema/mnemo-import.schema.json`, publié avec l’app)
+- [x] Nettoyage tolérant (BOM, blocs de code, guillemets, jsonrepair, troncature, alias) et mode strict
+- [x] Parseurs JSON, YAML, Mnemo Markdown, CSV/TSV, bundles zip (limites et contrôles de sécurité)
+- [x] Validation par note, contrôles sémantiques, rapport d’erreurs (texte, JSON, prompt de correction)
+- [x] Fusion (skip-duplicates, update, add, replace-deck), identification par uid ou contenu, `ImportBatch`, annulation
+- [x] Exports JSON/YAML/Markdown/CSV/zip et tests d’aller-retour (paquet → fichier → import)
+- [x] Fixtures valides/invalides (51), tests dorés, fuzz, performance (10 000 notes ≈ 0,8 s)
+- [x] Composeur de prompts + gabarits fr/en (T1–T15) + `docs/AI_PROMPTS.md`
+- [x] Assistant « Importer avec l’IA » (4 étapes), aperçu fidèle, historique des imports, Guide IA, export depuis le menu des paquets
+- [x] CLI `validate` (`--strict --json --ai-prompt`), `prompt`, `schema`, `import --dry-run`
+- [ ] CLI `import` sans `--dry-run` et `export` : nécessitent la base locale SQLite (phase 3)
+- [x] Scénarios d’acceptation A1–A4 automatisés (Playwright, bureau et mobile)
 
 ## Phase 3 — Serveur, en ligne, synchronisation
 

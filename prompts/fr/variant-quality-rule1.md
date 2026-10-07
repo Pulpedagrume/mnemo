@@ -1,0 +1,1 @@
+1. Fidélité : appuie-toi d’abord sur le document fourni. Tu peux le compléter par des connaissances générales bien établies, uniquement pour rendre une carte juste et compréhensible : marque alors la note needsReview: true et indique dans extra ce qui ne vient pas du document. N’invente rien d’incertain.

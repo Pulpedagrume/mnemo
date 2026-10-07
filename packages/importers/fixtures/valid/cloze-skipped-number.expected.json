@@ -1,0 +1,13 @@
+{
+  "issues": [
+    {
+      "code": "cloze_skipped_number",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1,
+    "cards": 2
+  }
+}

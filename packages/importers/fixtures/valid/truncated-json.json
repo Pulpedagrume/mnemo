@@ -1,0 +1,19 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "uid": "net-2-001",
+      "front": "Numéro de port de FTP ?",
+      "back": "21"
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-002",
+      "front": "Numéro de port de SSH ?",
+      "back": "22"
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-003",
+      "front": "Numéro de port de Tel

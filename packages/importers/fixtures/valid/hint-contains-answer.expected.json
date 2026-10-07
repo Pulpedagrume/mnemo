@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "hint_contains_answer",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

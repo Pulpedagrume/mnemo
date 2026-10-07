@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "not_a_document",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 0,
+    "valid": 0
+  }
+}

@@ -8,3 +8,4 @@ export * from './stats';
 export * from './backup';
 export * from './import';
 export * from './importMedia';
+export * from './export';

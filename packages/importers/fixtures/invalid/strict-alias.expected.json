@@ -1,0 +1,15 @@
+{
+  "options": {
+    "strict": true
+  },
+  "issues": [
+    {
+      "code": "unknown_type",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 0
+  }
+}

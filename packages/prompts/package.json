@@ -10,7 +10,8 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "templates": "tsx scripts/build-templates.ts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.lib.json"
   },
   "dependencies": {
     "@mnemo/core": "workspace:^",

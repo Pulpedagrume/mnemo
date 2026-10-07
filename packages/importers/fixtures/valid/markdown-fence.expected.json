@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "code": "code_fence_extracted",
+      "severity": "warning"
+    },
+    {
+      "code": "prose_removed",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 2,
+    "valid": 2
+  }
+}

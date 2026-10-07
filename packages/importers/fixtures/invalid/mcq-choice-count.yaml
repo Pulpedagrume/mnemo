@@ -1,0 +1,7 @@
+format: mnemo/1
+notes:
+  - type: mcq
+    question: Quel câble relie deux commutateurs sans fonction Auto-MDIX ?
+    choices:
+      - text: Câble croisé
+        correct: true

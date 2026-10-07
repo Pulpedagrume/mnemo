@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "code": "truncated",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 3,
+    "valid": 3
+  },
+  "truncated": {
+    "recovered": 3,
+    "lastUid": "net-2-003"
+  }
+}

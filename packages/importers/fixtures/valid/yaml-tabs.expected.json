@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "yaml_tabs_converted",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

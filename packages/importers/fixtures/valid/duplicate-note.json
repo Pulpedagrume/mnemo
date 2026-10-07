@@ -1,0 +1,15 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "front": "Qui était Vercingétorix ?",
+      "back": "Un chef arverne."
+    },
+    {
+      "type": "basic",
+      "front": "Qui était  **Vercingétorix** ?",
+      "back": "Un chef gaulois."
+    }
+  ]
+}

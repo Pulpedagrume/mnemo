@@ -10,7 +10,9 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts",
+    "schema": "tsx scripts/generate-schema.ts",
+    "examples": "tsx scripts/generate-examples.ts"
   },
   "dependencies": {
     "@mnemo/core": "workspace:*",

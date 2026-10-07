@@ -1,0 +1,1467 @@
+Voici le fichier JSON demandé, au format mnemo/1 :
+
+```json
+{
+  "format": "mnemo/1",
+  “meta”: {
+    "title": "Révisions de fin de trimestre",
+    "language": "fr",
+    "generator": "exemple"
+  },
+  "defaults": {
+    "tags": [
+      "revision"
+    ]
+  },
+  "notes": [
+    {
+      "type": "basic",
+      "uid": "net-1-001",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de FTP (transfert de données) ?",
+      "back": "Le port 20."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-002",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de FTP (contrôle) ?",
+      "back": "Le port 21."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-003",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de SSH ?",
+      "back": "Le port 22."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-004",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de Telnet ?",
+      "back": "Le port 23."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-005",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de SMTP ?",
+      "back": "Le port 25."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-006",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de DNS ?",
+      "back": "Le port 53."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-007",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de DHCP côté serveur ?",
+      "back": "Le port 67."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-008",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de TFTP ?",
+      "back": "Le port 69."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-009",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de HTTP ?",
+      "back": "Le port 80."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-010",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de POP3 ?",
+      "back": "Le port 110."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-011",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de NTP ?",
+      "back": "Le port 123."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-012",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de IMAP ?",
+      "back": "Le port 143."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-013",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de SNMP ?",
+      "back": "Le port 161."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-014",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de LDAP ?",
+      "back": "Le port 389."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-015",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de HTTPS ?",
+      "back": "Le port 443."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-016",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de RDP ?",
+      "back": "Le port 3389."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-001",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme LAN ?",
+      "back": "Local Area Network : un réseau local, à l’échelle d’un bâtiment.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-002",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme WAN ?",
+      "back": "Wide Area Network : un réseau étendu qui relie des sites distants."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-003",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme VLAN ?",
+      "back": "Virtual LAN : un réseau local logique isolé sur un même commutateur."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-004",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme MAC ?",
+      "back": "Media Access Control : l’adresse physique de 48 bits d’une interface."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-005",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme ARP ?",
+      "back": "Address Resolution Protocol : trouve l’adresse MAC associée à une adresse IPv4.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-006",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme DHCP ?",
+      "back": "Dynamic Host Configuration Protocol : attribue automatiquement une configuration IP."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-007",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme DNS ?",
+      "back": "Domain Name System : traduit les noms de domaine en adresses IP."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-008",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme NAT ?",
+      "back": "Network Address Translation : remplace les adresses privées par une adresse publique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-009",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme TCP ?",
+      "back": "Transmission Control Protocol : transport fiable, orienté connexion.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-010",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme UDP ?",
+      "back": "User Datagram Protocol : transport sans connexion ni accusé de réception."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-011",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme ICMP ?",
+      "back": "Internet Control Message Protocol : messages d’erreur et de diagnostic (ping)."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-012",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme OSPF ?",
+      "back": "Open Shortest Path First : protocole de routage à état de liens."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-013",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme VPN ?",
+      "back": "Virtual Private Network : tunnel chiffré à travers un réseau public.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-014",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme QoS ?",
+      "back": "Quality of Service : priorisation de certains flux (voix, vidéo)."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-015",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme MTU ?",
+      "back": "Maximum Transmission Unit : taille maximale d’une trame utile (1500 octets en Ethernet)."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-016",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme TTL ?",
+      "back": "Time To Live : compteur décrémenté à chaque routeur pour éviter les boucles."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-001",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 1 du modèle OSI ?",
+      "back": "La couche Physique.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-002",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 2 du modèle OSI ?",
+      "back": "La couche Liaison de données.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-003",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 3 du modèle OSI ?",
+      "back": "La couche Réseau.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-004",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 4 du modèle OSI ?",
+      "back": "La couche Transport.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-005",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 5 du modèle OSI ?",
+      "back": "La couche Session.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-006",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 6 du modèle OSI ?",
+      "back": "La couche Présentation.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-007",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 7 du modèle OSI ?",
+      "back": "La couche Application.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-001",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du noyau ?",
+      "back": "Contenir l’ADN et contrôler l’expression des gènes."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-002",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle de la mitochondrie ?",
+      "back": "Produire l’énergie de la cellule sous forme d’ATP par la respiration."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-003",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du ribosome ?",
+      "back": "Assembler les protéines à partir de l’ARN messager."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-004",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du réticulum endoplasmique rugueux ?",
+      "back": "Synthétiser et replier les protéines destinées à être exportées."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-005",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle de l’appareil de Golgi ?",
+      "back": "Modifier, trier et emballer les protéines dans des vésicules."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-006",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du lysosome ?",
+      "back": "Digérer les déchets et les débris cellulaires grâce à ses enzymes."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-007",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du chloroplaste ?",
+      "back": "Réaliser la photosynthèse chez les cellules végétales."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-008",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle de la vacuole ?",
+      "back": "Stocker l’eau et maintenir la pression de turgescence chez les plantes."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-009",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle de la membrane plasmique ?",
+      "back": "Délimiter la cellule et contrôler les échanges avec l’extérieur."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-010",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle de la paroi cellulaire ?",
+      "back": "Donner sa rigidité à la cellule végétale."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-011",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du centrosome ?",
+      "back": "Organiser les microtubules lors de la division cellulaire."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-012",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du cytosquelette ?",
+      "back": "Maintenir la forme de la cellule et permettre ses mouvements."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-001",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Quelle molécule porte l’information génétique ?",
+      "back": "L’ADN (acide désoxyribonucléique)."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-002",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Combien de chromosomes compte une cellule humaine diploïde ?",
+      "back": "46, soit 23 paires."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-003",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Quelle base azotée remplace la thymine dans l’ARN ?",
+      "back": "L’uracile."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-004",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Comment appelle-t-on la division qui produit les gamètes ?",
+      "back": "La méiose."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-005",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Quel gaz les plantes rejettent-elles lors de la photosynthèse ?",
+      "back": "Le dioxygène (O2)."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-006",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Quelle est l’unité de base de tout être vivant ?",
+      "back": "La cellule."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-007",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Quel type de cellule ne possède pas de noyau ?",
+      "back": "La cellule procaryote (bactéries)."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-008",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Comment s’appelle le passage de l’eau à travers une membrane semi-perméable ?",
+      "back": "L’osmose."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-2-009",
+      "deck": "Biologie::Génétique",
+      "tags": [
+        "genetique"
+      ],
+      "front": "Quelle enzyme copie l’ADN lors de la réplication ?",
+      "back": "L’ADN polymérase."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-001",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu le baptême de Clovis ?",
+      "back": "En 496.",
+      "explanation": "Date à replacer sur la frise chronologique du chapitre."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-002",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu le couronnement de Charlemagne comme empereur ?",
+      "back": "En 800."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-003",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu l’élection d’Hugues Capet ?",
+      "back": "En 987."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-004",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la conquête de l’Angleterre par Guillaume le Conquérant ?",
+      "back": "En 1066."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-005",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la bataille de Bouvines ?",
+      "back": "En 1214."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-006",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu le début de la guerre de Cent Ans ?",
+      "back": "En 1337.",
+      "explanation": "Date à replacer sur la frise chronologique du chapitre."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-007",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la levée du siège d’Orléans par Jeanne d’Arc ?",
+      "back": "En 1429."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-008",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la chute de Constantinople ?",
+      "back": "En 1453."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-009",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu le premier voyage de Christophe Colomb vers l’Amérique ?",
+      "back": "En 1492."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-010",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la bataille de Marignan ?",
+      "back": "En 1515."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-011",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu l’ordonnance de Villers-Cotterêts ?",
+      "back": "En 1539.",
+      "explanation": "Date à replacer sur la frise chronologique du chapitre."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-012",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu l’édit de Nantes ?",
+      "back": "En 1598."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-013",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la fondation de Québec ?",
+      "back": "En 1608."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-014",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu le début du règne personnel de Louis XIV ?",
+      "back": "En 1661."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-015",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la révocation de l’édit de Nantes ?",
+      "back": "En 1685."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-016",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la prise de la Bastille ?",
+      "back": "En 1789.",
+      "explanation": "Date à replacer sur la frise chronologique du chapitre."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-017",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu le sacre de Napoléon Ier ?",
+      "back": "En 1804."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-018",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la bataille de Waterloo ?",
+      "back": "En 1815."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-019",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu l’abolition définitive de l’esclavage en France ?",
+      "back": "En 1848."
+    },
+    {
+      "type": "basic",
+      "uid": "his-1-020",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "front": "En quelle année a eu lieu la loi de séparation des Églises et de l’État ?",
+      "back": "En 1905."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-001",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::FTP (transfert de données)}} écoute par défaut sur le port {{c2::20}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-002",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::FTP (contrôle)}} écoute par défaut sur le port {{c2::21}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-003",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::SSH}} écoute par défaut sur le port {{c2::22}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-004",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::Telnet}} écoute par défaut sur le port {{c2::23}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-005",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::SMTP}} écoute par défaut sur le port {{c2::25}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-006",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::DNS}} écoute par défaut sur le port {{c2::53}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-007",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::DHCP côté serveur}} écoute par défaut sur le port {{c2::67}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-008",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::TFTP}} écoute par défaut sur le port {{c2::69}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-009",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::HTTP}} écoute par défaut sur le port {{c2::80}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-010",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::POP3}} écoute par défaut sur le port {{c2::110}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-011",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::NTP}} écoute par défaut sur le port {{c2::123}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-012",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::IMAP}} écoute par défaut sur le port {{c2::143}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-013",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::SNMP}} écoute par défaut sur le port {{c2::161}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-014",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::LDAP}} écoute par défaut sur le port {{c2::389}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-015",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::HTTPS}} écoute par défaut sur le port {{c2::443}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "net-4-016",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "text": "Le protocole {{c1::RDP}} écoute par défaut sur le port {{c2::3389}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-001",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "La {{c1::mitochondrie}} produit l’essentiel de l’{{c2::ATP}} de la cellule.",
+      "extra": "Voir le schéma de la cellule animale."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-002",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "Les {{c1::ribosomes}} traduisent l’ARN messager en {{c2::protéines}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-003",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "Le {{c1::chloroplaste}} contient la {{c2::chlorophylle}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-004",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "L’{{c1::appareil de Golgi}} expédie les protéines dans des {{c2::vésicules}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-005",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "Le {{c1::noyau}} est entouré d’une {{c2::double membrane}} percée de pores."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-006",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "Les {{c1::lysosomes}} contiennent des enzymes {{c2::digestives}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-007",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "La {{c1::membrane plasmique}} est une bicouche de {{c2::phospholipides}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-008",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "La {{c1::paroi}} des cellules végétales est faite de {{c2::cellulose}}."
+    },
+    {
+      "type": "cloze",
+      "uid": "bio-3-009",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "text": "Le {{c1::cytosquelette}} comprend notamment des {{c2::microtubules}}."
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-001",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 496 ?",
+      "choices": [
+        {
+          "text": "le baptême de Clovis",
+          "correct": true
+        },
+        {
+          "text": "la conquête de l’Angleterre par Guillaume le Conquérant",
+          "correct": false
+        },
+        {
+          "text": "la chute de Constantinople",
+          "correct": false
+        },
+        {
+          "text": "l’édit de Nantes",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-002",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 800 ?",
+      "choices": [
+        {
+          "text": "la bataille de Bouvines",
+          "correct": false
+        },
+        {
+          "text": "le couronnement de Charlemagne comme empereur",
+          "correct": true
+        },
+        {
+          "text": "le premier voyage de Christophe Colomb vers l’Amérique",
+          "correct": false
+        },
+        {
+          "text": "la fondation de Québec",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-003",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 987 ?",
+      "choices": [
+        {
+          "text": "le début de la guerre de Cent Ans",
+          "correct": false
+        },
+        {
+          "text": "la bataille de Marignan",
+          "correct": false
+        },
+        {
+          "text": "l’élection d’Hugues Capet",
+          "correct": true
+        },
+        {
+          "text": "le début du règne personnel de Louis XIV",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-004",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1066 ?",
+      "choices": [
+        {
+          "text": "la levée du siège d’Orléans par Jeanne d’Arc",
+          "correct": false
+        },
+        {
+          "text": "l’ordonnance de Villers-Cotterêts",
+          "correct": false
+        },
+        {
+          "text": "la révocation de l’édit de Nantes",
+          "correct": false
+        },
+        {
+          "text": "la conquête de l’Angleterre par Guillaume le Conquérant",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-005",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1214 ?",
+      "choices": [
+        {
+          "text": "la bataille de Bouvines",
+          "correct": true
+        },
+        {
+          "text": "la chute de Constantinople",
+          "correct": false
+        },
+        {
+          "text": "l’édit de Nantes",
+          "correct": false
+        },
+        {
+          "text": "la prise de la Bastille",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-006",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1337 ?",
+      "choices": [
+        {
+          "text": "le premier voyage de Christophe Colomb vers l’Amérique",
+          "correct": false
+        },
+        {
+          "text": "le début de la guerre de Cent Ans",
+          "correct": true
+        },
+        {
+          "text": "la fondation de Québec",
+          "correct": false
+        },
+        {
+          "text": "le sacre de Napoléon Ier",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-007",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1429 ?",
+      "choices": [
+        {
+          "text": "la bataille de Marignan",
+          "correct": false
+        },
+        {
+          "text": "le début du règne personnel de Louis XIV",
+          "correct": false
+        },
+        {
+          "text": "la levée du siège d’Orléans par Jeanne d’Arc",
+          "correct": true
+        },
+        {
+          "text": "la bataille de Waterloo",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-008",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1453 ?",
+      "choices": [
+        {
+          "text": "l’ordonnance de Villers-Cotterêts",
+          "correct": false
+        },
+        {
+          "text": "la révocation de l’édit de Nantes",
+          "correct": false
+        },
+        {
+          "text": "l’abolition définitive de l’esclavage en France",
+          "correct": false
+        },
+        {
+          "text": "la chute de Constantinople",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-009",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1492 ?",
+      "choices": [
+        {
+          "text": "le premier voyage de Christophe Colomb vers l’Amérique",
+          "correct": true
+        },
+        {
+          "text": "l’édit de Nantes",
+          "correct": false
+        },
+        {
+          "text": "la prise de la Bastille",
+          "correct": false
+        },
+        {
+          "text": "la loi de séparation des Églises et de l’État",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-010",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1515 ?",
+      "choices": [
+        {
+          "text": "la fondation de Québec",
+          "correct": false
+        },
+        {
+          "text": "la bataille de Marignan",
+          "correct": true
+        },
+        {
+          "text": "le sacre de Napoléon Ier",
+          "correct": false
+        },
+        {
+          "text": "le baptême de Clovis",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-011",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1539 ?",
+      "choices": [
+        {
+          "text": "le début du règne personnel de Louis XIV",
+          "correct": false
+        },
+        {
+          "text": "la bataille de Waterloo",
+          "correct": false
+        },
+        {
+          "text": "l’ordonnance de Villers-Cotterêts",
+          "correct": true
+        },
+        {
+          "text": "le couronnement de Charlemagne comme empereur",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-012",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1598 ?",
+      "choices": [
+        {
+          "text": "la révocation de l’édit de Nantes",
+          "correct": false
+        },
+        {
+          "text": "l’abolition définitive de l’esclavage en France",
+          "correct": false
+        },
+        {
+          "text": "l’élection d’Hugues Capet",
+          "correct": false
+        },
+        {
+          "text": "l’édit de Nantes",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-013",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1608 ?",
+      "choices": [
+        {
+          "text": "la fondation de Québec",
+          "correct": true
+        },
+        {
+          "text": "la prise de la Bastille",
+          "correct": false
+        },
+        {
+          "text": "la loi de séparation des Églises et de l’État",
+          "correct": false
+        },
+        {
+          "text": "la conquête de l’Angleterre par Guillaume le Conquérant",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-014",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1661 ?",
+      "choices": [
+        {
+          "text": "le sacre de Napoléon Ier",
+          "correct": false
+        },
+        {
+          "text": "le début du règne personnel de Louis XIV",
+          "correct": true
+        },
+        {
+          "text": "le baptême de Clovis",
+          "correct": false
+        },
+        {
+          "text": "la bataille de Bouvines",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "mcq",
+      "uid": "his-2-015",
+      "deck": "Histoire::Dates",
+      "tags": [
+        "chronologie"
+      ],
+      "question": "Quel événement a eu lieu en 1685 ?",
+      "choices": [
+        {
+          "text": "la bataille de Waterloo",
+          "correct": false
+        },
+        {
+          "text": "le couronnement de Charlemagne comme empereur",
+          "correct": false
+        },
+        {
+          "text": "la révocation de l’édit de Nantes",
+          "correct": true
+        },
+        {
+          "text": "le début de la guerre de Cent Ans",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
+```
+
+Bonne révision !

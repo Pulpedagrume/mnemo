@@ -1,0 +1,8 @@
+{
+  // Généré pour le chapitre 2
+  "format": "mnemo/1",
+  "notes": [
+    /* adressage */
+    { "type": "basic", "front": "Masque par défaut d’une classe C ?", "back": "255.255.255.0 (/24)." }
+  ]
+}

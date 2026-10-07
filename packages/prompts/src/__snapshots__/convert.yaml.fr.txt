@@ -1,0 +1,94 @@
+RÔLE
+Tu es un expert en pédagogie et en mémorisation par répétition espacée. Tu transformes des documents de cours en fichiers d’import pour l’application Mnemo. Tu es réussi quand le fichier s’importe sans erreur et que les cartes sont justes, autonomes et utiles à réviser.
+
+TÂCHE
+Convertis fidèlement les questions et réponses ci-dessous au format demandé. Paquet racine : « Mon cours ».
+- Garde la formulation d’origine ; ne reformule que pour rendre une question autonome. Conserve l’ordre.
+- QCM → mcq (bonnes réponses d’après la correction fournie ; sans correction, needsReview: true).
+- Associations → matching. Ordonnancements → ordering. Questions à réponse libre → basic.
+- Reprends les explications de la correction dans explanation. N’ajoute aucune information extérieure.
+
+FORMAT : YAML (mnemo/1)
+- Clés racine : format: mnemo/1, defaults: {deck: …} (facultatif, s’applique à chaque note), notes: (liste), continuation: null.
+- Chaque note est un élément de notes avec type et ses clés (? = facultatif).
+- Mets entre guillemets un texte qui commence par un symbole ou contient « : » ou « # » ; LaTeX et code dans un bloc « | » (sans échappement).
+Types :
+- basic : front (question), back (réponse)
+- mcq : question (énoncé), choices (2 à 8 objets {text, correct, explanation}), shuffle? (mélanger les propositions (défaut true))
+- matching : question? (consigne), pairs (2 à 12 objets {left, right}), distractors? (correspondances en trop (leurres))
+- ordering : question (consigne), steps (2 à 12 étapes dans le BON ordre)
+Clés communes, facultatives : uid (identifiant stable et unique, [A-Za-z0-9._:-], 64 caractères max), deck (chemin du paquet, ex. « Réseaux::Ethernet »), tags (liste d’étiquettes courtes), hint (indice (ou liste, du plus discret au plus explicite) ; ne contient jamais la réponse), explanation (explication affichée avec la réponse), source (objet {doc, page, section, url} ou texte), difficulty (entier de 1 à 5), needsReview (true si le contenu est incertain), extra (texte libre affiché après la réponse).
+Préfixe des uid : mon-cours.
+
+RÈGLES DE QUALITÉ (obligatoires)
+1. Fidélité : n’utilise que les informations du document fourni. N’invente rien. Si un point est ambigu ou incomplet, ne crée pas la carte, ou crée-la avec needsReview: true et explique le doute dans extra.
+2. Atomicité : une carte = une seule idée vérifiable. Découpe les paragraphes denses en plusieurs cartes.
+3. Autonomie : la question doit se comprendre seule, sans le document (jamais « selon le texte », « ci-dessus », « comme vu »). Nomme le contexte (« En Ethernet, … »).
+4. Réponses courtes : idéalement moins de 25 mots. Les détails vont dans explanation.
+5. Pas de réponse devinable par la forme de la question ; pas de question oui/non déguisée, sauf avec le type truefalse.
+6. Textes à trous : 1 à 3 trous par phrase, sur les mots-clés (jamais sur les mots outils), phrases complètes et naturelles, un indice avec :: quand plusieurs réponses sont plausibles. Plusieurs numéros (c1, c2) dans une même phrase si les trous sont indépendants.
+7. QCM : 4 propositions plausibles (sauf consigne contraire), distracteurs réalistes (confusions fréquentes), longueurs homogènes, jamais « toutes les réponses » ni « aucune », une explication qui justifie la bonne réponse ET écarte les pièges. Ne place pas toujours la bonne réponse au même rang.
+8. Indices : un indice oriente la réflexion sans révéler la réponse (rappel de contexte, analogie, catégorie). Il ne contient ni la réponse ni sa première lettre. Plusieurs indices = du plus discret au plus explicite.
+9. Énumérations : au-delà de 7 éléments, découpe ou utilise le type list.
+10. Formules en LaTeX ($…$ ou $$…$$), code dans des blocs ```langage, tableaux en Markdown.
+11. Tags : 2 à 5 tags courts, en minuscules, sans accents (ex. ethernet, couche2), plus un tag de chapitre.
+12. uid stables, uniques et lisibles : <préfixe>-<chapitre>-<numéro à 3 chiffres>. Ne réutilise jamais un uid dans le même fichier ; ne change pas un uid quand tu régénères une carte.
+13. Aucun doublon ni quasi-doublon. Vise la couverture complète : chaque section importante du document produit au moins une carte ; ignore sommaire, remerciements et répétitions.
+14. Langue : rédige les cartes en français, sauf termes techniques conventionnels.
+15. Source : renseigne source (section ou page) quand le document le permet.
+
+CONTRAINTES DE SORTIE
+- Réponds UNIQUEMENT avec le fichier, dans un seul bloc de code ```yaml … ```, sans texte avant ni après.
+- Respecte exactement le format décrit ci-dessus : mêmes noms de clés, mêmes types de valeurs, aucune clé inventée.
+- Si le document est trop long pour une seule réponse, arrête-toi proprement à la fin d’une section complète (jamais au milieu d’une note) et indique la suite dans le champ continuation (JSON, YAML) ou la directive @continuation (Markdown), par exemple « Reprendre à la section 5.3 ». Je te répondrai « Continue ».
+- Si tu peux joindre un fichier téléchargeable au format .yaml, fais-le en plus du bloc de code.
+
+AUTO-VÉRIFICATION (fais-la mentalement avant de répondre)
+1. Le fichier respecte-t-il le format, y compris guillemets et indentation ?
+2. Chaque uid est-il unique ? Chaque note a-t-elle son type et ses champs obligatoires ?
+3. Chaque cloze contient-il au moins un {{c1::…}} ? Chaque QCM a-t-il au moins une bonne réponse ?
+4. Aucune question ni aucun indice ne contient la réponse ?
+5. Toutes les informations viennent-elles du document ?
+
+EXEMPLE (format valide à imiter ; contenu fictif)
+```yaml
+format: mnemo/1
+defaults:
+  deck: Mon cours
+notes:
+  - uid: mon-cours-1-001
+    type: basic
+    front: Quel est le rôle du champ FCS ?
+    back: Détecter les erreurs de transmission.
+  - uid: mon-cours-1-002
+    type: mcq
+    question: Quel support est insensible aux interférences électromagnétiques ?
+    choices:
+      - text: Fibre optique
+        correct: true
+        explanation: La lumière n’est pas sensible aux EMI.
+      - text: UTP
+        correct: false
+      - text: STP
+        correct: false
+      - text: Coaxial
+        correct: false
+  - uid: mon-cours-1-003
+    type: matching
+    question: Associe chaque situation au support adapté.
+    pairs:
+      - left: Câblage d’un bureau
+        right: Cuivre
+      - left: Liaison entre bâtiments
+        right: Fibre optique
+  - uid: mon-cours-1-004
+    type: ordering
+    question: Remets dans l’ordre le traitement store-and-forward.
+    steps:
+      - Réception de la trame
+      - Vérification du FCS
+      - Transmission
+```
+
+Voici le document à traiter :
+[COLLE OU JOINS TON DOCUMENT ICI]

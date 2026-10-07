@@ -20,6 +20,10 @@
   },
   "devDependencies": {
     "@mnemo/core": "workspace:*",
+    "@mnemo/importers": "workspace:^",
+    "@mnemo/prompts": "workspace:^",
+    "@mnemo/services": "workspace:^",
+    "@mnemo/storage": "workspace:^",
     "tsdown": "^0.23.0"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "qcm",
+      "question": "Quel gaz les plantes absorbent-elles ?",
+      "choices": [
+        {
+          "text": "CO2",
+          "correct": true
+        },
+        {
+          "text": "O2",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}

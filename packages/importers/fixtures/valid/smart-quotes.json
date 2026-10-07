@@ -1,0 +1,10 @@
+{
+  “format”: “mnemo/1”,
+  "notes": [
+    {
+      “type”: "basic",
+      "front": "Que veut dire “full duplex” ?",
+      "back": "Émettre et recevoir en même temps."
+    }
+  ]
+}

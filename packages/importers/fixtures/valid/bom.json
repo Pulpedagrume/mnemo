@@ -1,0 +1,11 @@
+﻿{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "uid": "net-1-001",
+      "front": "Que signifie LAN ?",
+      "back": "Local Area Network."
+    }
+  ]
+}

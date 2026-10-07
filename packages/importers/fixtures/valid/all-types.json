@@ -1,0 +1,90 @@
+{
+  "format": "mnemo/1",
+  "noteTypes": [
+    {
+      "id": "vocab",
+      "name": "Vocabulaire",
+      "fields": [
+        "Terme",
+        "Définition"
+      ],
+      "templates": [
+        {
+          "name": "Terme",
+          "front": "{{Terme}}",
+          "back": "{{Définition}}"
+        },
+        {
+          "name": "Définition",
+          "front": "{{Définition}}",
+          "back": "{{Terme}}"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "type": "basic_reversed",
+      "front": "Mitose",
+      "back": "Division cellulaire produisant deux cellules identiques."
+    },
+    {
+      "type": "typed",
+      "front": "Symbole chimique du sodium ?",
+      "answer": [
+        "Na"
+      ],
+      "caseSensitive": true
+    },
+    {
+      "type": "truefalse",
+      "statement": "Les globules rouges humains ont un noyau.",
+      "answer": false
+    },
+    {
+      "type": "matching",
+      "question": "Associe chaque molécule à son rôle.",
+      "pairs": [
+        {
+          "left": "Hémoglobine",
+          "right": "Transport de l’O2"
+        },
+        {
+          "left": "Insuline",
+          "right": "Régulation de la glycémie"
+        }
+      ],
+      "distractors": [
+        "Digestion des lipides"
+      ]
+    },
+    {
+      "type": "ordering",
+      "question": "Ordonne les phases de la mitose.",
+      "steps": [
+        "Prophase",
+        "Métaphase",
+        "Anaphase",
+        "Télophase"
+      ]
+    },
+    {
+      "type": "list",
+      "question": "Cite les quatre bases de l’ADN.",
+      "items": [
+        "Adénine",
+        "Thymine",
+        "Guanine",
+        "Cytosine"
+      ],
+      "ordered": false
+    },
+    {
+      "type": "custom:vocab",
+      "fields": {
+        "Terme": "Osmose",
+        "Définition": "Diffusion de l’eau à travers une membrane."
+      }
+    }
+  ]
+}

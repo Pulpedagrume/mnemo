@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "trailing_commas_removed",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 2,
+    "valid": 2
+  }
+}

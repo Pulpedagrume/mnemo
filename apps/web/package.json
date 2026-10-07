@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@mnemo/core": "workspace:*",
+    "@mnemo/importers": "workspace:^",
+    "@mnemo/prompts": "workspace:^",
     "@mnemo/services": "workspace:^",
     "@mnemo/storage": "workspace:^",
     "@tanstack/react-virtual": "^3.14.13",

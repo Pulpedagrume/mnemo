@@ -1,0 +1,422 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "uid": "net-1-001",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de FTP (transfert de données) ?",
+      "back": "Le port 20."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-002",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de FTP (contrôle) ?",
+      "back": "Le port 21."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-003",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de SSH ?",
+      "back": "Le port 22."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-004",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de Telnet ?",
+      "back": "Le port 23."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-005",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de SMTP ?",
+      "back": "Le port 25."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-006",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de DNS ?",
+      "back": "Le port 53."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-007",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de DHCP côté serveur ?",
+      "back": "Le port 67."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-008",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de TFTP ?",
+      "back": "Le port 69."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-009",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de HTTP ?",
+      "back": "Le port 80."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-010",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de POP3 ?",
+      "back": "Le port 110."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-011",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de NTP ?",
+      "back": "Le port 123."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-012",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de IMAP ?",
+      "back": "Le port 143."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-013",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de SNMP ?",
+      "back": "Le port 161."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-014",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de LDAP ?",
+      "back": "Le port 389."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-015",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de HTTPS ?",
+      "back": "Le port 443."
+    },
+    {
+      "type": "basic",
+      "uid": "net-1-016",
+      "deck": "Réseaux::Ports",
+      "tags": [
+        "ports"
+      ],
+      "front": "Quel est le port par défaut de RDP ?",
+      "back": "Le port 3389."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-001",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme LAN ?",
+      "back": "Local Area Network : un réseau local, à l’échelle d’un bâtiment.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-002",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme WAN ?",
+      "back": "Wide Area Network : un réseau étendu qui relie des sites distants."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-003",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme VLAN ?",
+      "back": "Virtual LAN : un réseau local logique isolé sur un même commutateur."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-004",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme MAC ?",
+      "back": "Media Access Control : l’adresse physique de 48 bits d’une interface."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-005",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme ARP ?",
+      "back": "Address Resolution Protocol : trouve l’adresse MAC associée à une adresse IPv4.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-006",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme DHCP ?",
+      "back": "Dynamic Host Configuration Protocol : attribue automatiquement une configuration IP."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-007",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme DNS ?",
+      "back": "Domain Name System : traduit les noms de domaine en adresses IP."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-008",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme NAT ?",
+      "back": "Network Address Translation : remplace les adresses privées par une adresse publique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-009",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme TCP ?",
+      "back": "Transmission Control Protocol : transport fiable, orienté connexion.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-010",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme UDP ?",
+      "back": "User Datagram Protocol : transport sans connexion ni accusé de réception."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-011",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme ICMP ?",
+      "back": "Internet Control Message Protocol : messages d’erreur et de diagnostic (ping)."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-012",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme OSPF ?",
+      "back": "Open Shortest Path First : protocole de routage à état de liens."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-013",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme VPN ?",
+      "back": "Virtual Private Network : tunnel chiffré à travers un réseau public.",
+      "hint": "Développez le sigle en anglais."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-014",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme QoS ?",
+      "back": "Quality of Service : priorisation de certains flux (voix, vidéo)."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-015",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme MTU ?",
+      "back": "Maximum Transmission Unit : taille maximale d’une trame utile (1500 octets en Ethernet)."
+    },
+    {
+      "type": "basic",
+      "uid": "net-2-016",
+      "deck": "Réseaux::Acronymes",
+      "tags": [
+        "vocabulaire"
+      ],
+      "front": "Que signifie l’acronyme TTL ?",
+      "back": "Time To Live : compteur décrémenté à chaque routeur pour éviter les boucles."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-001",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 1 du modèle OSI ?",
+      "back": "La couche Physique.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-002",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 2 du modèle OSI ?",
+      "back": "La couche Liaison de données.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-003",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 3 du modèle OSI ?",
+      "back": "La couche Réseau.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-004",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 4 du modèle OSI ?",
+      "back": "La couche Transport.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-005",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 5 du modèle OSI ?",
+      "back": "La couche Session.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-006",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 6 du modèle OSI ?",
+      "back": "La couche Présentation.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "net-3-007",
+      "deck": "Réseaux::Modèle OSI",
+      "tags": [
+        "osi"
+      ],
+      "front": "Quel est le nom de la couche 7 du modèle OSI ?",
+      "back": "La couche Application.",
+      "hint": "On compte à partir du support physique."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-001",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est le rôle du noyau ?",
+      "back": "Contenir l’ADN et contrôler l’expression des gènes."
+    },
+    {
+      "type": "basic",
+      "uid": "bio-1-002",
+      "deck": "Biologie::Cellule",
+      "tags": [
+        "cellule"
+      ],
+      "front": "Quel est l

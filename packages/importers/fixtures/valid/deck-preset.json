@@ -1,0 +1,22 @@
+{
+  "format": "mnemo/1",
+  "decks": [
+    {
+      "path": "Biologie::Génétique",
+      "description": "Chapitre 5",
+      "preset": "Examen"
+    }
+  ],
+  "meta": {
+    "title": "Génétique",
+    "language": "fr"
+  },
+  "notes": [
+    {
+      "type": "basic",
+      "deck": "Biologie::Génétique",
+      "front": "Qu’est-ce qu’un allèle ?",
+      "back": "Une version d’un gène."
+    }
+  ]
+}

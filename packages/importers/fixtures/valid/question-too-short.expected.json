@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "question_too_short",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

@@ -1,0 +1,9 @@
+format: mnemo/1
+notes:
+  - type: mcq
+    question: Quel protocole résout une adresse IP en adresse MAC ?
+    choices:
+      - text: ARP
+        correct: true
+      - text: RARP
+      - text: "arp"

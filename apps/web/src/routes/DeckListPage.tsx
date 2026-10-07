@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';
-import { Plus, Search } from 'lucide-react';
+import { Plus, Search, Sparkles } from 'lucide-react';
 import type { Deck } from '@mnemo/core';
 import {
   createDeck,
@@ -24,6 +24,7 @@ import {
   DeckOptionsDialog,
 } from '../features/decks/DeckDialogs';
 import { DeckTree, type DeckAction } from '../features/decks/DeckTree';
+import { ExportDialog } from '../features/decks/ExportDialog';
 import { encodeCustom } from '../features/study/customStudy';
 
 type Pending = { action: DeckAction | 'create'; deck?: Deck } | null;
@@ -65,6 +66,13 @@ export function DeckListPage() {
         title={t('decks.title')}
         actions={
           <>
+            <Link
+              to="/import"
+              className={`inline-flex min-h-10 items-center gap-2 rounded-lg bg-emerald-700 px-4 font-medium text-white hover:bg-emerald-800 ${focusRing}`}
+            >
+              <Sparkles aria-hidden size={18} />
+              {t('import.open')}
+            </Link>
             <Button
               onClick={() => {
                 setPending({ action: 'create' });
@@ -152,6 +160,7 @@ export function DeckListPage() {
               void navigate(`/study/${deck.id}?${encodeCustom(custom)}`);
             }}
           />
+          <ExportDialog deck={deck} open={pending.action === 'export'} onOpenChange={close} />
           <ConfirmDialog
             open={pending.action === 'delete'}
             onOpenChange={close}

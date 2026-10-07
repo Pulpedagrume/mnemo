@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "cloze_invalid_number",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 0
+  }
+}

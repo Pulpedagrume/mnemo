@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "code": "csv_bad_row",
+      "severity": "error"
+    },
+    {
+      "code": "missing_field",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 0
+  }
+}

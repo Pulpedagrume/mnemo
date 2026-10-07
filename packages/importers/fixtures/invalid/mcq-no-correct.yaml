@@ -1,0 +1,8 @@
+format: mnemo/1
+notes:
+  - type: mcq
+    question: Quel protocole attribue des adresses IP automatiquement ?
+    choices:
+      - text: DNS
+      - text: DHCP
+      - text: ARP

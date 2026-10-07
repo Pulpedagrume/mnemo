@@ -1,0 +1,6 @@
+format: mnemo/1
+notes:
+  - type: mcq
+    question: Quelle dynastie régnait sur la France en 987 ?
+    choices: [Mérovingiens, Carolingiens, Capétiens]
+    answers: [C]

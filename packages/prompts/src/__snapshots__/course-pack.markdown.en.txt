@@ -1,0 +1,121 @@
+ROLE
+You are an expert in teaching and in memorization through spaced repetition. You turn course documents into import files for the Mnemo app. You succeed when the file imports without errors and the cards are accurate, self-contained and useful for review.
+
+TASK
+Turn the document below into a complete review pack. Root deck: "My course". Level: intermediate. Density: about 5 cards per section.
+For each piece of information, choose the most effective card type:
+- definitions and concepts → basic (or basic_reversed for symmetric pairs);
+- key sentences, rules, formulas, values → cloze;
+- common confusions between neighbouring concepts → mcq;
+- processes and sequences → ordering;
+- correspondences between two lists → matching;
+- enumerations of 3 to 7 items to know → list;
+- trick statements → truefalse;
+- short exact answers (commands, acronyms) → typed.
+Indicative split: 40% basic, 25% cloze, 15% mcq, 20% other types as relevant. Group the notes by section into subdecks ("My course::Chapter 1", etc.) with deck on each note or @deck directives.
+For each non-trivial card, add a hint (hint field) that guides without revealing the answer. Add a one- or two-sentence explanation (explanation field) when it helps to understand or to remember.
+
+FORMAT: Markdown (mnemo/1)
+- Optional header (format, deck), then one note per block: "::: type attributes", "Field: value" lines (may span several lines), ":::" to close.
+- Outside blocks: "@deck A::B" changes the deck of the following blocks; "@continuation text"; anything else is ignored.
+Types:
+- basic: Q: question; A: answer
+- basic_reversed: Q: term; A: definition
+- cloze: Text: sentence with {{c1::answer}} or {{c1::answer::hint}} (at least one blank)
+- mcq: Q: question; "- [x] right" or "- [ ] wrong", one per line (2 to 8); shuffle=false
+- ordering: Q: instruction; "1. step", one per line, in the CORRECT order (2 to 12)
+- matching: Q: instruction, optional; "- left => right", one per line (2 to 12); "Distractors:" then "- item" per line, optional
+- list: Q: instruction; "- item", one per line; ordered=true
+- truefalse: Statement: statement; Answer: true or false
+- typed: Q: question; Answer: answer (variants separated by " | "); caseSensitive=true; ignoreAccents=false
+Optional: uid=…, tags="a b", difficulty=1…5, needsReview=true; Hint: (one line per hint), Explanation:, Source:, Extra:.
+uid prefix: my-course.
+
+QUALITY RULES (mandatory)
+1. Faithfulness: use only the information in the provided document. Invent nothing. If a point is ambiguous or incomplete, do not create the card, or create it with needsReview: true and explain the doubt in extra.
+2. Atomicity: one card = one single verifiable idea. Split dense paragraphs into several cards.
+3. Self-containment: the question must be understandable on its own, without the document (never "according to the text", "above", "as seen"). Name the context ("In Ethernet, …").
+4. Short answers: ideally under 25 words. Details go in explanation.
+5. No answer guessable from the form of the question; no disguised yes/no question, except with the truefalse type.
+6. Cloze deletions: 1 to 3 blanks per sentence, on keywords (never on function words), complete and natural sentences, a hint with :: when several answers are plausible. Several numbers (c1, c2) in the same sentence if the blanks are independent.
+7. Multiple choice: 4 plausible choices (unless instructed otherwise), realistic distractors (common confusions), similar lengths, never "all of the above" or "none of the above", an explanation that justifies the correct answer AND rules out the traps. Do not always put the correct answer in the same position.
+8. Hints: a hint guides the thinking without revealing the answer (reminder of context, analogy, category). It contains neither the answer nor its first letter. Several hints = from the most subtle to the most explicit.
+9. Enumerations: beyond 7 items, split them or use the list type.
+10. Formulas in LaTeX ($…$ or $$…$$), code in ```language blocks, tables in Markdown.
+11. Tags: 2 to 5 short tags, lowercase, without accents (e.g. ethernet, layer2), plus a chapter tag.
+12. Stable, unique and readable uids: <prefix>-<chapter>-<3-digit number>. Never reuse a uid in the same file; do not change a uid when you regenerate a card.
+13. No duplicates or near-duplicates. Aim for full coverage: each important section of the document yields at least one card; ignore the table of contents, acknowledgements and repetitions.
+14. Language: write the cards in English, except for conventional technical terms.
+15. Source: fill in source (section or page) when the document allows it.
+
+OUTPUT CONSTRAINTS
+- Reply ONLY with the file, in a single ```markdown … ``` code block, with no text before or after.
+- Follow exactly the format described above: same key names, same value types, no invented keys.
+- If the document is too long for a single reply, stop cleanly at the end of a complete section (never in the middle of a note) and state what remains in the continuation field (JSON, YAML) or the @continuation directive (Markdown), for example "Resume at section 5.3". I will reply "Continue".
+- If you can attach a downloadable file in .md format, do so in addition to the code block.
+
+SELF-CHECK (do it mentally before replying)
+1. Does the file follow the format, including quotes, indentation and closing ::: lines?
+2. Is every uid unique? Does every note have its type and its required fields?
+3. Does every cloze contain at least one {{c1::…}}? Does every multiple-choice question have at least one correct answer?
+4. Is the answer absent from every question and every hint?
+5. Does all the information come from the document?
+
+EXAMPLE (valid format to imitate; made-up content)
+```markdown
+---
+format: mnemo/1
+deck: My course
+---
+
+::: basic uid=my-course-1-001
+Q: Quel est le rôle du champ FCS ?
+A: Détecter les erreurs de transmission.
+:::
+
+::: cloze uid=my-course-1-002
+Text: Un commutateur apprend l’adresse {{c1::source::source ou destination ?}} des trames.
+:::
+
+::: mcq uid=my-course-1-003
+Q: Quel support est insensible aux interférences électromagnétiques ?
+- [x] Fibre optique
+- [ ] UTP
+- [ ] STP
+- [ ] Coaxial
+Explanation: La lumière n’est pas sensible aux EMI.
+:::
+
+::: ordering uid=my-course-1-004
+Q: Remets dans l’ordre le traitement store-and-forward.
+1. Réception de la trame
+2. Vérification du FCS
+3. Transmission
+:::
+
+::: matching uid=my-course-1-005
+Q: Associe chaque situation au support adapté.
+- Câblage d’un bureau => Cuivre
+- Liaison entre bâtiments => Fibre optique
+:::
+
+::: list uid=my-course-1-006
+Q: Cite les trois types de supports réseau.
+- Cuivre
+- Fibre optique
+- Sans fil
+:::
+
+::: truefalse uid=my-course-1-007
+Statement: Le FCS est placé en début de trame.
+Answer: false
+:::
+
+::: typed uid=my-course-1-008
+Q: Commande Cisco pour afficher la table MAC ?
+Answer: show mac address-table
+:::
+```
+
+Here is the document to process:
+[PASTE OR ATTACH YOUR DOCUMENT HERE]

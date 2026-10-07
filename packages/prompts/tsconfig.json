@@ -1,4 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src"]
+  "compilerOptions": {
+    // Tests and scripts read the template files with node:fs.
+    "types": ["node"]
+  },
+  "include": ["src", "scripts"]
 }

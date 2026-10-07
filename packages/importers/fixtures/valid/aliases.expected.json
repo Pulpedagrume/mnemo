@@ -1,0 +1,32 @@
+{
+  "issues": [
+    {
+      "code": "alias",
+      "severity": "warning"
+    },
+    {
+      "code": "alias",
+      "severity": "warning"
+    },
+    {
+      "code": "alias",
+      "severity": "warning"
+    },
+    {
+      "code": "alias",
+      "severity": "warning"
+    },
+    {
+      "code": "alias",
+      "severity": "warning"
+    },
+    {
+      "code": "alias",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 3,
+    "valid": 3
+  }
+}

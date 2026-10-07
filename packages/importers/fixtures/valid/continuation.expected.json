@@ -1,0 +1,13 @@
+{
+  "issues": [
+    {
+      "code": "continuation",
+      "severity": "info"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  },
+  "continuation": "Chapitre 4 : la méiose"
+}

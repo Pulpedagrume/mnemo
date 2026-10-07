@@ -1,0 +1,17 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "uid": "his-2-001",
+      "front": "Qui était Vercingétorix ?",
+      "back": "Un chef arverne."
+    },
+    {
+      "type": "basic",
+      "uid": "his-2-001",
+      "front": "Date de la bataille d’Alésia ?",
+      "back": "52 av. J.-C."
+    }
+  ]
+}

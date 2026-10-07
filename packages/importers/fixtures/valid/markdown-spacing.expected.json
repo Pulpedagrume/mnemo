@@ -1,0 +1,20 @@
+{
+  "issues": [
+    {
+      "code": "markdown_spacing_fixed",
+      "severity": "warning"
+    },
+    {
+      "code": "markdown_spacing_fixed",
+      "severity": "warning"
+    },
+    {
+      "code": "markdown_spacing_fixed",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

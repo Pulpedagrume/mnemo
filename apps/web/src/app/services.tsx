@@ -1,4 +1,13 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import { create } from 'zustand';
 import type { ServiceContext } from '@mnemo/services';
 
@@ -83,13 +92,17 @@ export function useMutation<A extends unknown[], R>(
 ): (...args: A) => Promise<R> {
   const ctx = useServices();
   const bump = useDataVersion((s) => s.bump);
+  // Always call the latest closure: callers often capture component state (e.g. the import mode).
+  const latest = useRef(fn);
+  useLayoutEffect(() => {
+    latest.current = fn;
+  });
   return useCallback(
     async (...args: A) => {
-      const result = await fn(ctx, ...args);
+      const result = await latest.current(ctx, ...args);
       bump();
       return result;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- fn is expected to be a stable module function
     [ctx, bump],
   );
 }

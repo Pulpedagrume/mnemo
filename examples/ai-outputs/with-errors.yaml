@@ -1,0 +1,46 @@
+format: mnemo/1
+meta:
+  title: Chapitre 2 — la cellule
+defaults:
+  deck: Biologie::Cellule
+  tags: [cellule]
+notes:
+  - type: basic
+    uid: bio-9-001
+    front: Quel organite réalise la respiration cellulaire ?
+    back: La mitochondrie.
+  - type: qcm
+    uid: bio-9-002
+    question: Quelles structures trouve-t-on uniquement dans la cellule végétale ?
+    choices:
+      - text: La paroi cellulosique
+        correct: true
+      - text: Le chloroplaste
+        correct: true
+      - text: Le ribosome
+        correct: false
+  - type: cloze
+    uid: bio-9-003
+    text: Le réticulum endoplasmique rugueux est couvert de ribosomes.
+  - type: mcq
+    uid: bio-9-004
+    question: Quelle molécule stocke l’énergie utilisable par la cellule ?
+    choices:
+      - text: Le glucose
+      - text: L’ATP
+      - text: L’ADN
+  - type: basic
+    uid: bio-9-005
+    front: Quel est le rôle des lysosomes ?
+    back: Digérer les déchets de la cellule.
+  - type: basic
+    uid: bio-9-005
+    front: Quel est le rôle de l’appareil de Golgi ?
+    back: Trier et expédier les protéines.
+  - type: basic
+    uid: bio-9-006
+    front: "Identifie l’organite sur ce schéma : ![coupe d’une cellule](media:fig-x)"
+    back: Le noyau.
+  - type: cloze
+    uid: bio-9-007
+    text: La {{c1::membrane plasmique}} contrôle les échanges avec le milieu extérieur.

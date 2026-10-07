@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "code": "alias",
+      "severity": "warning"
+    },
+    {
+      "code": "alias",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

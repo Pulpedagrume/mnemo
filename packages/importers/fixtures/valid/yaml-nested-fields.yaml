@@ -1,0 +1,7 @@
+format: mnemo/1
+notes:
+  - type: basic
+    uid: bio-1-001
+    fields:
+      front: Où se déroule la photosynthèse ?
+      back: Dans les chloroplastes.

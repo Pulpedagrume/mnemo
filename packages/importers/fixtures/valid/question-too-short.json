@@ -1,0 +1,10 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "front": "IP",
+      "back": "Internet Protocol."
+    }
+  ]
+}

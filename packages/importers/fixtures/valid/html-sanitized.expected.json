@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "code": "html_sanitized",
+      "severity": "info"
+    },
+    {
+      "code": "html_sanitized",
+      "severity": "info"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

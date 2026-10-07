@@ -1,0 +1,5 @@
+format: mnemo/1
+notes:
+  - type: basic
+    front: "Qu’est-ce qu’un VLAN ?
+    back: Un réseau local virtuel.

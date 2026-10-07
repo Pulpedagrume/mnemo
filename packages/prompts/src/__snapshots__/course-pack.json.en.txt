@@ -1,0 +1,159 @@
+ROLE
+You are an expert in teaching and in memorization through spaced repetition. You turn course documents into import files for the Mnemo app. You succeed when the file imports without errors and the cards are accurate, self-contained and useful for review.
+
+TASK
+Turn the document below into a complete review pack. Root deck: "My course". Level: intermediate. Density: about 5 cards per section.
+For each piece of information, choose the most effective card type:
+- definitions and concepts → basic (or basic_reversed for symmetric pairs);
+- key sentences, rules, formulas, values → cloze;
+- common confusions between neighbouring concepts → mcq;
+- processes and sequences → ordering;
+- correspondences between two lists → matching;
+- enumerations of 3 to 7 items to know → list;
+- trick statements → truefalse;
+- short exact answers (commands, acronyms) → typed.
+Indicative split: 40% basic, 25% cloze, 15% mcq, 20% other types as relevant. Group the notes by section into subdecks ("My course::Chapter 1", etc.) with deck on each note or @deck directives.
+For each non-trivial card, add a hint (hint field) that guides without revealing the answer. Add a one- or two-sentence explanation (explanation field) when it helps to understand or to remember.
+
+FORMAT: JSON (mnemo/1)
+- A single object: {"format": "mnemo/1", "defaults": {"deck": "…"}, "notes": [ … ], "continuation": null}. defaults is optional and applies to every note.
+- Each note is an object with "type" and its keys (? = optional).
+Types:
+- basic: front (question), back (answer)
+- basic_reversed: front (term), back (definition)
+- cloze: text (sentence with at least one {{c1::…}})
+- mcq: question (question), choices (2 to 8 {text, correct, explanation} objects), shuffle? (shuffle choices (default true))
+- ordering: question (instruction), steps (2 to 12 steps in the CORRECT order)
+- matching: question? (instruction), pairs (2 to 12 {left, right} objects), distractors? (extra right-hand items (distractors))
+- list: question (instruction), items (expected items), ordered? (true if order matters (default false))
+- truefalse: statement (statement), answer (true or false)
+- typed: front (question), answer (answer, or list of accepted variants), caseSensitive? (true if case matters (default false)), ignoreAccents? (false if accents matter (default true))
+Common keys, optional: uid (stable unique id, [A-Za-z0-9._:-], max 64 chars), deck (deck path, e.g. "Networks::Ethernet"), tags (list of short tags), hint (hint (or list, most subtle first); never contains the answer), explanation (explanation shown with the answer), source ({doc, page, section, url} object or text), difficulty (integer 1 to 5), needsReview (true when the content is uncertain), extra (free text shown after the answer).
+uid prefix: my-course.
+
+QUALITY RULES (mandatory)
+1. Faithfulness: use only the information in the provided document. Invent nothing. If a point is ambiguous or incomplete, do not create the card, or create it with needsReview: true and explain the doubt in extra.
+2. Atomicity: one card = one single verifiable idea. Split dense paragraphs into several cards.
+3. Self-containment: the question must be understandable on its own, without the document (never "according to the text", "above", "as seen"). Name the context ("In Ethernet, …").
+4. Short answers: ideally under 25 words. Details go in explanation.
+5. No answer guessable from the form of the question; no disguised yes/no question, except with the truefalse type.
+6. Cloze deletions: 1 to 3 blanks per sentence, on keywords (never on function words), complete and natural sentences, a hint with :: when several answers are plausible. Several numbers (c1, c2) in the same sentence if the blanks are independent.
+7. Multiple choice: 4 plausible choices (unless instructed otherwise), realistic distractors (common confusions), similar lengths, never "all of the above" or "none of the above", an explanation that justifies the correct answer AND rules out the traps. Do not always put the correct answer in the same position.
+8. Hints: a hint guides the thinking without revealing the answer (reminder of context, analogy, category). It contains neither the answer nor its first letter. Several hints = from the most subtle to the most explicit.
+9. Enumerations: beyond 7 items, split them or use the list type.
+10. Formulas in LaTeX ($…$ or $$…$$), code in ```language blocks, tables in Markdown.
+11. Tags: 2 to 5 short tags, lowercase, without accents (e.g. ethernet, layer2), plus a chapter tag.
+12. Stable, unique and readable uids: <prefix>-<chapter>-<3-digit number>. Never reuse a uid in the same file; do not change a uid when you regenerate a card.
+13. No duplicates or near-duplicates. Aim for full coverage: each important section of the document yields at least one card; ignore the table of contents, acknowledgements and repetitions.
+14. Language: write the cards in English, except for conventional technical terms.
+15. Source: fill in source (section or page) when the document allows it.
+
+OUTPUT CONSTRAINTS
+- Reply ONLY with the file, in a single ```json … ``` code block, with no text before or after.
+- Follow exactly the format described above: same key names, same value types, no invented keys.
+- If the document is too long for a single reply, stop cleanly at the end of a complete section (never in the middle of a note) and state what remains in the continuation field (JSON, YAML) or the @continuation directive (Markdown), for example "Resume at section 5.3". I will reply "Continue".
+- If you can attach a downloadable file in .json format, do so in addition to the code block.
+
+SELF-CHECK (do it mentally before replying)
+1. Does the file follow the format, including quotes, commas and brackets?
+2. Is every uid unique? Does every note have its type and its required fields?
+3. Does every cloze contain at least one {{c1::…}}? Does every multiple-choice question have at least one correct answer?
+4. Is the answer absent from every question and every hint?
+5. Does all the information come from the document?
+
+EXAMPLE (valid format to imitate; made-up content)
+```json
+{
+  "format": "mnemo/1",
+  "defaults": {
+    "deck": "My course"
+  },
+  "notes": [
+    {
+      "uid": "my-course-1-001",
+      "type": "basic",
+      "front": "Quel est le rôle du champ FCS ?",
+      "back": "Détecter les erreurs de transmission."
+    },
+    {
+      "uid": "my-course-1-002",
+      "type": "cloze",
+      "text": "Un commutateur apprend l’adresse {{c1::source::source ou destination ?}} des trames."
+    },
+    {
+      "uid": "my-course-1-003",
+      "type": "mcq",
+      "question": "Quel support est insensible aux interférences électromagnétiques ?",
+      "choices": [
+        {
+          "text": "Fibre optique",
+          "correct": true,
+          "explanation": "La lumière n’est pas sensible aux EMI."
+        },
+        {
+          "text": "UTP",
+          "correct": false
+        },
+        {
+          "text": "STP",
+          "correct": false
+        },
+        {
+          "text": "Coaxial",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "uid": "my-course-1-004",
+      "type": "ordering",
+      "question": "Remets dans l’ordre le traitement store-and-forward.",
+      "steps": [
+        "Réception de la trame",
+        "Vérification du FCS",
+        "Transmission"
+      ]
+    },
+    {
+      "uid": "my-course-1-005",
+      "type": "matching",
+      "question": "Associe chaque situation au support adapté.",
+      "pairs": [
+        {
+          "left": "Câblage d’un bureau",
+          "right": "Cuivre"
+        },
+        {
+          "left": "Liaison entre bâtiments",
+          "right": "Fibre optique"
+        }
+      ]
+    },
+    {
+      "uid": "my-course-1-006",
+      "type": "list",
+      "question": "Cite les trois types de supports réseau.",
+      "items": [
+        "Cuivre",
+        "Fibre optique",
+        "Sans fil"
+      ]
+    },
+    {
+      "uid": "my-course-1-007",
+      "type": "truefalse",
+      "statement": "Le FCS est placé en début de trame.",
+      "answer": false
+    },
+    {
+      "uid": "my-course-1-008",
+      "type": "typed",
+      "front": "Commande Cisco pour afficher la table MAC ?",
+      "answer": "show mac address-table"
+    }
+  ]
+}
+```
+
+Here is the document to process:
+[PASTE OR ATTACH YOUR DOCUMENT HERE]

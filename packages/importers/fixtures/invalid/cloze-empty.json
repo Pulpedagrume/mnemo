@@ -1,0 +1,9 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "cloze",
+      "text": "La cellule est délimitée par la {{c1::}}."
+    }
+  ]
+}

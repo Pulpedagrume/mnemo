@@ -1,0 +1,17 @@
+Voici votre fichier :
+
+```json
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "uid": "net-1-003",
+      "front": "Quel est le rôle d’un routeur ?",
+      "back": "Relier des réseaux différents et acheminer les paquets."
+    }
+  ]
+}
+```
+
+N’hésitez pas à demander d’autres cartes !

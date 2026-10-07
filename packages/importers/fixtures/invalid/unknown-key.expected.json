@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "unknown_key",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 0
+  }
+}

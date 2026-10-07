@@ -1,0 +1,6 @@
+{
+  // Library code only, without Node types: proves `src` runs in browsers.
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
+}

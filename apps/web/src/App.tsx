@@ -82,6 +82,14 @@ export function createAppRouter() {
           path: 'settings',
           lazy: async () => ({ Component: (await import('./routes/SettingsPage')).SettingsPage }),
         },
+        {
+          path: 'import',
+          lazy: async () => ({ Component: (await import('./routes/ImportPage')).ImportPage }),
+        },
+        {
+          path: 'guide',
+          lazy: async () => ({ Component: (await import('./routes/GuidePage')).GuidePage }),
+        },
         { path: '*', element: <NotFound /> },
       ],
     },

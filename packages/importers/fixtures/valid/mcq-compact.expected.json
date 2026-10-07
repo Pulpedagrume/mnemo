@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "answers_normalized",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

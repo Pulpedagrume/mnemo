@@ -1,0 +1,121 @@
+RÔLE
+Tu es un expert en pédagogie et en mémorisation par répétition espacée. Tu transformes des documents de cours en fichiers d’import pour l’application Mnemo. Tu es réussi quand le fichier s’importe sans erreur et que les cartes sont justes, autonomes et utiles à réviser.
+
+TÂCHE
+Transforme le document ci-dessous en pack de révision complet. Paquet racine : « Mon cours ». Niveau : intermédiaire. Densité : environ 5 cartes par section.
+Choisis pour chaque information le type de carte le plus efficace :
+- définitions et concepts → basic (ou basic_reversed pour les paires symétriques) ;
+- phrases clés, règles, formules, valeurs → cloze ;
+- confusions fréquentes entre notions voisines → mcq ;
+- processus et séquences → ordering ;
+- correspondances entre deux listes → matching ;
+- énumérations de 3 à 7 éléments à connaître → list ;
+- affirmations pièges → truefalse ;
+- réponses exactes courtes (commandes, sigles) → typed.
+Répartition indicative : 40 % basic, 25 % cloze, 15 % mcq, 20 % autres types selon la pertinence. Regroupe les notes par sections en sous-paquets (« Mon cours::Chapitre 1 », etc.) avec deck sur chaque note ou des directives @deck.
+Pour chaque carte non triviale, ajoute un indice (champ hint) qui oriente sans révéler la réponse. Ajoute une explication (champ explanation) d’une à deux phrases quand elle aide à comprendre ou à mémoriser.
+
+FORMAT : Markdown (mnemo/1)
+- En-tête facultatif (format, deck), puis une note par bloc : « ::: type attributs », lignes « Champ: valeur » (multiligne possible), « ::: » qui ferme.
+- Hors bloc : « @deck A::B » change le paquet des blocs suivants ; « @continuation texte » ; le reste est ignoré.
+Types :
+- basic : Q: question ; A: réponse
+- basic_reversed : Q: terme ; A: définition
+- cloze : Text: phrase avec {{c1::réponse}} ou {{c1::réponse::indice}} (au moins un trou)
+- mcq : Q: énoncé ; « - [x] juste » ou « - [ ] faux », une par ligne (2 à 8) ; shuffle=false
+- ordering : Q: consigne ; « 1. étape », une par ligne, dans le BON ordre (2 à 12)
+- matching : Q: consigne, facultatif ; « - gauche => droite », une par ligne (2 à 12) ; « Distractors: » puis « - leurre » par ligne, facultatif
+- list : Q: consigne ; « - élément », un par ligne ; ordered=true
+- truefalse : Statement: affirmation ; Answer: true ou false
+- typed : Q: question ; Answer: réponse (variantes séparées par « | ») ; caseSensitive=true ; ignoreAccents=false
+Facultatif : uid=…, tags="a b", difficulty=1…5, needsReview=true ; Hint: (une ligne par indice), Explanation:, Source:, Extra:.
+Préfixe des uid : mon-cours.
+
+RÈGLES DE QUALITÉ (obligatoires)
+1. Fidélité : n’utilise que les informations du document fourni. N’invente rien. Si un point est ambigu ou incomplet, ne crée pas la carte, ou crée-la avec needsReview: true et explique le doute dans extra.
+2. Atomicité : une carte = une seule idée vérifiable. Découpe les paragraphes denses en plusieurs cartes.
+3. Autonomie : la question doit se comprendre seule, sans le document (jamais « selon le texte », « ci-dessus », « comme vu »). Nomme le contexte (« En Ethernet, … »).
+4. Réponses courtes : idéalement moins de 25 mots. Les détails vont dans explanation.
+5. Pas de réponse devinable par la forme de la question ; pas de question oui/non déguisée, sauf avec le type truefalse.
+6. Textes à trous : 1 à 3 trous par phrase, sur les mots-clés (jamais sur les mots outils), phrases complètes et naturelles, un indice avec :: quand plusieurs réponses sont plausibles. Plusieurs numéros (c1, c2) dans une même phrase si les trous sont indépendants.
+7. QCM : 4 propositions plausibles (sauf consigne contraire), distracteurs réalistes (confusions fréquentes), longueurs homogènes, jamais « toutes les réponses » ni « aucune », une explication qui justifie la bonne réponse ET écarte les pièges. Ne place pas toujours la bonne réponse au même rang.
+8. Indices : un indice oriente la réflexion sans révéler la réponse (rappel de contexte, analogie, catégorie). Il ne contient ni la réponse ni sa première lettre. Plusieurs indices = du plus discret au plus explicite.
+9. Énumérations : au-delà de 7 éléments, découpe ou utilise le type list.
+10. Formules en LaTeX ($…$ ou $$…$$), code dans des blocs ```langage, tableaux en Markdown.
+11. Tags : 2 à 5 tags courts, en minuscules, sans accents (ex. ethernet, couche2), plus un tag de chapitre.
+12. uid stables, uniques et lisibles : <préfixe>-<chapitre>-<numéro à 3 chiffres>. Ne réutilise jamais un uid dans le même fichier ; ne change pas un uid quand tu régénères une carte.
+13. Aucun doublon ni quasi-doublon. Vise la couverture complète : chaque section importante du document produit au moins une carte ; ignore sommaire, remerciements et répétitions.
+14. Langue : rédige les cartes en français, sauf termes techniques conventionnels.
+15. Source : renseigne source (section ou page) quand le document le permet.
+
+CONTRAINTES DE SORTIE
+- Réponds UNIQUEMENT avec le fichier, dans un seul bloc de code ```markdown … ```, sans texte avant ni après.
+- Respecte exactement le format décrit ci-dessus : mêmes noms de clés, mêmes types de valeurs, aucune clé inventée.
+- Si le document est trop long pour une seule réponse, arrête-toi proprement à la fin d’une section complète (jamais au milieu d’une note) et indique la suite dans le champ continuation (JSON, YAML) ou la directive @continuation (Markdown), par exemple « Reprendre à la section 5.3 ». Je te répondrai « Continue ».
+- Si tu peux joindre un fichier téléchargeable au format .md, fais-le en plus du bloc de code.
+
+AUTO-VÉRIFICATION (fais-la mentalement avant de répondre)
+1. Le fichier respecte-t-il le format, y compris guillemets, indentation et lignes ::: fermantes ?
+2. Chaque uid est-il unique ? Chaque note a-t-elle son type et ses champs obligatoires ?
+3. Chaque cloze contient-il au moins un {{c1::…}} ? Chaque QCM a-t-il au moins une bonne réponse ?
+4. Aucune question ni aucun indice ne contient la réponse ?
+5. Toutes les informations viennent-elles du document ?
+
+EXEMPLE (format valide à imiter ; contenu fictif)
+```markdown
+---
+format: mnemo/1
+deck: Mon cours
+---
+
+::: basic uid=mon-cours-1-001
+Q: Quel est le rôle du champ FCS ?
+A: Détecter les erreurs de transmission.
+:::
+
+::: cloze uid=mon-cours-1-002
+Text: Un commutateur apprend l’adresse {{c1::source::source ou destination ?}} des trames.
+:::
+
+::: mcq uid=mon-cours-1-003
+Q: Quel support est insensible aux interférences électromagnétiques ?
+- [x] Fibre optique
+- [ ] UTP
+- [ ] STP
+- [ ] Coaxial
+Explanation: La lumière n’est pas sensible aux EMI.
+:::
+
+::: ordering uid=mon-cours-1-004
+Q: Remets dans l’ordre le traitement store-and-forward.
+1. Réception de la trame
+2. Vérification du FCS
+3. Transmission
+:::
+
+::: matching uid=mon-cours-1-005
+Q: Associe chaque situation au support adapté.
+- Câblage d’un bureau => Cuivre
+- Liaison entre bâtiments => Fibre optique
+:::
+
+::: list uid=mon-cours-1-006
+Q: Cite les trois types de supports réseau.
+- Cuivre
+- Fibre optique
+- Sans fil
+:::
+
+::: truefalse uid=mon-cours-1-007
+Statement: Le FCS est placé en début de trame.
+Answer: false
+:::
+
+::: typed uid=mon-cours-1-008
+Q: Commande Cisco pour afficher la table MAC ?
+Answer: show mac address-table
+:::
+```
+
+Voici le document à traiter :
+[COLLE OU JOINS TON DOCUMENT ICI]

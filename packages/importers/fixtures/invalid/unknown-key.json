@@ -1,0 +1,12 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "basic",
+      "uid": "his-4-002",
+      "front": "Qui découvre l’Amérique en 1492 ?",
+      "back": "Christophe Colomb.",
+      "couleur": "rouge"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "orphan_block_end",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

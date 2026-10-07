@@ -1,0 +1,9 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "cloze",
+      "text": "Le {{c0::cytoplasme}} entoure le noyau."
+    }
+  ]
+}

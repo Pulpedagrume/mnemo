@@ -1,0 +1,1 @@
+Continue exactly where you stopped. Last valid note received: uid {{dernierUid}}. Do not repeat any note already produced. Same format, same rules, uids that continue the numbering. Resume at: {{continuation}}.

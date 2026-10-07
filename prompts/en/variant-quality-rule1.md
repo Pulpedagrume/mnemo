@@ -1,0 +1,1 @@
+1. Faithfulness: rely first on the provided document. You may complement it with well-established general knowledge, only to make a card accurate and understandable: then mark the note needsReview: true and state in extra what does not come from the document. Invent nothing uncertain.

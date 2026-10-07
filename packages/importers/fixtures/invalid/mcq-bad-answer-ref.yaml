@@ -1,0 +1,6 @@
+format: mnemo/1
+notes:
+  - type: mcq
+    question: Quelle couche OSI gère le routage ?
+    choices: [Physique, Liaison, Réseau]
+    answers: [E]

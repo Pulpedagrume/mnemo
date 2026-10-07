@@ -1,0 +1,29 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    {
+      "type": "qcm",
+      "question": "En quelle année a eu lieu la bataille de Marignan ?",
+      "choices": [
+        {
+          "text": "1515",
+          "correct": true
+        },
+        {
+          "text": "1415",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "flashcard",
+      "recto": "Qui a signé l’édit de Nantes ?",
+      "réponse": "Henri IV, en 1598."
+    },
+    {
+      "type": "typed",
+      "question": "Capitale de l’Empire byzantin ?",
+      "réponse": "Constantinople"
+    }
+  ]
+}

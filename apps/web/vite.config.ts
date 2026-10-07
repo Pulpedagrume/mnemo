@@ -1,4 +1,6 @@
 /// <reference types="vitest/config" />
+import { existsSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
@@ -14,6 +16,32 @@ function appNamePlugin(): Plugin {
   };
 }
 
+const SCHEMA_FILE = fileURLToPath(
+  new URL('../../schema/mnemo-import.schema.json', import.meta.url),
+);
+const SCHEMA_PATH = 'schema/mnemo-import.schema.json';
+
+/** Publishes the generated import JSON Schema next to the app (copied at build, served in dev). */
+function schemaPlugin(): Plugin {
+  return {
+    name: 'mnemo:schema',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (!req.url?.endsWith(SCHEMA_PATH) || !existsSync(SCHEMA_FILE)) {
+          next();
+          return;
+        }
+        res.setHeader('Content-Type', 'application/schema+json');
+        res.end(readFileSync(SCHEMA_FILE));
+      });
+    },
+    generateBundle() {
+      if (existsSync(SCHEMA_FILE))
+        this.emitFile({ type: 'asset', fileName: SCHEMA_PATH, source: readFileSync(SCHEMA_FILE) });
+    },
+  };
+}
+
 export default defineConfig({
   // BASE_PATH allows serving under a sub-path, e.g. /<repo>/ on GitHub Pages.
   base: process.env.BASE_PATH ?? '/',
@@ -21,6 +49,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     appNamePlugin(),
+    schemaPlugin(),
     VitePWA({
       // Never reload on its own: the app shows a "new version" prompt (see ReloadPrompt).
       registerType: 'prompt',
@@ -47,7 +76,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2,ttf}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,ttf,json}'],
         navigateFallback: 'index.html',
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },

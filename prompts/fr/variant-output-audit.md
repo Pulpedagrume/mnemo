@@ -1,0 +1,1 @@
+- Réponds d’abord avec la liste des problèmes (une ligne par problème, uid en tête), puis avec le fichier dans un seul bloc de code ```{{formatFence}} … ```, sans texte après.

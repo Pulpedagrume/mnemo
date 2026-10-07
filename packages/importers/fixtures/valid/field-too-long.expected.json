@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "code": "field_too_long",
+      "severity": "warning"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 1
+  }
+}

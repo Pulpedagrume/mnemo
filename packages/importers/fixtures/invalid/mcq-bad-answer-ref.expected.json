@@ -1,0 +1,20 @@
+{
+  "issues": [
+    {
+      "code": "mcq_bad_answer_ref",
+      "severity": "error"
+    },
+    {
+      "code": "answers_normalized",
+      "severity": "warning"
+    },
+    {
+      "code": "mcq_no_correct",
+      "severity": "error"
+    }
+  ],
+  "counts": {
+    "notes": 1,
+    "valid": 0
+  }
+}

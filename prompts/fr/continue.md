@@ -1,0 +1,1 @@
+Continue exactement là où tu t’es arrêté. Dernière note valide reçue : uid {{dernierUid}}. Ne répète aucune note déjà produite. Même format, mêmes règles, uid qui continuent la numérotation. Reprends à : {{continuation}}.

@@ -157,3 +157,42 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
   (dépendance de la ligne de commande de `markdown-it`, non embarquée dans la PWA) est sous PSF-2.0.
 - **Décision** : ajout de `Zlib` et `PSF-2.0` à la liste blanche de production : licences
   permissives, compatibles avec une redistribution sous MIT, mention dans `NOTICE`.
+
+## ADR-021 — « qcm » dans le scénario A2 : alias toléré, type inconnu en mode strict
+
+- **Contexte** : le cahier des charges cite `qcm` à la fois comme alias toléré de `mcq` (§4.2) et
+  comme « type inconnu » du scénario A2.
+- **Décision** : en mode tolérant (par défaut), `qcm` produit un avertissement `alias` avec la
+  suggestion « qcm → mcq » ; en mode strict, une erreur `unknown_type` avec la même suggestion.
+  Le rapport A2 liste bien cinq problèmes (alias, cloze sans trou, QCM sans bonne réponse, uid en
+  double, image non déclarée).
+
+## ADR-022 — Doublons sans uid : contenu normalisé plutôt qu’un hachage stocké
+
+- **Décision** : une note sans uid est rapprochée d’une note existante du même paquet par une clé
+  « type + champ principal normalisé » (minuscules, espaces compressés, Markdown retiré), calculée
+  à la volée. Un SHA-256 n’apporterait rien tant que la clé n’est pas stockée ; il reste utilisé
+  pour dédoublonner les médias.
+
+## ADR-023 — Médias importés
+
+- **Décision** : les médias d’un bundle ou d’une URI `data:` sont stockés une seule fois
+  (SHA-256) ; les références `media:<id du fichier>` des notes sont réécrites vers l’identifiant
+  stocké. Les URL distantes ne sont jamais téléchargées automatiquement.
+
+## ADR-024 — Règle de fusion des étiquettes en Markdown
+
+- **Décision** : étiquettes du front-matter (pour tout le fichier) + dernière directive `@tags`
+  (pour les blocs suivants) + attribut `tags=` du bloc + champ `Tags:`, dédoublonnées.
+
+## ADR-025 — CLI `import` limitée à `--dry-run` avant la phase 3
+
+- **Contexte** : écrire dans une collection depuis la CLI exige une base persistante.
+- **Décision** : la phase 2 fournit l’analyse (`--dry-run`) ; l’écriture arrive avec le dépôt
+  SQLite et `mnemo serve` (phase 3).
+
+## ADR-026 — `useMutation` appelle toujours la dernière fonction
+
+- **Contexte** : un test e2e (A4) a montré qu’un import en mode « Mettre à jour » utilisait le mode
+  initial : la fonction passée à `useMutation` était mémorisée au premier rendu.
+- **Décision** : le hook garde la dernière fonction dans une référence mise à jour à chaque rendu.

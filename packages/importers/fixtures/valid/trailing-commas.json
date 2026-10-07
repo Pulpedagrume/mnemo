@@ -1,0 +1,7 @@
+{
+  "format": "mnemo/1",
+  "notes": [
+    { "type": "basic", "front": "Couche OSI du commutateur ?", "back": "Couche 2 (liaison).", },
+    { "type": "basic", "front": "Couche OSI du routeur ?", "back": "Couche 3 (réseau)." },
+  ],
+}

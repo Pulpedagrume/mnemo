@@ -8,7 +8,7 @@ import { deckLabel } from '@mnemo/core';
 import type { DeckTreeEntry } from '@mnemo/services';
 import { Button, focusRing } from '../../components/ui/Button';
 
-export type DeckAction = 'add' | 'rename' | 'options' | 'custom' | 'stats' | 'delete';
+export type DeckAction = 'add' | 'rename' | 'options' | 'custom' | 'stats' | 'export' | 'delete';
 
 const COLLAPSED_KEY = 'mnemo.collapsedDecks';
 
@@ -122,7 +122,7 @@ function DeckRow({ entry, collapsed, toggle, onAction, filter }: RowProps) {
               align="end"
               className="z-50 min-w-48 rounded-lg border border-slate-200 bg-white p-1 text-slate-900 shadow-lg dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
             >
-              {(['add', 'custom', 'options', 'rename', 'stats', 'delete'] as const).map(
+              {(['add', 'custom', 'options', 'rename', 'stats', 'export', 'delete'] as const).map(
                 (action) => (
                   <DropdownMenu.Item
                     key={action}

@@ -1,0 +1,16 @@
+Mnemo
+Copyright (c) 2026 Mnemo contributors
+Licensed under the MIT License (see LICENSE).
+
+Mnemo is an independent implementation. It contains no code from Anki (AGPL-3.0).
+Scheduling algorithms are written from public descriptions (SuperMemo SM-2, Leitner
+system); FSRS is provided by the ts-fsrs library (MIT). The `{{c1::...}}` cloze syntax
+is supported for interoperability.
+
+Third-party components bundled in distributed builds are listed below with their licenses.
+The complete, up-to-date list can be produced with `pnpm licenses list --prod`.
+
+- React, React DOM (MIT) — Meta Platforms, Inc. and affiliates
+- i18next, react-i18next (MIT) — i18next contributors
+- commander (MIT) — TJ Holowaychuk and contributors
+- Tailwind CSS (MIT) — Tailwind Labs, Inc. (generated CSS only)

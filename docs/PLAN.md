@@ -1,0 +1,77 @@
+# Plan de réalisation
+
+Chaque phase se termine quand `pnpm check && pnpm e2e` passe, que ce plan est à jour et que les
+commits (Conventional Commits) sont faits. Les décisions sont dans [DECISIONS.md](DECISIONS.md).
+
+## Phase 0 — Fondations
+
+- [x] Monorepo pnpm (`packages/*`, `apps/*`), TypeScript strict partagé
+- [x] ESLint (typé, a11y, i18n, anti-cycles, règles de pureté de `core`), Prettier, EditorConfig
+- [x] Vitest (projets par paquet, couverture v8), Playwright (desktop + mobile)
+- [x] Paquets `core`, `importers`, `prompts`, `storage`, `sync` qui compilent
+- [x] Apps `web` (React 18 + Vite + Tailwind + i18n fr/en), `cli` (bundle tsdown), `server`, `mcp` (squelettes)
+- [x] `APP_NAME` / `APP_SLUG` / `FORMAT_ID`, `Clock`, `Rng` (avec tests)
+- [x] `pnpm rename-app`, `pnpm check:licenses`, `pnpm knip`
+- [x] CI minimale (lint, typecheck, tests, build, knip, licences, audit, e2e, gitleaks)
+- [x] `CLAUDE.md`, `docs/PLAN.md`, `docs/DECISIONS.md`, `LICENSE`, `NOTICE`, README provisoire
+- [x] `pnpm install && pnpm lint && pnpm typecheck && pnpm test && pnpm build` vert en local
+
+## Phase 1 — Cœur, stockage, planificateurs, étude (MVP local)
+
+- [ ] Modèle de données Zod (Deck, Preset, NoteType, Note, Card, ReviewLog, Media, ImportBatch, Settings), UUIDv7, `dayIndex`
+- [ ] Interface `Repository` + implémentation Dexie + suite de conformité commune
+- [ ] Interface `Scheduler`, registre `registerScheduler`, `ParamSpec`
+- [ ] Planificateurs `anki`, `sm2`, `fsrs` (adaptateur `ts-fsrs` + tests dorés), `leitner`, `ladder`
+- [ ] Tests de propriétés (fast-check) et simulation 1 000 cartes × 365 jours par algorithme
+- [ ] Conversion entre algorithmes (`docs/SCHEDULERS.md`) avec aperçu de l’effet
+- [ ] Presets, limites, comportement, héritage parent → enfant, presets fournis, import/export de preset
+- [ ] File d’étude `buildQueue` (fuseaux, minuit, changement d’heure, 100 000 cartes) et compteurs
+- [ ] Types de notes intégrés et génération des cartes (basic, reversed, typed, cloze, mcq, truefalse, matching, ordering, list, template)
+- [ ] Rendu Markdown sûr (markdown-it + DOMPurify + KaTeX + coloration de code)
+- [ ] Liste des paquets (arbre, compteurs, recherche), navigateur de notes, éditeur de note
+- [ ] Écran d’étude : notation, intervalles prévus, ampoule d’indices + `hintPolicy`, types interactifs, raccourcis, annulation ×10, étude personnalisée, résumé de fin
+- [ ] Réglages des presets générés depuis `paramSpec`
+- [ ] Statistiques de base (SVG accessibles)
+- [ ] PWA hors ligne (vite-plugin-pwa), stockage persistant, mise à jour non intrusive
+- [ ] Sauvegarde et restauration `.zip`
+- [ ] Thème clair/sombre/système, taille de texte
+- [ ] Couverture ≥ 90 % sur `core`, e2e : créer un paquet, une note de chaque type, étudier hors ligne
+
+## Phase 2 — Import, export, assistant IA
+
+- [ ] `ImportDocument` canonique (Zod) + JSON Schema généré (`schema/mnemo-import.schema.json`)
+- [ ] Nettoyage tolérant (BOM, blocs de code, guillemets, jsonrepair, troncature, alias)
+- [ ] Parseurs JSON, YAML, Mnemo Markdown, CSV/TSV, bundles zip
+- [ ] Validation par note, contrôles sémantiques, rapport d’erreurs (texte, JSON, prompt de correction)
+- [ ] Fusion (skip-duplicates, update, add, replace-deck), empreintes, `ImportBatch`, annulation
+- [ ] Exports JSON/YAML/Markdown/CSV/zip et test d’aller-retour
+- [ ] Fixtures valides/invalides, tests dorés, fuzz, performance 10 000 notes < 3 s
+- [ ] Composeur de prompts + gabarits fr/en (T1–T15) + `docs/AI_PROMPTS.md`
+- [ ] Assistant « Importer avec l’IA » (4 étapes) + aperçu fidèle + Guide IA
+- [ ] CLI `validate`, `import`, `prompt`, `schema`
+- [ ] Scénarios d’acceptation A1–A4 automatisés
+
+## Phase 3 — Serveur, en ligne, synchronisation
+
+- [ ] `docs/SYNC.md` (avant le code), HLC, règles de fusion, tests de conflits
+- [ ] `Repository` SQLite + conformité
+- [ ] API Fastify, comptes (argon2id, sessions, CSRF), jetons d’API à portées, durcissement
+- [ ] `mnemo serve`, Dockerfile, docker-compose, Caddy, `docs/SELF_HOSTING.md`
+- [ ] Build GitHub Pages (chemin de base), workflow de release
+- [ ] Scénario A5 automatisé
+
+## Phase 4 — Intégrations
+
+- [ ] API d’import à jetons, OpenAPI
+- [ ] Serveur MCP (stdio + HTTP) avec dry-run obligatoire
+- [ ] Import/export `.apkg`
+- [ ] Simulateur avancé (comparaison de presets, Web Worker)
+- [ ] Optimiseur FSRS (si faisable), Tauri (si le temps le permet)
+- [ ] Scénario A6 automatisé
+
+## Phase 5 — Publication v0.1.0
+
+- [ ] README fr/en avec captures (`pnpm screenshots`), docs complètes, exemples
+- [ ] Revue de sécurité (§6.3), budgets performance et accessibilité (Lighthouse), A7
+- [ ] `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, modèles GitHub
+- [ ] Tag `v0.1.0` préparé (non poussé) et commandes de publication

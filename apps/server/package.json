@@ -1,0 +1,16 @@
+{
+  "name": "@mnemo/server",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mnemo/core": "workspace:*",
+    "@mnemo/storage": "workspace:*",
+    "@mnemo/sync": "workspace:*"
+  },
+  "devDependencies": {}
+}

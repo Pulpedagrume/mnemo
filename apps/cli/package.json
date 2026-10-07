@@ -1,0 +1,25 @@
+{
+  "name": "@mnemo/cli",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "mnemo": "./dist/index.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown",
+    "start": "node dist/index.mjs"
+  },
+  "dependencies": {
+    "commander": "^15.0.0"
+  },
+  "devDependencies": {
+    "@mnemo/core": "workspace:*",
+    "tsdown": "^0.23.0"
+  }
+}

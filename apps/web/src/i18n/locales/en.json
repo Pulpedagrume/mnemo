@@ -1,0 +1,13 @@
+{
+  "app": {
+    "tagline": "Configurable spaced repetition, with AI-friendly import.",
+    "language": "Language",
+    "comingSoon": "The first features are coming soon.",
+    "decksCount_one": "{{count}} deck",
+    "decksCount_other": "{{count}} decks"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English"
+  }
+}

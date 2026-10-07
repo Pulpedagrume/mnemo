@@ -1,0 +1,13 @@
+{
+  "app": {
+    "tagline": "Répétition espacée paramétrable, avec import pensé pour l’IA.",
+    "language": "Langue",
+    "comingSoon": "Les premières fonctionnalités arrivent bientôt.",
+    "decksCount_one": "{{count}} paquet",
+    "decksCount_other": "{{count}} paquets"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English"
+  }
+}

@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@mnemo/core": "workspace:*",
+    "@mnemo/importers": "workspace:^",
     "@mnemo/storage": "workspace:*",
     "jszip": "^3.10.2",
     "zod": "^4.6.5"

@@ -1,6 +1,10 @@
+import { mkdtempSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import type { Io } from '../io';
+import { exportCommand } from './export';
 import { importCommand } from './import';
 import { promptCommand } from './prompt';
 import { importJsonSchema } from './schema';
@@ -57,15 +61,32 @@ describe('cli commands', () => {
     expect(importJsonSchema()).toMatchObject({ type: 'object' });
   });
 
-  it('import --dry-run analyses a folder; a real import is not available yet', async () => {
-    const io = capture();
+  it('imports into the local collection, then exports a deck', async () => {
+    const dataDir = mkdtempSync(join(tmpdir(), 'mnemo-cli-'));
+    const dry = capture();
     const code = await importCommand(
       fileURLToPath(new URL('../../../../examples/ai-outputs', import.meta.url)),
-      { dryRun: true },
-      io,
+      { dryRun: true, dataDir },
+      dry,
     );
     expect(code).toBe(1); // with-errors.yaml contains errors
-    expect(io.stdout).toMatch(/course-pack\.json \[json\]: 120\/120 valid notes/);
-    expect(await importCommand(example('course-pack.md'), {}, capture())).toBe(2);
+    expect(dry.stdout).toMatch(
+      /course-pack\.json \[json\]: 120\/120 valid notes.*would create 120/,
+    );
+
+    const real = capture();
+    expect(await importCommand(example('course-pack.md'), { dataDir }, real)).toBe(0);
+    expect(real.stdout).toMatch(/created 120/);
+    const again = capture();
+    await importCommand(example('course-pack.md'), { dataDir }, again);
+    expect(again.stdout).toMatch(/created 0, updated 0, skipped 120/);
+
+    const out = join(dataDir, 'all.md');
+    const exp = capture();
+    expect(await exportCommand('all', { format: 'md', out, dataDir }, exp)).toBe(0);
+    expect(exp.stdout).toMatch(/^120 notes/);
+    expect(readFileSync(out, 'utf8')).toContain('::: ');
+    expect(await exportCommand('Nope', { format: 'md', dataDir }, capture())).toBe(2);
+    expect(await exportCommand('all', { format: 'pdf', dataDir }, capture())).toBe(2);
   });
 });

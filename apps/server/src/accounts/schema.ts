@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 /** Accounts database (`DATA_DIR/accounts.sqlite`): users, sessions, API tokens, invites, audit. */
-export const ACCOUNTS_SCHEMA_VERSION = 1;
 
 export const ACCOUNTS_DDL = `
 CREATE TABLE IF NOT EXISTS users (

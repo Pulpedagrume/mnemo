@@ -615,7 +615,8 @@
     "lastBackup": "Dernière sauvegarde : {{date}}",
     "about": "À propos",
     "aboutText": "{{app}} est un logiciel libre (licence MIT) de répétition espacée.",
-    "privacy": "Aucune donnée n’est envoyée : pas de compte, pas de télémétrie."
+    "privacy": "Aucune donnée n’est envoyée : pas de compte, pas de télémétrie.",
+    "sync": "Synchronisation"
   },
   "guide": {
     "title": "Guide IA"
@@ -814,5 +815,34 @@
     "warnings_one": "{{count}} élément ne peut pas être représenté dans ce format.",
     "warnings_many": "{{count}} éléments ne peuvent pas être représentés dans ce format.",
     "warnings_other": "{{count}} éléments ne peuvent pas être représentés dans ce format."
+  },
+  "sync": {
+    "help": "Facultatif : reliez cet appareil à votre serveur Mnemo pour retrouver vos cartes et votre progression sur tous vos appareils. Tout continue de fonctionner hors ligne.",
+    "server": "Adresse du serveur",
+    "serverHelp": "Par exemple https://mnemo.exemple.fr, ou l’adresse affichée par « mnemo serve ».",
+    "connect": "Se connecter",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "login": "Se connecter",
+    "loginNeeded": "Ce serveur demande de vous identifier.",
+    "tokenTitle": "Utiliser un jeton d’API",
+    "token": "Jeton d’API (portée « sync »)",
+    "tokenHelp": "Pratique quand l’application est hébergée ailleurs que le serveur (par exemple sur GitHub Pages).",
+    "useToken": "Utiliser ce jeton",
+    "connected": "Connecté à {{url}}",
+    "connectedToast": "Appareil connecté : synchronisation en cours.",
+    "disconnect": "Déconnecter cet appareil",
+    "disconnected": "Appareil déconnecté. Vos données restent sur cet appareil.",
+    "now": "Synchroniser maintenant",
+    "last": "dernière synchronisation : {{date}}",
+    "report": "{{pushed}} envoyés, {{pulled}} reçus",
+    "failed": "La synchronisation a échoué ({{error}}).",
+    "status": {
+      "off": "Synchronisation désactivée.",
+      "idle": "À jour.",
+      "syncing": "Synchronisation en cours…",
+      "error": "Erreur de synchronisation.",
+      "offline": "Hors ligne : la synchronisation reprendra au retour du réseau."
+    }
   }
 }

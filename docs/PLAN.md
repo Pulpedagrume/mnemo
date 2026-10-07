@@ -49,17 +49,20 @@ commits (Conventional Commits) sont faits. Les décisions sont dans [DECISIONS.m
 - [x] Composeur de prompts + gabarits fr/en (T1–T15) + `docs/AI_PROMPTS.md`
 - [x] Assistant « Importer avec l’IA » (4 étapes), aperçu fidèle, historique des imports, Guide IA, export depuis le menu des paquets
 - [x] CLI `validate` (`--strict --json --ai-prompt`), `prompt`, `schema`, `import --dry-run`
-- [ ] CLI `import` sans `--dry-run` et `export` : nécessitent la base locale SQLite (phase 3)
+- [x] CLI `import` sans `--dry-run` et `export` (base locale SQLite, livrées en phase 3)
 - [x] Scénarios d’acceptation A1–A4 automatisés (Playwright, bureau et mobile)
 
 ## Phase 3 — Serveur, en ligne, synchronisation
 
-- [ ] `docs/SYNC.md` (avant le code), HLC, règles de fusion, tests de conflits
-- [ ] `Repository` SQLite + conformité
-- [ ] API Fastify, comptes (argon2id, sessions, CSRF), jetons d’API à portées, durcissement
-- [ ] `mnemo serve`, Dockerfile, docker-compose, Caddy, `docs/SELF_HOSTING.md`
-- [ ] Build GitHub Pages (chemin de base), workflow de release
-- [ ] Scénario A5 automatisé
+- [x] `docs/SYNC.md` (avant le code), HLC, règles de fusion par champ, tests des six scénarios de conflit
+- [x] `Repository` SQLite (`node:sqlite`) + conformance + équivalence avec le dépôt mémoire
+- [x] API Fastify, comptes (argon2id, sessions, CSRF), jetons d’API à portées, limites de débit, en-têtes stricts, journal d’audit
+- [x] Mode mono-utilisateur local, `mnemo serve`, CLI `import`/`export` sur la collection locale
+- [x] Client de synchronisation dans la PWA (connexion, synchronisation automatique, hors ligne d’abord)
+- [x] Dockerfile, docker-compose, Caddy, `.env.example`, `docs/SELF_HOSTING.md`, `PRIVACY.md`, `SECURITY_MODEL.md`, `SECURITY.md`
+- [x] Build GitHub Pages (chemin de base vérifié), workflow de release (GHCR, Pages, notes du changelog)
+- [x] Scénario A5 automatisé (deux navigateurs, révisions hors ligne, conflit d’édition)
+- [ ] Image Docker construite et lancée (pas de Docker sur la machine de développement : vérifiée par la CI de release)
 
 ## Phase 4 — Intégrations
 

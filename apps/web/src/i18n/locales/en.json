@@ -598,7 +598,8 @@
     "lastBackup": "Last backup: {{date}}",
     "about": "About",
     "aboutText": "{{app}} is free software (MIT license) for spaced repetition.",
-    "privacy": "No data is sent anywhere: no account, no telemetry."
+    "privacy": "No data is sent anywhere: no account, no telemetry.",
+    "sync": "Sync"
   },
   "guide": {
     "title": "AI guide"
@@ -786,5 +787,34 @@
     "done_other": "{{count}} notes exported.",
     "warnings_one": "{{count}} item cannot be represented in this format.",
     "warnings_other": "{{count}} items cannot be represented in this format."
+  },
+  "sync": {
+    "help": "Optional: link this device to your Mnemo server to get your cards and progress on all your devices. Everything keeps working offline.",
+    "server": "Server address",
+    "serverHelp": "For example https://mnemo.example.com, or the address printed by “mnemo serve”.",
+    "connect": "Connect",
+    "email": "Email",
+    "password": "Password",
+    "login": "Sign in",
+    "loginNeeded": "This server asks you to sign in.",
+    "tokenTitle": "Use an API token",
+    "token": "API token (“sync” scope)",
+    "tokenHelp": "Handy when the app is hosted somewhere other than the server (for example on GitHub Pages).",
+    "useToken": "Use this token",
+    "connected": "Connected to {{url}}",
+    "connectedToast": "Device connected: syncing.",
+    "disconnect": "Disconnect this device",
+    "disconnected": "Device disconnected. Your data stays on this device.",
+    "now": "Sync now",
+    "last": "last sync: {{date}}",
+    "report": "{{pushed}} sent, {{pulled}} received",
+    "failed": "Sync failed ({{error}}).",
+    "status": {
+      "off": "Sync is off.",
+      "idle": "Up to date.",
+      "syncing": "Syncing…",
+      "error": "Sync error.",
+      "offline": "Offline: sync resumes when the network is back."
+    }
   }
 }

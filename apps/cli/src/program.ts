@@ -3,6 +3,7 @@ import { APP_NAME, APP_SLUG } from '@mnemo/core';
 import pkg from '../package.json' with { type: 'json' };
 import type { Io } from './io';
 import { processIo } from './io';
+import { registerExport } from './commands/export';
 import { registerImport } from './commands/import';
 import { registerPrompt } from './commands/prompt';
 import { registerSchema } from './commands/schema';
@@ -19,6 +20,7 @@ export function buildProgram(
     .version(pkg.version, '-v, --version');
   registerValidate(program, io, setExit);
   registerImport(program, io, setExit);
+  registerExport(program, io, setExit);
   registerPrompt(program, io, setExit);
   registerSchema(program, io);
   registerServe(program, io, setExit);

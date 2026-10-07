@@ -1,61 +1,69 @@
 import { basename } from 'node:path';
 import type { Command } from 'commander';
 import type { ImportMode } from '@mnemo/core';
-import { IMPORT_MODES, manualClock, seededRng } from '@mnemo/core';
+import { IMPORT_MODES } from '@mnemo/core';
 import { parseImport } from '@mnemo/importers';
-import { createServiceContext, ensureCollection, planImport } from '@mnemo/services';
-import { createMemoryRepository } from '@mnemo/storage';
+import { recordServerWrites } from '@mnemo/server';
+import { applyImport, planImport } from '@mnemo/services';
 import type { Io } from '../io';
 import { listInputFiles, readText } from '../io';
+import { withCollection, type CollectionOptions } from './collection';
 
-interface ImportOptions {
+interface ImportOptions extends CollectionOptions {
   deck?: string;
   mode?: string;
   dryRun?: boolean;
 }
 
 /**
- * Parses each file and prints what an import would do. Writing to a collection needs a
- * persistent database, provided by `mnemo serve` (SQLite, phase 3); until then only --dry-run runs.
+ * Imports a file (or every file of a folder) into the local collection — the one served by
+ * `mnemo serve`. With --dry-run, only prints what would happen. Files with errors import their
+ * valid notes (partial import) and make the exit code 1.
  */
 export async function importCommand(path: string, opts: ImportOptions, io: Io): Promise<number> {
   const mode: ImportMode = IMPORT_MODES.find((m) => m === opts.mode) ?? 'skip-duplicates';
-  if (!opts.dryRun) {
-    io.err(
-      'Only --dry-run is available for now: importing into a collection requires the local database of `mnemo serve`.',
-    );
-    return 2;
-  }
-  const ctx = createServiceContext({
-    repo: createMemoryRepository(),
-    clock: manualClock(0),
-    rng: seededRng(1),
-    deviceTimeZone: 'UTC',
+  const targetDeck = opts.deck ?? 'Import';
+  const files = await listInputFiles(path);
+  const outcome = { failed: false };
+  await withCollection(opts, async (c) => {
+    for (const file of files) {
+      const result = parseImport(await readText(file), { fileName: basename(file) });
+      const counts = result.report.counts;
+      if (counts.errors > 0) outcome.failed = true;
+      const summary = `${basename(file)} [${result.format}]: ${String(counts.valid)}/${String(counts.notes)} valid notes, ${String(counts.errors)} errors, ${String(counts.warnings)} warnings`;
+      if (opts.dryRun) {
+        const plan = await planImport(c.ctx, result, { mode, targetDeck });
+        io.out(
+          `${summary} → would create ${String(plan.counts.create)}, update ${String(plan.counts.update)}, skip ${String(plan.counts.skip)}`,
+        );
+        continue;
+      }
+      const since = c.ctx.clock.now();
+      const batch = await applyImport(c.ctx, result, {
+        mode,
+        targetDeck,
+        fileName: basename(file),
+      });
+      // Devices synced with this collection receive the imported notes on their next pull.
+      await recordServerWrites(c, since, batch);
+      io.out(
+        `${summary} → created ${String(batch.counts.created ?? 0)}, updated ${String(batch.counts.updated ?? 0)}, skipped ${String(batch.counts.skipped ?? 0)} (import ${batch.id})`,
+      );
+    }
   });
-  await ensureCollection(ctx, 'en');
-  let failed = false;
-  for (const file of await listInputFiles(path)) {
-    const result = parseImport(await readText(file), { fileName: basename(file) });
-    const plan = await planImport(ctx, result, { mode, targetDeck: opts.deck ?? 'Import' });
-    const c = result.report.counts;
-    io.out(
-      `${basename(file)} [${result.format}]: ${String(c.valid)}/${String(c.notes)} valid notes, ${String(c.cards)} cards, ` +
-        `${String(c.errors)} errors, ${String(c.warnings)} warnings → would create ${String(plan.counts.create)}, ` +
-        `update ${String(plan.counts.update)}, skip ${String(plan.counts.skip)}`,
-    );
-    if (c.errors > 0) failed = true;
-  }
-  return failed ? 1 : 0;
+  return outcome.failed ? 1 : 0;
 }
 
 export function registerImport(program: Command, io: Io, setExit: (code: number) => void): void {
   program
     .command('import')
-    .description('Check what importing a file (or every file of a folder) would do')
+    .description('Import a file (or every file of a folder) into the local collection')
     .argument('<path>', 'file or folder')
     .option('--deck <path>', 'target deck for notes without a deck', 'Import')
     .option('--mode <mode>', `duplicates handling (${IMPORT_MODES.join(', ')})`, 'skip-duplicates')
     .option('--dry-run', 'analyse only, write nothing')
+    .option('--data-dir <dir>', 'data directory (default: $DATA_DIR or ~/.mnemo)')
+    .option('--user <id>', 'collection owner on a multi-user server', 'local')
     .action(async (path: string, opts: ImportOptions) => {
       setExit(await importCommand(path, opts, io));
     });

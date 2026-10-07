@@ -17,6 +17,7 @@
     "@mnemo/prompts": "workspace:^",
     "@mnemo/services": "workspace:^",
     "@mnemo/storage": "workspace:^",
+    "@mnemo/sync": "workspace:^",
     "@tanstack/react-virtual": "^3.14.13",
     "dompurify": "^3.4.16",
     "highlight.js": "^11.12.0",

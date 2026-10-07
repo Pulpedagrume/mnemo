@@ -11,6 +11,7 @@ import { ConfirmDialog } from '../components/ui/Dialog';
 import { Field, inputClass } from '../components/ui/Field';
 import { toast } from '../components/ui/Toaster';
 import { datedFileName, downloadFile } from '../lib/download';
+import { SyncSettings } from '../sync/SyncSettings';
 
 const TEXT_SCALES = [0.875, 1, 1.125, 1.25, 1.5] as const;
 
@@ -182,6 +183,10 @@ export function SettingsPage() {
               )}
             </Field>
           </div>
+        </Section>
+
+        <Section id="sync" title={t('settings.sync')}>
+          <SyncSettings />
         </Section>
 
         <Section id="backup" title={t('settings.backup')}>

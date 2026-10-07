@@ -22,3 +22,5 @@ Thumbs.db
 
 # Local tooling
 .claude/
+.e2e-data/
+dist-server/

@@ -9,3 +9,4 @@ schema/*.json
 prompts/
 packages/importers/fixtures/
 examples/ai-outputs/
+**/dist-server

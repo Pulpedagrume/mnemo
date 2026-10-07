@@ -221,3 +221,32 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
   déploiement GitHub Pages avec `BASE_PATH=/<dépôt>/`, GitHub Release dont les notes sont
   extraites de `CHANGELOG.md`). Pas de changesets/release-please : une seule version pour tout
   le dépôt, changelog tenu à la main (Keep a Changelog).
+
+## ADR-030 — Journal de synchronisation dans un fichier séparé
+
+- **Contexte** : deux connexions `node:sqlite` sur le même fichier, dans le même fil d’exécution,
+  pourraient s’attendre mutuellement sur le verrou d’écriture.
+- **Décision** : `users/<id>.sqlite` (collection) et `users/<id>.server.sqlite` (journal des
+  changements, lots reçus, contenus des médias). Le lot n’est enregistré qu’après la validation de
+  la transaction de la collection : en cas d’arrêt brutal entre les deux, le client renvoie le lot
+  et la fusion, idempotente, ne crée rien en double. Le journal ne garde que la dernière version de
+  chaque entité (compactage).
+
+## ADR-031 — CSP : styles en ligne autorisés, scripts non
+
+- **Décision** : `script-src 'self'` strict, mais `style-src 'self' 'unsafe-inline'` : KaTeX
+  produit des attributs `style` dans le HTML des cartes (déjà assaini par DOMPurify) et le
+  verrouillage du défilement des dialogues injecte une balise `<style>`. Aucun script en ligne.
+
+## ADR-032 — Premier compte et mode mono-utilisateur
+
+- **Décision** : sans compte existant, le serveur affiche au démarrage une invitation à usage
+  unique qui crée le compte administrateur, même en inscription fermée. Le mode sans
+  authentification n’existe que sur une adresse de boucle locale, sans `BASE_URL` publique,
+  refuse les en-têtes `Host` non locaux (rebinding DNS) et exige quand même le jeton CSRF.
+
+## ADR-033 — Annulation d’une révision déjà synchronisée
+
+- **Décision** : le journal devient une tombe (`deletedAt`) qui se propage. Limite connue : les
+  autres appareils gardent l’état de la carte issu de la révision annulée (« la révision la plus
+  récente gagne ») ; la fonction de maintenance `rebuildCardFromLogs` permet de le recalculer.

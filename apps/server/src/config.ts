@@ -41,7 +41,6 @@ const EnvSchema = z.object({
   SMTP_PASSWORD: z.preprocess(emptyToUndefined, z.string().optional()),
   SMTP_FROM: z.preprocess(emptyToUndefined, z.string().optional()),
 });
-export type ServerEnv = z.input<typeof EnvSchema>;
 
 export interface ServerConfig {
   port: number;

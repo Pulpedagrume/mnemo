@@ -17,6 +17,7 @@ export default defineConfig(
     ignores: [
       '**/node_modules/**',
       '**/dist/**',
+      '**/dist-server/**',
       '**/dev-dist/**',
       '**/coverage/**',
       '**/playwright-report/**',

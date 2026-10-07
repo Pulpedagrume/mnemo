@@ -2,4 +2,7 @@ export * from './context';
 export * from './settings';
 export * from './decks';
 export * from './notes';
+export * from './presets';
+export * from './study';
+export * from './stats';
 export * from './backup';

@@ -13,6 +13,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@mnemo/core": "workspace:*"
+    "@mnemo/core": "workspace:*",
+    "dexie": "^4.4.6"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.5",
+    "fast-check": "^4.10.2"
   }
 }

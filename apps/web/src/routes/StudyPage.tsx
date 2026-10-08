@@ -7,6 +7,7 @@ import { ratingsForButtons, summarizeSession } from '@mnemo/core';
 import { getSettings, nextDueAfterNow } from '@mnemo/services';
 import { useQuery, useServices } from '../app/services';
 import { errorMessage } from '../app/errors';
+import { Mascot } from '../components/calm/Mascot';
 import { PageTitle } from '../components/PageTitle';
 import { Button, focusRing } from '../components/ui/Button';
 import { Dialog } from '../components/ui/Dialog';
@@ -173,6 +174,7 @@ function StudySession() {
               ))}
             </dl>
           )}
+          {state.status === 'done' && <Mascot message={t('calm.done')} />}
           {state.status === 'done' && <Summary deckId={deckId} />}
           <div className="flex flex-wrap gap-2">
             {state.status === 'wait' && (

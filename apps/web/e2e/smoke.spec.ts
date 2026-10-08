@@ -21,6 +21,6 @@ test('home page loads in French and switches to English from the settings', asyn
 
 test('switches to dark theme', async ({ page }) => {
   await page.goto('./#/settings');
-  await page.getByLabel('Thème').selectOption('dark');
+  await page.getByLabel('Thème', { exact: true }).selectOption('dark');
   await expect(page.locator('html')).toHaveClass(/dark/);
 });

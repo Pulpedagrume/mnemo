@@ -3,6 +3,8 @@
 
 /* Dark mode follows a `.dark` class on <html>, set from the theme setting (light/dark/system). */
 @custom-variant dark (&:where(.dark, .dark *));
+/* `calm:` utilities apply only with the calm theme (decorations, mascot). */
+@custom-variant calm (&:where(.theme-calm, .theme-calm *));
 
 @media (prefers-reduced-motion: reduce) {
   *,

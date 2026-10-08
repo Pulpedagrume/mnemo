@@ -13,6 +13,7 @@ import {
 } from '@mnemo/services';
 import { useMutation, useQuery } from '../app/services';
 import { errorMessage } from '../app/errors';
+import { DailyMascot } from '../components/calm/Mascot';
 import { PageTitle } from '../components/PageTitle';
 import { Button, focusRing } from '../components/ui/Button';
 import { ConfirmDialog } from '../components/ui/Dialog';
@@ -91,6 +92,7 @@ export function DeckListPage() {
           </>
         }
       />
+      <DailyMascot className="mb-4" />
       <div className="relative mb-4">
         <Search
           aria-hidden

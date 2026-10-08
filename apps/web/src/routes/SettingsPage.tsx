@@ -6,6 +6,7 @@ import { APP_NAME, APP_SLUG, LOCALES, ThemeSchema } from '@mnemo/core';
 import { createBackupZip, getSettings, restoreBackupZip, updateSettings } from '@mnemo/services';
 import { useMutation, useQuery, useServices } from '../app/services';
 import { errorMessage } from '../app/errors';
+import { MascotSetting } from '../components/calm/MascotSetting';
 import { PageTitle } from '../components/PageTitle';
 import { Button, focusRing } from '../components/ui/Button';
 import { ConfirmDialog } from '../components/ui/Dialog';
@@ -136,6 +137,10 @@ export function SettingsPage() {
               />
               {t('settings.showTimer')}
             </label>
+            <MascotSetting
+              value={s.mascotImage}
+              onChange={(mascotImage) => save({ mascotImage })}
+            />
           </div>
         </Section>
 

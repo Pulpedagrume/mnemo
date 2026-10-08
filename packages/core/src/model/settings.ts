@@ -6,6 +6,15 @@ import { IdSchema, TimestampSchema } from './common';
 export const ThemeSchema = z.enum(['system', 'light', 'dark', 'calm']);
 export type Theme = z.infer<typeof ThemeSchema>;
 
+/** Upper bound of a mascot data URL (the app downsizes pictures to 256 px before storing them). */
+export const MAX_MASCOT_IMAGE_CHARS = 300_000;
+
+/** Raster images only: an SVG could carry scripts, and the value comes from a user file. */
+export const MascotImageSchema = z
+  .string()
+  .max(MAX_MASCOT_IMAGE_CHARS)
+  .regex(/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/);
+
 /** Application settings with their defaults. Stored as key/value rows. */
 export const AppSettingsSchema = z.object({
   locale: z.enum(LOCALES).default('fr'),
@@ -18,6 +27,8 @@ export const AppSettingsSchema = z.object({
   showTimer: z.boolean().default(false),
   backupReminderDays: z.number().int().min(0).max(365).default(14),
   lastBackupAt: TimestampSchema.optional(),
+  /** Personal mascot of the calm theme: a small raster image (data URL), '' = default mascot. */
+  mascotImage: z.union([z.literal(''), MascotImageSchema]).default(''),
 });
 export type AppSettings = z.infer<typeof AppSettingsSchema>;
 export type SettingKey = keyof AppSettings;

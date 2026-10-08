@@ -600,7 +600,13 @@
     "about": "About",
     "aboutText": "{{app}} is free software (MIT license) for spaced repetition.",
     "privacy": "No data is sent anywhere: no account, no telemetry.",
-    "sync": "Sync"
+    "sync": "Sync",
+    "mascot": "Calm theme mascot",
+    "mascotHelp": "By default, Pétale the little cloud-sheep. You can use a picture of your own: it is downsized, stays in your browser and is never published.",
+    "mascotChoose": "Choose a picture",
+    "mascotReset": "Back to Pétale",
+    "mascotSaved": "Mascot saved.",
+    "mascotError": "This picture could not be used (accepted formats: PNG, JPEG, WebP, GIF)."
   },
   "guide": {
     "title": "AI guide"
@@ -617,6 +623,17 @@
     "unset": "This copy of {{app}} names no publisher. If you put it online yourself, you are its publisher: set the `VITE_LEGAL_*` variables at build time (see docs/SELF_HOSTING.md).",
     "licenses": "Third-party licenses (full text)",
     "source": "Source code of this version"
+  },
+  "calm": {
+    "mascotAlt": "Your mascot",
+    "tip0": "One card at a time, nice and gently.",
+    "tip1": "Breathe. You are doing well.",
+    "tip2": "Even five minutes count.",
+    "tip3": "Flowers grow slowly, and so does memory.",
+    "tip4": "Take your time, I’ll wait right here.",
+    "tip5": "A cup of tea, then shall we go on?",
+    "tip6": "Every review is a seed planted.",
+    "done": "The garden is watered for today. Rest well!"
   },
   "import": {
     "open": "Import with AI",

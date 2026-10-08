@@ -42,7 +42,7 @@ for (const scheme of ['light', 'dark', 'calm'] as const) {
     await importNotes(page);
     if (scheme === 'calm') {
       await page.goto('./#/settings');
-      await page.getByLabel('Thème').selectOption('calm');
+      await page.getByLabel('Thème', { exact: true }).selectOption('calm');
       await expect(page.locator('html')).toHaveClass(/theme-calm/);
     }
     for (const [route, label] of [

@@ -73,14 +73,6 @@
   font-family: var(--font-sans);
 }
 
-.theme-calm .app-shell {
-  /* A barely visible wash of colour, like watercolour paper. */
-  background-image:
-    radial-gradient(60rem 40rem at 10% -10%, #efe9f7 0%, transparent 60%),
-    radial-gradient(50rem 35rem at 110% 10%, #eaf3ec 0%, transparent 55%);
-  background-attachment: fixed;
-}
-
 /* Header and bottom bar: paper tone instead of pure white. */
 .theme-calm header,
 .theme-calm nav.fixed {
@@ -92,4 +84,61 @@
   box-shadow:
     0 1px 2px rgb(70 63 53 / 0.04),
     0 6px 20px -8px rgb(70 63 53 / 0.12);
+}
+
+/* Little flowers scattered on the page (original drawing). */
+.theme-calm .app-shell {
+  background-image:
+    url('data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27280%27%20height%3D%27280%27%20viewBox%3D%270%200%20280%20280%27%3E%3Cg%20opacity%3D%270.32%27%20stroke%3D%27%23463f35%27%20stroke-width%3D%270.7%27%3E%3Cg%20transform%3D%27translate(30%2040)%20scale(0.9)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(72)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(144)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(216)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(288)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(150%2025)%20scale(0.6)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(60)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(120)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(180)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(240)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(300)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(235%2095)%20scale(0.8)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23f7e3a1%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(72)%27%20fill%3D%27%23f7e3a1%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(144)%27%20fill%3D%27%23f7e3a1%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(216)%27%20fill%3D%27%23f7e3a1%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(288)%27%20fill%3D%27%23f7e3a1%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(90%20140)%20scale(0.55)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23c5dcea%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(72)%27%20fill%3D%27%23c5dcea%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(144)%27%20fill%3D%27%23c5dcea%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(216)%27%20fill%3D%27%23c5dcea%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(288)%27%20fill%3D%27%23c5dcea%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(200%20200)%20scale(0.95)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23f6cdb0%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(60)%27%20fill%3D%27%23f6cdb0%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(120)%27%20fill%3D%27%23f6cdb0%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(180)%27%20fill%3D%27%23f6cdb0%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(240)%27%20fill%3D%27%23f6cdb0%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(300)%27%20fill%3D%27%23f6cdb0%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(40%20235)%20scale(0.65)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(72)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(144)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(216)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(288)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(130%20255)%20scale(0.5)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(72)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(144)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(216)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(288)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'),
+    radial-gradient(60rem 40rem at 10% -10%, #efe9f7 0%, transparent 60%),
+    radial-gradient(50rem 35rem at 110% 10%, #eaf3ec 0%, transparent 55%);
+  background-size:
+    280px 280px,
+    auto,
+    auto;
+}
+
+/* Comic-strip touches: hand-drawn panel outlines and speech bubbles in ink. */
+.theme-calm .rounded-xl.border.border-slate-200,
+.calm-sketch {
+  border: 2px solid var(--color-slate-700);
+  border-radius: 18px 26px 20px 24px / 24px 18px 26px 20px;
+}
+.calm-bubble {
+  position: relative;
+  background: #fffdf8;
+  color: var(--color-slate-800);
+  border: 2px solid var(--color-slate-700);
+  border-radius: 22px 28px 24px 20px / 20px 24px 28px 22px;
+  font-weight: 600;
+}
+.calm-bubble::before,
+.calm-bubble::after {
+  content: '';
+  position: absolute;
+  left: -14px;
+  bottom: 10px;
+  border-style: solid;
+  border-color: transparent var(--color-slate-700) transparent transparent;
+  border-width: 9px 14px 9px 0;
+}
+.calm-bubble::after {
+  left: -10px;
+  border-color: transparent #fffdf8 transparent transparent;
+}
+
+/* A small bouquet in the corner of the study card. */
+.theme-calm article {
+  position: relative;
+}
+.theme-calm article::after {
+  content: '';
+  position: absolute;
+  top: -16px;
+  right: -12px;
+  width: 44px;
+  height: 44px;
+  background: url('data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2744%27%20height%3D%2744%27%20viewBox%3D%27-22%20-22%2044%2044%27%3E%3Cg%20stroke%3D%27%23463f35%27%20stroke-width%3D%270.9%27%3E%3Cg%20transform%3D%27translate(0%200)%20scale(1.4)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(72)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(144)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(216)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(288)%27%20fill%3D%27%23f2b8c6%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(13%2012)%20scale(0.7)%27%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(0)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(60)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(120)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(180)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(240)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Cellipse%20cx%3D%270%27%20cy%3D%27-6%27%20rx%3D%273.6%27%20ry%3D%275.6%27%20transform%3D%27rotate(300)%27%20fill%3D%27%23cacbe8%27%2F%3E%3Ccircle%20r%3D%273%27%20fill%3D%27%23f2c96b%27%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')
+    no-repeat center / contain;
+  pointer-events: none;
 }

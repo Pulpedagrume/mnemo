@@ -8,8 +8,11 @@ le [versionnage sémantique](https://semver.org/lang/fr/).
 
 ### Ajouté
 
-- Thème « Doux » (Réglages → Thème) : couleurs pastel sur fond papier crème, formes plus
-  arrondies, transitions plus lentes ; contrastes WCAG AA vérifiés sur tous les écrans.
+- Thème « Doux » (Réglages → Thème) : couleurs pastel sur fond papier crème semé de petites
+  fleurs, contours dessinés façon bande dessinée, guirlande de fleurs, transitions plus lentes,
+  et Pétale, une mascotte originale (petit mouton-nuage) qui donne un conseil apaisant chaque jour
+  et félicite en fin de session. La mascotte peut être remplacée par une image personnelle, qui
+  reste dans le navigateur. Contrastes WCAG AA vérifiés sur tous les écrans.
 
 ## [0.1.1] - 2026-10-09
 

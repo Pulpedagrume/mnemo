@@ -57,7 +57,7 @@ test('exports a backup and restores it', async ({ page }) => {
   await expect(page.getByText('Aucune note ne correspond à ces critères.')).toBeVisible();
 
   await page.goto('./#/settings');
-  await page.locator('input[type=file]').setInputFiles({
+  await page.getByLabel('Restaurer une sauvegarde').setInputFiles({
     name: 'backup.zip',
     mimeType: 'application/zip',
     buffer: readFileSync(path),

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { BarChart3, Layers, Search, Settings, SlidersHorizontal } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { APP_NAME } from '@mnemo/core';
+import { FlowerGarland } from '../components/calm/Flower';
 import { focusRing } from '../components/ui/Button';
 import { Toaster } from '../components/ui/Toaster';
 import { StorageWarning } from './StorageWarning';
@@ -66,6 +67,7 @@ export function AppShell() {
         <Outlet />
       </main>
       <footer className="mx-auto max-w-5xl px-4 pb-24 text-sm text-slate-600 sm:pb-6 dark:text-slate-400">
+        <FlowerGarland className="mb-3" />
         <Link to="/legal" className={`underline ${focusRing}`}>
           {t('legal.link')}
         </Link>

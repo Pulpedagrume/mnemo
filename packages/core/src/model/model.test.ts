@@ -8,6 +8,7 @@ import {
   DEFAULT_BEHAVIOR,
   DEFAULT_LIMITS,
   DEFAULT_SETTINGS,
+  MAX_MASCOT_IMAGE_CHARS,
   NoteDataSchema,
   NoteSchema,
   blankMemory,
@@ -69,6 +70,21 @@ describe('settings', () => {
     expect(s.theme).toBe('dark');
     expect(s.rolloverHour).toBe(4);
     expect('unknown' in s).toBe(false);
+  });
+
+  it('only accepts small raster data URLs as mascot image', () => {
+    const png = 'data:image/png;base64,iVBORw0KGgo=';
+    const rows = (value: unknown) => [{ key: 'mascotImage', value, updatedAt: 1 }];
+    expect(DEFAULT_SETTINGS.mascotImage).toBe('');
+    expect(settingsFromRows(rows(png)).mascotImage).toBe(png);
+    for (const bad of [
+      'data:image/svg+xml;base64,PHN2Zz4=',
+      'https://example.com/a.png',
+      'data:image/png;base64,<script>',
+      `data:image/png;base64,${'A'.repeat(MAX_MASCOT_IMAGE_CHARS)}`,
+    ]) {
+      expect(settingsFromRows(rows(bad)).mascotImage).toBe('');
+    }
   });
 });
 

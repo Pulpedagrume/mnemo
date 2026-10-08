@@ -617,7 +617,13 @@
     "about": "À propos",
     "aboutText": "{{app}} est un logiciel libre (licence MIT) de répétition espacée.",
     "privacy": "Aucune donnée n’est envoyée : pas de compte, pas de télémétrie.",
-    "sync": "Synchronisation"
+    "sync": "Synchronisation",
+    "mascot": "Mascotte du thème Doux",
+    "mascotHelp": "Par défaut, Pétale le petit mouton-nuage. Tu peux mettre une image à toi : elle est réduite, reste dans ton navigateur et n’est jamais publiée.",
+    "mascotChoose": "Choisir une image",
+    "mascotReset": "Revenir à Pétale",
+    "mascotSaved": "Mascotte enregistrée.",
+    "mascotError": "Cette image n’a pas pu être utilisée (formats acceptés : PNG, JPEG, WebP, GIF)."
   },
   "guide": {
     "title": "Guide IA"
@@ -634,6 +640,17 @@
     "unset": "Cette copie de {{app}} n’indique pas d’éditeur. Si vous la mettez en ligne vous-même, vous en êtes l’éditeur : renseignez les variables `VITE_LEGAL_*` au moment du build (voir docs/SELF_HOSTING.md).",
     "licenses": "Licences des composants tiers (texte intégral)",
     "source": "Code source de cette version"
+  },
+  "calm": {
+    "mascotAlt": "Ta mascotte",
+    "tip0": "Une carte à la fois, tout doucement.",
+    "tip1": "Respire. Tu avances bien.",
+    "tip2": "Même cinq minutes, ça compte.",
+    "tip3": "Les fleurs poussent lentement, la mémoire aussi.",
+    "tip4": "Prends ton temps, je t’attends ici.",
+    "tip5": "Une petite tisane, puis on reprend ?",
+    "tip6": "Chaque révision est une graine plantée.",
+    "done": "Le jardin est arrosé pour aujourd’hui. Repose-toi bien !"
   },
   "import": {
     "open": "Importer avec l’IA",

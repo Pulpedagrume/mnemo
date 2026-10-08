@@ -771,6 +771,8 @@
     "dropHere": "Drop the AI’s file here (.md, .yaml, .json, .csv, .zip) or an Anki package (.apkg).",
     "chooseFile": "Choose a file",
     "pasteLabel": "Or paste the AI’s answer",
+    "pasteHelp": "No length limit: paste the whole answer, even a very long one.",
+    "pasteCount": "{{chars}} characters, {{lines}} lines pasted. No length limit.",
     "analyse": "Analyse",
     "analysing": "Analysing…",
     "history": "Import history",

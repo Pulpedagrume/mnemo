@@ -6,6 +6,12 @@ le [versionnage sémantique](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+### Modifié
+
+- Import : la zone « Ou colle la réponse de l’IA » s’agrandit avec le texte collé et affiche le
+  nombre de caractères et de lignes, pour montrer que les longues réponses ne sont pas coupées
+  (il n’y a aucune limite de longueur).
+
 ## [0.1.0] - 2026-10-07
 
 Première version publique.

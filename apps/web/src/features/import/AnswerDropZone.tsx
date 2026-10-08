@@ -12,7 +12,7 @@ interface Props {
 
 /** "I have the AI's answer": drop or pick a file, or paste the text. */
 export function AnswerDropZone({ busy, onFile, onText }: Props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const id = useId();
   const fileRef = useRef<HTMLInputElement>(null);
   const [text, setText] = useState('');
@@ -70,13 +70,23 @@ export function AnswerDropZone({ busy, onFile, onText }: Props) {
       </label>
       <textarea
         id={`${id}-paste`}
-        rows={6}
-        className={`${inputClass} font-mono text-sm`}
+        rows={10}
+        aria-describedby={`${id}-paste-help`}
+        // Grows with the pasted answer (where supported) so long answers do not look cut off.
+        className={`${inputClass} field-sizing-content max-h-[60vh] min-h-48 font-mono text-sm`}
         value={text}
         onChange={(e) => {
           setText(e.target.value);
         }}
       />
+      <p id={`${id}-paste-help`} className="text-sm text-slate-600 dark:text-slate-400">
+        {text
+          ? t('wizard.pasteCount', {
+              chars: text.length.toLocaleString(i18n.language),
+              lines: text.split('\n').length.toLocaleString(i18n.language),
+            })
+          : t('wizard.pasteHelp')}
+      </p>
       <Button
         variant="primary"
         className="self-start"

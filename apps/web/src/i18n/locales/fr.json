@@ -797,6 +797,8 @@
     "dropHere": "Glisse ici le fichier de l’IA (.md, .yaml, .json, .csv, .zip) ou un paquet Anki (.apkg).",
     "chooseFile": "Choisir un fichier",
     "pasteLabel": "Ou colle la réponse de l’IA",
+    "pasteHelp": "Pas de limite de longueur : colle la réponse complète, même très longue.",
+    "pasteCount": "{{chars}} caractères, {{lines}} lignes collés. Pas de limite de longueur.",
     "analyse": "Analyser",
     "analysing": "Analyse en cours…",
     "history": "Historique des imports",

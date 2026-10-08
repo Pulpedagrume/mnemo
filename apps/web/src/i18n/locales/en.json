@@ -571,7 +571,8 @@
     "themes": {
       "system": "Same as system",
       "light": "Light",
-      "dark": "Dark"
+      "dark": "Dark",
+      "calm": "Calm (soft pastels)"
     },
     "textSize": "Text size",
     "showTimer": "Show a timer while studying",

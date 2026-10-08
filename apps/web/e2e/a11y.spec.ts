@@ -34,12 +34,17 @@ async function importNotes(page: Page): Promise<void> {
   await expect(page.getByRole('heading', { name: 'Import réussi' })).toBeVisible();
 }
 
-for (const scheme of ['light', 'dark'] as const) {
+for (const scheme of ['light', 'dark', 'calm'] as const) {
   test(`A7 — every screen passes WCAG AA checks (${scheme})`, async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'chromium', 'Desktop only');
-    await page.emulateMedia({ colorScheme: scheme });
+    await page.emulateMedia({ colorScheme: scheme === 'dark' ? 'dark' : 'light' });
     await openApp(page);
     await importNotes(page);
+    if (scheme === 'calm') {
+      await page.goto('./#/settings');
+      await page.getByLabel('Thème').selectOption('calm');
+      await expect(page.locator('html')).toHaveClass(/theme-calm/);
+    }
     for (const [route, label] of [
       ['./', 'decks'],
       ['./#/browse', 'browse'],

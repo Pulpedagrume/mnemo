@@ -1,0 +1,95 @@
+/*
+ * "Calm" theme: a light theme with warm paper tones, a dusty lavender accent, rounder shapes and
+ * slower transitions. It only overrides Tailwind's theme variables, so every component follows
+ * without per-component classes. All text/background pairs used by the app keep a WCAG AA
+ * contrast (checked by the a11y e2e test).
+ */
+.theme-calm {
+  /* Neutrals: warm paper instead of cool slate. */
+  --color-slate-50: #fbf8f2;
+  --color-slate-100: #f4eee4;
+  --color-slate-200: #e8e0d2;
+  --color-slate-300: #d6ccbb;
+  --color-slate-400: #b0a593;
+  --color-slate-500: #706656;
+  --color-slate-600: #5c5346;
+  --color-slate-700: #463f35;
+  --color-slate-800: #352f28;
+  --color-slate-900: #28231e;
+  --color-slate-950: #1b1814;
+
+  /* Accent: dusty lavender instead of indigo. */
+  --color-indigo-50: #f2f2fa;
+  --color-indigo-100: #e4e4f4;
+  --color-indigo-200: #cacbe8;
+  --color-indigo-300: #a9abd6;
+  --color-indigo-400: #8789bf;
+  --color-indigo-500: #6c6ea8;
+  --color-indigo-600: #585a92;
+  --color-indigo-700: #484a7a;
+  --color-indigo-800: #3b3d64;
+  --color-indigo-900: #313352;
+  --color-indigo-950: #1f2036;
+
+  /* Feedback colours, softened: sage, rose, honey. */
+  --color-emerald-50: #f1f6f0;
+  --color-emerald-100: #e0ecdd;
+  --color-emerald-600: #4f7a52;
+  --color-emerald-700: #3f6443;
+  --color-emerald-800: #345237;
+  --color-emerald-900: #2b432e;
+  --color-emerald-950: #1a2a1c;
+  --color-red-50: #fbf1ef;
+  --color-red-100: #f6e1dc;
+  --color-red-300: #e3a99b;
+  --color-red-600: #a5524a;
+  --color-red-700: #8c443d;
+  --color-red-800: #733833;
+  --color-red-900: #5e2f2b;
+  --color-red-950: #3a1b18;
+  --color-amber-50: #fcf6ea;
+  --color-amber-100: #f7ebcf;
+  --color-amber-300: #e8c98a;
+  --color-amber-400: #dcb46a;
+  --color-amber-500: #c69a48;
+  --color-amber-600: #a77d32;
+  --color-amber-800: #6e5221;
+  --color-amber-900: #5a431c;
+  --color-amber-950: #3a2b12;
+  /* Counters and the "Easy" button: muted blue and clay instead of saturated tones. */
+  --color-blue-700: #3f5f8a;
+  --color-sky-600: #5a86a3;
+  --color-sky-900: #2c4a5c;
+  --color-orange-700: #9a5a2e;
+
+  /* Rounder shapes, slower and gentler motion. */
+  --radius-lg: 0.85rem;
+  --radius-xl: 1.25rem;
+  --default-transition-duration: 350ms;
+  --default-transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  --font-sans:
+    ui-rounded, 'SF Pro Rounded', 'Nunito', 'Quicksand', 'Segoe UI', system-ui, sans-serif;
+
+  font-family: var(--font-sans);
+}
+
+.theme-calm .app-shell {
+  /* A barely visible wash of colour, like watercolour paper. */
+  background-image:
+    radial-gradient(60rem 40rem at 10% -10%, #efe9f7 0%, transparent 60%),
+    radial-gradient(50rem 35rem at 110% 10%, #eaf3ec 0%, transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Header and bottom bar: paper tone instead of pure white. */
+.theme-calm header,
+.theme-calm nav.fixed {
+  background-color: rgb(251 248 242 / 0.92);
+}
+
+/* Cards and panels: soft shadow instead of crisp borders. */
+.theme-calm .rounded-xl.border {
+  box-shadow:
+    0 1px 2px rgb(70 63 53 / 0.04),
+    0 6px 20px -8px rgb(70 63 53 / 0.12);
+}

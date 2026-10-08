@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './theme-calm.css';
 
 /* Dark mode follows a `.dark` class on <html>, set from the theme setting (light/dark/system). */
 @custom-variant dark (&:where(.dark, .dark *));

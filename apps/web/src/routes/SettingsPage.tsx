@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import type { AppSettings } from '@mnemo/core';
-import { APP_NAME, APP_SLUG, LOCALES } from '@mnemo/core';
+import { APP_NAME, APP_SLUG, LOCALES, ThemeSchema } from '@mnemo/core';
 import { createBackupZip, getSettings, restoreBackupZip, updateSettings } from '@mnemo/services';
 import { useMutation, useQuery, useServices } from '../app/services';
 import { errorMessage } from '../app/errors';
@@ -99,7 +99,7 @@ export function SettingsPage() {
                     set({ theme: e.target.value as AppSettings['theme'] });
                   }}
                 >
-                  {(['system', 'light', 'dark'] as const).map((v) => (
+                  {ThemeSchema.options.map((v) => (
                     <option key={v} value={v}>
                       {t(`settings.themes.${v}`)}
                     </option>

@@ -586,7 +586,8 @@
     "themes": {
       "system": "Comme le système",
       "light": "Clair",
-      "dark": "Sombre"
+      "dark": "Sombre",
+      "calm": "Doux (pastel, apaisant)"
     },
     "textSize": "Taille du texte",
     "showTimer": "Afficher un chronomètre pendant l’étude",

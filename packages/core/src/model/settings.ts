@@ -2,7 +2,8 @@ import { z } from 'zod';
 import { LOCALES } from '../i18n';
 import { IdSchema, TimestampSchema } from './common';
 
-export const ThemeSchema = z.enum(['system', 'light', 'dark']);
+/** `calm`: light theme with soft pastel colours, rounder shapes and slower transitions. */
+export const ThemeSchema = z.enum(['system', 'light', 'dark', 'calm']);
 export type Theme = z.infer<typeof ThemeSchema>;
 
 /** Application settings with their defaults. Stored as key/value rows. */

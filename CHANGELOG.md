@@ -6,6 +6,11 @@ le [versionnage sémantique](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+### Ajouté
+
+- Thème « Doux » (Réglages → Thème) : couleurs pastel sur fond papier crème, formes plus
+  arrondies, transitions plus lentes ; contrastes WCAG AA vérifiés sur tous les écrans.
+
 ## [0.1.1] - 2026-10-09
 
 ### Modifié

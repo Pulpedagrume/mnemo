@@ -41,7 +41,7 @@ export function AppShell() {
     </li>
   ));
   return (
-    <div className="min-h-dvh bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="app-shell min-h-dvh bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <a
         href="#main"
         className="sr-only z-50 rounded bg-indigo-700 px-3 py-2 text-white focus:not-sr-only focus:fixed focus:top-2 focus:left-2"

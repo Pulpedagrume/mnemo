@@ -298,3 +298,11 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
 - **Conséquences** : `frame-ancestors` n’est pas applicable en `<meta>` (risque de
   clickjacking faible : aucune action sensible sans serveur) ; une copie publiée par un tiers
   affiche « éditeur non renseigné » tant que ces variables ne sont pas définies.
+
+## ADR-039 — Thème « Doux » par surcharge des variables Tailwind
+
+- **Décision** : le thème `calm` est un thème clair qui redéfinit les variables de couleur,
+  d’arrondi et de transition de Tailwind sous la classe `.theme-calm` (`theme-calm.css`), sans
+  toucher aux composants. Les contrastes AA sont vérifiés par le test e2e A7.
+- **Conséquences** : un nouveau thème = un fichier CSS et une valeur de `ThemeSchema`. Aucun
+  personnage ni élément graphique protégé (droit d’auteur, marques) n’est utilisé.

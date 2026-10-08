@@ -3,9 +3,9 @@
 **Configurable spaced repetition, with AI-friendly import.** Turn a whole course into reliable
 review cards with any AI, study offline, and sync your devices through your own server.
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/Pulpedagrume/mnemo/actions/workflows/ci.yml/badge.svg)](https://github.com/Pulpedagrume/mnemo/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/OWNER/REPO?include_prereleases)](https://github.com/OWNER/REPO/releases)
+[![Version](https://img.shields.io/github/v/release/Pulpedagrume/mnemo?include_prereleases)](https://github.com/Pulpedagrume/mnemo/releases)
 
 _Version française : [README.md](README.md)._
 
@@ -65,7 +65,7 @@ course (PDF, text) ──► Mnemo writes the prompt ──► your AI ──►
 
 ### 1. In the browser (nothing to install)
 
-Open the version published on GitHub Pages (`https://OWNER.github.io/REPO/`), then “Install app”
+Open the version published on GitHub Pages (`https://pulpedagrume.github.io/mnemo/`), then “Install app”
 in your browser to use it offline. Your data stays in your browser; remember to back up
 (Settings → Backup).
 
@@ -74,7 +74,7 @@ in your browser to use it offline. Your data stays in your browser; remember to 
 Requirements: Node.js 22.13+ and pnpm 9.
 
 ```bash
-git clone https://github.com/OWNER/REPO.git mnemo && cd mnemo
+git clone https://github.com/Pulpedagrume/mnemo.git mnemo && cd mnemo
 pnpm install
 pnpm build
 node apps/cli/dist/index.mjs serve        # http://127.0.0.1:8787, data in ~/.mnemo

@@ -4,9 +4,9 @@
 entier en cartes de révision fiables avec n’importe quelle IA, révisez hors ligne, et
 synchronisez vos appareils avec votre propre serveur.
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/Pulpedagrume/mnemo/actions/workflows/ci.yml/badge.svg)](https://github.com/Pulpedagrume/mnemo/actions/workflows/ci.yml)
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/OWNER/REPO?include_prereleases)](https://github.com/OWNER/REPO/releases)
+[![Version](https://img.shields.io/github/v/release/Pulpedagrume/mnemo?include_prereleases)](https://github.com/Pulpedagrume/mnemo/releases)
 
 _English version: [README.en.md](README.en.md)._
 
@@ -70,7 +70,7 @@ cours (PDF, texte) ──► Mnemo écrit le prompt ──► votre IA ──►
 
 ### 1. Dans le navigateur (sans installation)
 
-Ouvrez la version publiée sur GitHub Pages (`https://OWNER.github.io/REPO/`), puis
+Ouvrez la version publiée sur GitHub Pages (`https://pulpedagrume.github.io/mnemo/`), puis
 « Installer l’application » dans le navigateur pour l’utiliser hors ligne. Vos données restent
 dans votre navigateur ; pensez aux sauvegardes (Réglages → Sauvegarde).
 
@@ -79,7 +79,7 @@ dans votre navigateur ; pensez aux sauvegardes (Réglages → Sauvegarde).
 Prérequis : Node.js 22.13+ et pnpm 9.
 
 ```bash
-git clone https://github.com/OWNER/REPO.git mnemo && cd mnemo
+git clone https://github.com/Pulpedagrume/mnemo.git mnemo && cd mnemo
 pnpm install
 pnpm build
 node apps/cli/dist/index.mjs serve        # http://127.0.0.1:8787, données dans ~/.mnemo

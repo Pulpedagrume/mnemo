@@ -1,8 +1,8 @@
-# Owners reviewed automatically on pull requests. Replace @OWNER with the maintainers' handles.
-*                       @OWNER
-/packages/core/         @OWNER
-/packages/importers/    @OWNER
-/packages/prompts/      @OWNER
-/prompts/               @OWNER
-/apps/server/           @OWNER
-/.github/               @OWNER
+# Owners requested automatically as reviewers on pull requests.
+*                       @Pulpedagrume
+/packages/core/         @Pulpedagrume
+/packages/importers/    @Pulpedagrume
+/packages/prompts/      @Pulpedagrume
+/prompts/               @Pulpedagrume
+/apps/server/           @Pulpedagrume
+/.github/               @Pulpedagrume

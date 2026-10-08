@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 // Relative import: the config is loaded by Node, which cannot resolve the workspace's TS sources.
 import { APP_NAME } from '../../packages/core/src/app.ts';
+import { securityHeadersPlugin, thirdPartyNoticesPlugin } from './vite.plugins.ts';
 
 /** Injects APP_NAME into index.html so a rename touches a single constant. */
 function appNamePlugin(): Plugin {
@@ -50,6 +51,8 @@ export default defineConfig({
     tailwindcss(),
     appNamePlugin(),
     schemaPlugin(),
+    securityHeadersPlugin(),
+    thirdPartyNoticesPlugin(),
     VitePWA({
       // Never reload on its own: the app shows a "new version" prompt (see ReloadPrompt).
       registerType: 'prompt',

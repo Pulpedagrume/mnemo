@@ -49,6 +49,7 @@ for (const scheme of ['light', 'dark'] as const) {
       ['./#/import', 'import'],
       ['./#/guide', 'guide'],
       ['./#/notes/new', 'editor'],
+      ['./#/legal', 'legal'],
     ] as const) {
       await page.goto(route);
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();

@@ -604,6 +604,19 @@
   "guide": {
     "title": "AI guide"
   },
+  "legal": {
+    "title": "Legal notice and privacy",
+    "link": "Legal notice and privacy",
+    "identityTitle": "Publisher and host",
+    "publisher": "**Publisher**: {{value}}.",
+    "anonymity": "This site is published by an individual acting in a non-professional capacity who, as allowed by French law (LCEN), chose to remain anonymous; their identification details have been given to the host.",
+    "contact": "**Contact**: {{value}}",
+    "host": "**Host**: {{value}}",
+    "hostPrivacy": "**Host privacy policy**: {{value}}",
+    "unset": "This copy of {{app}} names no publisher. If you put it online yourself, you are its publisher: set the `VITE_LEGAL_*` variables at build time (see docs/SELF_HOSTING.md).",
+    "licenses": "Third-party licenses (full text)",
+    "source": "Source code of this version"
+  },
   "import": {
     "open": "Import with AI",
     "title": "Import with AI",

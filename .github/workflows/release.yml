@@ -78,6 +78,12 @@ jobs:
       - run: pnpm --filter @mnemo/web build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+          # Legal notice (docs/SELF_HOSTING.md); override with repository variables if needed.
+          VITE_LEGAL_PUBLISHER: ${{ vars.LEGAL_PUBLISHER || github.repository_owner }}
+          VITE_LEGAL_CONTACT: ${{ vars.LEGAL_CONTACT || format('{0}/{1}/issues', github.server_url, github.repository) }}
+          VITE_LEGAL_HOST: GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA
+          VITE_LEGAL_HOST_PRIVACY: https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement
+          VITE_SOURCE_URL: ${{ format('{0}/{1}/tree/{2}', github.server_url, github.repository, github.ref_name) }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: apps/web/dist

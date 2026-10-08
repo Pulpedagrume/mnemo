@@ -243,7 +243,8 @@ describe('HTTP hardening and static files', () => {
     const csp = String(index.headers['content-security-policy']);
     expect(csp).toContain("script-src 'self'");
     expect(csp).toContain("frame-ancestors 'none'");
-    expect(csp).not.toMatch(/script-src[^;]*unsafe/);
+    // Only WebAssembly compilation (sql.js) is allowed, never inline scripts or JS eval.
+    expect(csp).not.toMatch(/script-src[^;]*'unsafe-(inline|eval)'/);
     expect(index.headers['x-content-type-options']).toBe('nosniff');
     expect(index.headers['referrer-policy']).toBe('no-referrer');
     expect(index.headers['strict-transport-security']).toBeUndefined();

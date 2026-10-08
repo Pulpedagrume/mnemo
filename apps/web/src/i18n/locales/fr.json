@@ -621,6 +621,19 @@
   "guide": {
     "title": "Guide IA"
   },
+  "legal": {
+    "title": "Mentions légales et confidentialité",
+    "link": "Mentions légales et confidentialité",
+    "identityTitle": "Éditeur et hébergement",
+    "publisher": "**Éditeur** : {{value}}.",
+    "anonymity": "Le site est édité par une personne physique à titre non professionnel qui, conformément à la loi pour la confiance dans l’économie numérique (LCEN), a choisi de garder l’anonymat ; ses éléments d’identification ont été communiqués à l’hébergeur.",
+    "contact": "**Contact** : {{value}}",
+    "host": "**Hébergeur** : {{value}}",
+    "hostPrivacy": "**Politique de confidentialité de l’hébergeur** : {{value}}",
+    "unset": "Cette copie de {{app}} n’indique pas d’éditeur. Si vous la mettez en ligne vous-même, vous en êtes l’éditeur : renseignez les variables `VITE_LEGAL_*` au moment du build (voir docs/SELF_HOSTING.md).",
+    "licenses": "Licences des composants tiers (texte intégral)",
+    "source": "Code source de cette version"
+  },
   "import": {
     "open": "Importer avec l’IA",
     "title": "Importer avec l’IA",

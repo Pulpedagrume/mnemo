@@ -90,6 +90,10 @@ export function createAppRouter() {
           path: 'guide',
           lazy: async () => ({ Component: (await import('./routes/GuidePage')).GuidePage }),
         },
+        {
+          path: 'legal',
+          lazy: async () => ({ Component: (await import('./routes/LegalPage')).LegalPage }),
+        },
         { path: '*', element: <NotFound /> },
       ],
     },

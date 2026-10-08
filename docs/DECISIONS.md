@@ -284,3 +284,17 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
 - **Conséquences** : à l’export, les types sans équivalent Anki (QCM, appariement…) deviennent
   des cartes Basic (une note par carte) ; les identifiants Anki portent le préfixe `mnemo:` pour
   retrouver l’`uid` au réimport. Le WASM n’est pas précaché (téléchargé au premier usage).
+
+## ADR-038 — Publication du site statique : CSP en `<meta>`, mentions légales, licences tierces
+
+- **Contexte** : GitHub Pages est gratuit mais ne permet pas de définir d’en-têtes HTTP ; un site
+  public en France doit afficher des mentions légales ; les licences MIT/BSD des dépendances
+  imposent de distribuer leurs notices avec le code compilé.
+- **Décision** : le build ajoute une CSP stricte en `<meta>` (`'wasm-unsafe-eval'` pour sql.js,
+  aussi ajouté à la CSP du serveur) et `referrer: no-referrer` ; la page `#/legal` affiche
+  éditeur, hébergeur et informations RGPD à partir de variables `VITE_LEGAL_*` fixées par le
+  workflow de release (éditeur anonyme non professionnel par défaut, hébergeur GitHub, Inc.) ; le
+  build émet `third-party-licenses.txt` à partir de `pnpm licenses list --prod`.
+- **Conséquences** : `frame-ancestors` n’est pas applicable en `<meta>` (risque de
+  clickjacking faible : aucune action sensible sans serveur) ; une copie publiée par un tiers
+  affiche « éditeur non renseigné » tant que ces variables ne sont pas définies.

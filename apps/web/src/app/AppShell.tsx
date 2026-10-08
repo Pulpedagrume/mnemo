@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router';
+import { Link, NavLink, Outlet } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { BarChart3, Layers, Search, Settings, SlidersHorizontal } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -62,13 +62,14 @@ export function AppShell() {
         </div>
       </header>
       <StorageWarning />
-      <main
-        id="main"
-        tabIndex={-1}
-        className="mx-auto max-w-5xl px-4 pt-4 pb-24 outline-none sm:pb-8"
-      >
+      <main id="main" tabIndex={-1} className="mx-auto max-w-5xl px-4 pt-4 pb-8 outline-none">
         <Outlet />
       </main>
+      <footer className="mx-auto max-w-5xl px-4 pb-24 text-sm text-slate-600 sm:pb-6 dark:text-slate-400">
+        <Link to="/legal" className={`underline ${focusRing}`}>
+          {t('legal.link')}
+        </Link>
+      </footer>
       <nav
         aria-label={t('nav.main')}
         className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)] sm:hidden dark:border-slate-800 dark:bg-slate-900"

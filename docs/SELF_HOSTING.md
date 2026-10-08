@@ -15,6 +15,7 @@ données chez vous.
 - [Sauvegarde et restauration](#sauvegarde-et-restauration)
 - [Mises à jour](#mises-à-jour)
 - [Configuration](#configuration)
+- [Site statique (GitHub Pages) et mentions légales](#site-statique-github-pages-et-mentions-légales)
 
 ## Les deux modes
 
@@ -175,3 +176,36 @@ Voir `.env.example` (commenté). Variables : `HOST`, `PORT`, `DATA_DIR`, `BASE_U
 `NO_AUTH`, `LOG_LEVEL`, `SMTP_*` (réservées, inutilisées pour l’instant).
 
 La documentation de l’API est servie par le serveur lui-même : `GET /api/v1/openapi.json`.
+
+## Site statique (GitHub Pages) et mentions légales
+
+L’application web seule (sans serveur) peut être publiée sur n’importe quel hébergement statique.
+Le workflow `release.yml` la publie sur GitHub Pages à chaque tag `v*`
+(`https://<compte>.github.io/<dépôt>/`).
+
+**Sécurité.** Un hébergement statique ne permet pas d’envoyer d’en-têtes : la politique de
+sécurité du contenu (CSP) est donc incluse dans `index.html` sous forme de balise `<meta>`
+(scripts du site uniquement, pas de script en ligne, pas d’`eval`, aucun appel à un tiers sauf le
+serveur de synchronisation que l’utilisateur choisit). HTTPS est imposé par `github.io`.
+
+**Obligations légales (France).** Tout site public doit afficher des mentions légales (LCEN) :
+l’éditeur et l’hébergeur. Une personne physique qui publie à titre non professionnel peut rester
+anonyme en n’indiquant que l’hébergeur, à condition que celui-ci connaisse son identité. La page
+« Mentions légales et confidentialité » (`#/legal`, liée en bas de chaque écran) est remplie au
+build avec ces variables :
+
+| variable                  | contenu                                     | valeur dans `release.yml`                                    |
+| ------------------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| `VITE_LEGAL_PUBLISHER`    | nom ou pseudonyme de l’éditeur              | variable de dépôt `LEGAL_PUBLISHER`, sinon le compte GitHub  |
+| `VITE_LEGAL_CONTACT`      | moyen de contact (URL ou e-mail)            | variable de dépôt `LEGAL_CONTACT`, sinon les issues du dépôt |
+| `VITE_LEGAL_HOST`         | nom et adresse de l’hébergeur               | GitHub, Inc.                                                 |
+| `VITE_LEGAL_HOST_PRIVACY` | politique de confidentialité de l’hébergeur | déclaration de confidentialité de GitHub                     |
+| `VITE_SOURCE_URL`         | code source de la version publiée           | le tag publié                                                |
+
+Une activité professionnelle (entreprise, association, site commercial) doit au contraire
+indiquer son identité complète (raison sociale, adresse, numéro d’immatriculation, directeur de
+la publication) : renseignez-la dans `LEGAL_PUBLISHER`.
+
+La page indique aussi que le site ne collecte aucune donnée et n’utilise aucun cookie ni traceur
+(le stockage local, strictement nécessaire, ne demande pas de consentement), et donne accès au
+texte intégral des licences tierces (`third-party-licenses.txt`, généré à chaque build).

@@ -9,7 +9,8 @@ import { ApiError } from './errors';
 /**
  * Content Security Policy of the PWA (verified against the Vite build):
  * - scripts: only same-origin files (no inline script, no eval); workers and the service worker
- *   are same-origin files too;
+ *   are same-origin files too; `'wasm-unsafe-eval'` only allows compiling WebAssembly (sql.js,
+ *   used to read Anki packages), not JavaScript eval;
  * - styles: `'unsafe-inline'` is required because KaTeX emits `style="…"` attributes in the
  *   sanitized HTML of cards and the dialog scroll lock (react-remove-scroll) injects a `<style>`
  *   element. Script execution stays strictly same-origin;
@@ -17,7 +18,7 @@ import { ApiError } from './errors';
  */
 export const CSP_DIRECTIVES = {
   defaultSrc: ["'self'"],
-  scriptSrc: ["'self'"],
+  scriptSrc: ["'self'", "'wasm-unsafe-eval'"],
   styleSrc: ["'self'", "'unsafe-inline'"],
   imgSrc: ["'self'", 'data:', 'blob:'],
   mediaSrc: ["'self'", 'data:', 'blob:'],

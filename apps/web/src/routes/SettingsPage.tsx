@@ -1,12 +1,13 @@
 import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
 import type { AppSettings } from '@mnemo/core';
 import { APP_NAME, APP_SLUG, LOCALES } from '@mnemo/core';
 import { createBackupZip, getSettings, restoreBackupZip, updateSettings } from '@mnemo/services';
 import { useMutation, useQuery, useServices } from '../app/services';
 import { errorMessage } from '../app/errors';
 import { PageTitle } from '../components/PageTitle';
-import { Button } from '../components/ui/Button';
+import { Button, focusRing } from '../components/ui/Button';
 import { ConfirmDialog } from '../components/ui/Dialog';
 import { Field, inputClass } from '../components/ui/Field';
 import { toast } from '../components/ui/Toaster';
@@ -261,6 +262,11 @@ export function SettingsPage() {
         <Section id="about" title={t('settings.about')}>
           <p>{t('settings.aboutText', { app: APP_NAME })}</p>
           <p className="text-sm text-slate-600 dark:text-slate-400">{t('settings.privacy')}</p>
+          <p>
+            <Link to="/legal" className={`underline ${focusRing}`}>
+              {t('legal.link')}
+            </Link>
+          </p>
         </Section>
       </div>
       <ConfirmDialog

@@ -39,6 +39,8 @@ Première version publique.
 - **Qualité** : plus de 1 200 tests unitaires, tests de propriétés, fuzz, tests de conformité des
   stockages, scénarios d’acceptation A1–A7 en Playwright (bureau et mobile), CI (lint, types,
   tests, e2e, licences, audit, secrets), workflow de release (GHCR, GitHub Pages).
+- **Publication** : page « Mentions légales et confidentialité », politique de sécurité du
+  contenu dans la version statique, texte intégral des licences tierces livré avec l’application.
 
 [Unreleased]: https://github.com/OWNER/REPO/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/OWNER/REPO/releases/tag/v0.1.0

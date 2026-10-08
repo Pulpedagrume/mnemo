@@ -1,6 +1,6 @@
 {
   "name": "@mnemo/storage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Repository interface with Dexie (browser) and SQLite (server/CLI) implementations.",
   "license": "MIT",

@@ -6,6 +6,8 @@ le [versionnage sémantique](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-09
+
 ### Modifié
 
 - Import : la zone « Ou colle la réponse de l’IA » s’agrandit avec le texte collé et affiche le
@@ -48,5 +50,6 @@ Première version publique.
 - **Publication** : page « Mentions légales et confidentialité », politique de sécurité du
   contenu dans la version statique, texte intégral des licences tierces livré avec l’application.
 
-[Unreleased]: https://github.com/Pulpedagrume/mnemo/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Pulpedagrume/mnemo/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Pulpedagrume/mnemo/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Pulpedagrume/mnemo/releases/tag/v0.1.0

@@ -1,6 +1,6 @@
 {
   "name": "@mnemo/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "MCP server of Mnemo: validate, import and browse flashcards from an AI assistant",
   "license": "MIT",

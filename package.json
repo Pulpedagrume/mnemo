@@ -1,6 +1,6 @@
 {
   "name": "mnemo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Configurable spaced-repetition app with AI-friendly import. Local-first, self-hostable.",
   "license": "MIT",

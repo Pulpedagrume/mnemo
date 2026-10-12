@@ -6,6 +6,8 @@ le [versionnage sémantique](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-12
+
 ### Ajouté
 
 - **Assistant IA gratuit, dans le navigateur** : pendant l’étude, un bouton « Poser une question »
@@ -69,7 +71,8 @@ Première version publique.
 - **Publication** : page « Mentions légales et confidentialité », politique de sécurité du
   contenu dans la version statique, texte intégral des licences tierces livré avec l’application.
 
-[Unreleased]: https://github.com/Pulpedagrume/mnemo/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/Pulpedagrume/mnemo/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Pulpedagrume/mnemo/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/Pulpedagrume/mnemo/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/Pulpedagrume/mnemo/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Pulpedagrume/mnemo/releases/tag/v0.1.0

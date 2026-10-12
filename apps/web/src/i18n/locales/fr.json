@@ -117,7 +117,14 @@
     "inherit": "Hériter du paquet parent",
     "description": "Description",
     "deleteTitle": "Supprimer « {{name}} » ?",
-    "deleteWarning": "Le paquet, ses sous-paquets et toutes leurs notes seront supprimés. Pensez à exporter une sauvegarde avant."
+    "deleteWarning": "Le paquet, ses sous-paquets et toutes leurs notes seront supprimés. Pensez à exporter une sauvegarde avant.",
+    "assistant": {
+      "on": "Désactiver l’assistant IA",
+      "off": "Activer l’assistant IA",
+      "inherited": "Assistant IA activé (via le paquet parent)",
+      "enabled": "Assistant IA activé pour « {{name}} ».",
+      "disabled": "Assistant IA désactivé pour « {{name}} »."
+    }
   },
   "custom": {
     "title": "Étude personnalisée",
@@ -651,6 +658,43 @@
     "tip5": "Une petite tisane, puis on reprend ?",
     "tip6": "Chaque révision est une graine plantée.",
     "done": "Le jardin est arrosé pour aujourd’hui. Repose-toi bien !"
+  },
+  "assistant": {
+    "title": "Assistant IA",
+    "open": "Poser une question à l’assistant IA",
+    "disclaimer": "Réponses générées par une IA qui tourne dans ton navigateur, à partir des cartes de ce paquet. Elles peuvent contenir des erreurs : vérifie ce qui compte.",
+    "unsupported": "Ton navigateur ne permet pas de faire tourner l’IA sur cet appareil (WebGPU indisponible). Essaie une version récente de Chrome, Edge ou Safari sur un appareil assez puissant.",
+    "consent": "Pour fonctionner sans serveur, l’assistant télécharge une fois un modèle d’IA (Qwen3.5, licence Apache-2.0) d’environ {{size}} depuis Hugging Face. Il reste ensuite dans ton navigateur et marche hors ligne ; il utilise environ {{memory}} de mémoire graphique. Tes questions et tes cartes ne quittent jamais ton appareil.",
+    "download": "Télécharger le modèle ({{size}})",
+    "downloading": "Téléchargement du modèle… (une seule fois)",
+    "loading": "Chargement du modèle…",
+    "progress": "Progression du chargement du modèle",
+    "loadError": "Le modèle n’a pas pu être chargé (connexion interrompue, mémoire insuffisante ?).",
+    "retry": "Réessayer",
+    "conversation": "Conversation avec l’assistant",
+    "empty": "Pose une question sur la carte en cours ou sur le paquet : « Explique-moi plus simplement », « Donne un moyen mnémotechnique », « Quelle différence avec… ? »",
+    "you": "Toi",
+    "aiLabel": "IA",
+    "thinking": "L’assistant réfléchit…",
+    "askError": "La réponse n’a pas pu être générée. Réessaie.",
+    "question": "Ta question",
+    "placeholder": "Entrée pour envoyer, Maj+Entrée pour aller à la ligne",
+    "send": "Envoyer",
+    "stop": "Arrêter",
+    "reset": "Nouvelle conversation",
+    "settingsIntro": "Un assistant d’IA gratuit qui répond à tes questions pendant la révision, en s’appuyant sur les cartes du paquet. Il fonctionne entièrement dans ton navigateur : rien n’est envoyé sur internet, à part le téléchargement initial du modèle.",
+    "enable": "Activer l’assistant IA",
+    "perDeck": "Active-le ensuite paquet par paquet : menu ⋮ d’un paquet → « Activer l’assistant IA » (ses sous-paquets en profitent aussi).",
+    "model": "Modèle",
+    "modelHelp": "Le modèle standard répond mieux ; le léger convient aux appareils modestes.",
+    "models": {
+      "standard": "Standard : Qwen3.5 2B (environ {{size}} Mo)",
+      "light": "Léger : Qwen3.5 0.8B (environ {{size}} Mo)"
+    },
+    "onDevice": "Modèle enregistré sur cet appareil (environ {{size}} Mo).",
+    "delete": "Supprimer de cet appareil",
+    "deleted": "Modèle supprimé de cet appareil.",
+    "deleteError": "Le modèle n’a pas pu être supprimé."
   },
   "import": {
     "open": "Importer avec l’IA",

@@ -12,6 +12,7 @@
     "e2e": "playwright test"
   },
   "dependencies": {
+    "@mlc-ai/web-llm": "0.2.86",
     "@mnemo/core": "workspace:*",
     "@mnemo/importers": "workspace:^",
     "@mnemo/prompts": "workspace:^",

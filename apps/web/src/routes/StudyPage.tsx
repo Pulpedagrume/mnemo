@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
-import { Flag, Keyboard, Undo2 } from 'lucide-react';
+import { Flag, Keyboard, MessageCircleQuestion, Undo2 } from 'lucide-react';
 import type { Rating } from '@mnemo/core';
 import { ratingsForButtons, summarizeSession } from '@mnemo/core';
-import { getSettings, nextDueAfterNow } from '@mnemo/services';
+import { deckAssistantState, getSettings, nextDueAfterNow } from '@mnemo/services';
 import { useQuery, useServices } from '../app/services';
 import { errorMessage } from '../app/errors';
+import { AssistantPanel } from '../ai/AssistantPanel';
 import { Mascot } from '../components/calm/Mascot';
 import { PageTitle } from '../components/PageTitle';
 import { Button, focusRing } from '../components/ui/Button';
@@ -82,12 +83,14 @@ function StudySession() {
   const { state } = session;
   const settings = useQuery((ctx) => getSettings(ctx), []);
   const [help, setHelp] = useState(false);
+  const [assistantOpen, setAssistantOpen] = useState(false);
+  const assistant = useQuery((ctx) => deckAssistantState(ctx, deckId), [deckId]);
   const deckName = useQuery((ctx) => ctx.repo.decks.get(deckId), [deckId]);
 
   const current = state.current;
   const ratings = current ? ratingsForButtons(current.item.preset.behavior.buttons) : [];
   useStudyShortcuts({
-    enabled: state.status !== 'loading' && state.status !== 'error' && !help,
+    enabled: state.status !== 'loading' && state.status !== 'error' && !help && !assistantOpen,
     phase: current?.phase,
     interactive: current?.rendered.interactive !== undefined,
     ratings,
@@ -261,6 +264,18 @@ function StudySession() {
               className={current.item.card.flag ? 'fill-red-600 text-red-600' : ''}
             />
           </Button>
+          {assistant.data?.allowed && (
+            <Button
+              size="sm"
+              variant="ghost"
+              aria-label={t('assistant.open')}
+              onClick={() => {
+                setAssistantOpen(true);
+              }}
+            >
+              <MessageCircleQuestion aria-hidden size={18} />
+            </Button>
+          )}
           <Button
             size="sm"
             variant="ghost"
@@ -342,6 +357,15 @@ function StudySession() {
             })}
           </div>
         </div>
+      )}
+
+      {assistant.data?.allowed && (
+        <AssistantPanel
+          open={assistantOpen}
+          onOpenChange={setAssistantOpen}
+          deckId={deckId}
+          noteId={current.item.note.id}
+        />
       )}
 
       <Dialog open={help} onOpenChange={setHelp} title={t('study.shortcuts')}>

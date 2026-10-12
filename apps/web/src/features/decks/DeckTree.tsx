@@ -8,7 +8,11 @@ import { deckLabel } from '@mnemo/core';
 import type { DeckTreeEntry } from '@mnemo/services';
 import { Button, focusRing } from '../../components/ui/Button';
 
-export type DeckAction = 'add' | 'rename' | 'options' | 'custom' | 'stats' | 'export' | 'delete';
+export type DeckAction =
+  'add' | 'rename' | 'options' | 'custom' | 'stats' | 'export' | 'delete' | 'assistant';
+
+/** AI assistant in a deck: on, off, or on because of a parent deck. */
+export type AssistantState = 'on' | 'off' | 'inherited';
 
 const COLLAPSED_KEY = 'mnemo.collapsedDecks';
 
@@ -38,9 +42,11 @@ interface RowProps {
   toggle: (id: string) => void;
   onAction: (action: DeckAction, deck: Deck) => void;
   filter: (entry: DeckTreeEntry) => boolean;
+  /** Absent when the assistant is switched off in the settings. */
+  assistant?: ((deck: Deck) => AssistantState) | undefined;
 }
 
-function DeckRow({ entry, collapsed, toggle, onAction, filter }: RowProps) {
+function DeckRow({ entry, collapsed, toggle, onAction, filter, assistant }: RowProps) {
   const { t } = useTranslation();
   const { deck } = entry.node;
   const isCollapsed = collapsed.has(deck.id);
@@ -135,6 +141,17 @@ function DeckRow({ entry, collapsed, toggle, onAction, filter }: RowProps) {
                   </DropdownMenu.Item>
                 ),
               )}
+              {assistant && (
+                <DropdownMenu.Item
+                  className={`${menuItem} data-[disabled]:cursor-default data-[disabled]:text-slate-600 dark:data-[disabled]:text-slate-400`}
+                  disabled={assistant(deck) === 'inherited'}
+                  onSelect={() => {
+                    onAction('assistant', deck);
+                  }}
+                >
+                  {t(`decks.assistant.${assistant(deck)}`)}
+                </DropdownMenu.Item>
+              )}
             </DropdownMenu.Content>
           </DropdownMenu.Portal>
         </DropdownMenu.Root>
@@ -149,6 +166,7 @@ function DeckRow({ entry, collapsed, toggle, onAction, filter }: RowProps) {
               toggle={toggle}
               onAction={onAction}
               filter={filter}
+              assistant={assistant}
             />
           ))}
         </ul>
@@ -164,10 +182,12 @@ export function DeckTree({
   entries,
   search,
   onAction,
+  assistant,
 }: {
   entries: DeckTreeEntry[];
   search: string;
   onAction: RowProps['onAction'];
+  assistant?: RowProps['assistant'];
 }) {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(loadCollapsed);
@@ -210,6 +230,7 @@ export function DeckTree({
               toggle={toggle}
               onAction={onAction}
               filter={matches}
+              assistant={assistant}
             />
           ))}
         </ul>

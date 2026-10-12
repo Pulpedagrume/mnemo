@@ -1,7 +1,7 @@
 ## Données personnelles
 
 - **Aucune collecte.** Ce site n’a ni compte, ni formulaire, ni mesure d’audience, ni publicité, et
-  il n’appelle aucun service tiers.
+  il n’appelle aucun service tiers (sauf le téléchargement facultatif du modèle d’IA, ci-dessous).
 - **Vos données restent sur votre appareil.** Paquets, cartes, historique de révision et réglages
   sont enregistrés uniquement dans votre navigateur (IndexedDB et stockage local). Ils ne quittent
   votre appareil que si vous exportez un fichier, ou si vous activez vous-même la synchronisation
@@ -12,6 +12,13 @@
 - **Journaux de l’hébergeur.** Comme pour tout site web, l’hébergeur peut enregistrer des données
   techniques de connexion (dont l’adresse IP) afin d’assurer la sécurité du service, selon sa
   propre politique de confidentialité (lien ci-dessus).
+- **Assistant IA (facultatif, désactivé par défaut).** Si vous l’activez, le modèle d’IA (Qwen3.5,
+  Alibaba Cloud, licence Apache-2.0) est téléchargé une fois depuis Hugging Face (huggingface.co),
+  et son programme d’exécution depuis GitHub (raw.githubusercontent.com) : ces services voient alors
+  votre adresse IP, selon leurs propres politiques de confidentialité. Le modèle tourne ensuite
+  entièrement dans votre navigateur : vos questions et vos cartes ne sont jamais envoyées. Les
+  réponses sont générées par une IA et peuvent contenir des erreurs. Vous pouvez supprimer le
+  modèle à tout moment (Réglages → Assistant IA).
 - **Effacement.** Exportez d’abord une sauvegarde si vous le souhaitez (Réglages → Sauvegarde),
   puis supprimez les données du site dans les réglages de votre navigateur ou désinstallez
   l’application.

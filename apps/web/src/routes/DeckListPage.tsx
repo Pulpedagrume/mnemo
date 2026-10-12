@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';
 import { Plus, Search, Sparkles } from 'lucide-react';
 import type { Deck } from '@mnemo/core';
+import { deckLabel, indexDecks } from '@mnemo/core';
 import {
+  assistantAllowed,
   createDeck,
   deckTreeWithCounts,
   deleteDeck,
+  getSettings,
+  listDecks,
   listPresets,
   renameDeck,
+  setDeckAssistant,
   updateDeck,
 } from '@mnemo/services';
 import { useMutation, useQuery } from '../app/services';
@@ -24,7 +29,7 @@ import {
   DeckNameDialog,
   DeckOptionsDialog,
 } from '../features/decks/DeckDialogs';
-import { DeckTree, type DeckAction } from '../features/decks/DeckTree';
+import { DeckTree, type AssistantState, type DeckAction } from '../features/decks/DeckTree';
 import { ExportDialog } from '../features/decks/ExportDialog';
 import { encodeCustom } from '../features/study/customStudy';
 
@@ -38,6 +43,8 @@ export function DeckListPage() {
   const tree = useQuery((ctx) => deckTreeWithCounts(ctx), []);
   const presets = useQuery((ctx) => listPresets(ctx), []);
   const tags = useQuery((ctx) => ctx.repo.notes.tagCounts(), []);
+  const settings = useQuery((ctx) => getSettings(ctx), []);
+  const decks = useQuery((ctx) => listDecks(ctx), []);
   const run = useMutation(async (ctx, fn: (c: typeof ctx) => Promise<unknown>) => fn(ctx));
   const close = () => {
     setPending(null);
@@ -54,8 +61,26 @@ export function DeckListPage() {
     );
   };
 
+  const s = settings.data;
+  const index = useMemo(() => indexDecks(decks.data ?? []), [decks.data]);
+  const assistant =
+    s?.aiEnabled === true
+      ? (deck: Deck): AssistantState => {
+          if (s.aiDecks.includes(deck.id)) return 'on';
+          return assistantAllowed(s, index.ancestry(deck.id)) ? 'inherited' : 'off';
+        }
+      : undefined;
+
   const onAction = (action: DeckAction, deck: Deck) => {
-    if (action === 'add') void navigate(`/notes/new?deck=${deck.id}`);
+    if (action === 'assistant') {
+      const enable = assistant?.(deck) === 'off';
+      act(
+        (ctx) => setDeckAssistant(ctx, deck.id, enable),
+        t(enable ? 'decks.assistant.enabled' : 'decks.assistant.disabled', {
+          name: deckLabel(deck),
+        }),
+      );
+    } else if (action === 'add') void navigate(`/notes/new?deck=${deck.id}`);
     else if (action === 'stats') void navigate(`/stats?deck=${deck.id}`);
     else setPending({ action, deck });
   };
@@ -111,7 +136,7 @@ export function DeckListPage() {
         />
       </div>
       {tree.status === 'success' ? (
-        <DeckTree entries={tree.data} search={search} onAction={onAction} />
+        <DeckTree entries={tree.data} search={search} onAction={onAction} assistant={assistant} />
       ) : tree.status === 'error' ? (
         <p role="alert">{errorMessage(tree.error, t)}</p>
       ) : (

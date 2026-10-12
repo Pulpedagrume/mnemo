@@ -6,6 +6,7 @@ import { APP_NAME, APP_SLUG, LOCALES, ThemeSchema } from '@mnemo/core';
 import { createBackupZip, getSettings, restoreBackupZip, updateSettings } from '@mnemo/services';
 import { useMutation, useQuery, useServices } from '../app/services';
 import { errorMessage } from '../app/errors';
+import { AssistantSettings } from '../ai/AssistantSettings';
 import { MascotSetting } from '../components/calm/MascotSetting';
 import { PageTitle } from '../components/PageTitle';
 import { Button, focusRing } from '../components/ui/Button';
@@ -262,6 +263,10 @@ export function SettingsPage() {
               })}
             </p>
           )}
+        </Section>
+
+        <Section id="assistant" title={t('assistant.title')}>
+          <AssistantSettings settings={s} set={set} />
         </Section>
 
         <Section id="about" title={t('settings.about')}>

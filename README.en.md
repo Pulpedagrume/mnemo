@@ -58,6 +58,8 @@ course (PDF, text) ──► Mnemo writes the prompt ──► your AI ──►
   undo of every import.
 - **Prompt library** (French and English): 11 tasks, 4 output formats, long documents (plan,
   batches, review), fix and continue prompts.
+- **Free AI assistant** (optional): ask questions about your cards while studying; the model runs
+  entirely in your browser, nothing is sent over the internet.
 - **Integrations**: `mnemo` CLI, HTTP API with scoped tokens, **MCP** server so your AI
   assistant can validate then import directly (always after confirmation).
 

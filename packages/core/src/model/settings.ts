@@ -15,6 +15,10 @@ export const MascotImageSchema = z
   .max(MAX_MASCOT_IMAGE_CHARS)
   .regex(/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/);
 
+/** Size of the local AI model: `standard` answers better, `light` suits modest devices. */
+export const AiModelSchema = z.enum(['standard', 'light']);
+export type AiModel = z.infer<typeof AiModelSchema>;
+
 /** Application settings with their defaults. Stored as key/value rows. */
 export const AppSettingsSchema = z.object({
   locale: z.enum(LOCALES).default('fr'),
@@ -29,6 +33,10 @@ export const AppSettingsSchema = z.object({
   lastBackupAt: TimestampSchema.optional(),
   /** Personal mascot of the calm theme: a small raster image (data URL), '' = default mascot. */
   mascotImage: z.union([z.literal(''), MascotImageSchema]).default(''),
+  /** In-browser AI assistant: off by default, then allowed deck by deck (and their subdecks). */
+  aiEnabled: z.boolean().default(false),
+  aiModel: AiModelSchema.default('standard'),
+  aiDecks: z.array(IdSchema).max(10_000).default([]),
 });
 export type AppSettings = z.infer<typeof AppSettingsSchema>;
 export type SettingKey = keyof AppSettings;

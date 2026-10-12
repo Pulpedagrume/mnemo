@@ -63,6 +63,8 @@ cours (PDF, texte) ──► Mnemo écrit le prompt ──► votre IA ──►
   `uid`, annulation de chaque import.
 - **Bibliothèque de prompts** (français et anglais) : 11 tâches, 4 formats de sortie, longs
   documents (plan, lots, contrôle), correction et reprise.
+- **Assistant IA gratuit** (facultatif) : pose des questions sur tes cartes pendant l’étude ; le
+  modèle tourne entièrement dans ton navigateur, rien n’est envoyé sur internet.
 - **Intégrations** : CLI `mnemo`, API HTTP avec jetons à portées, serveur **MCP** pour que votre
   assistant IA valide puis importe directement (toujours après confirmation).
 

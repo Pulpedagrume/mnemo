@@ -80,6 +80,16 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,ttf,json}'],
+        // The AI assistant's code (~2 MB gzipped) is only fetched by people who use it, then kept
+        // for offline use. The model weights are cached by WebLLM itself.
+        globIgnores: ['**/webllm-*.js', '**/ai.worker-*.js'],
+        runtimeCaching: [
+          {
+            urlPattern: /\/assets\/(?:webllm|ai\.worker)-[\w-]+\.js$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'mnemo-ai-code', expiration: { maxEntries: 4 } },
+          },
+        ],
         navigateFallback: 'index.html',
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },

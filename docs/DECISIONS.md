@@ -306,3 +306,20 @@ réécrites ; une décision remplacée est marquée « Remplacée par ADR-xxx »
   toucher aux composants. Les contrastes AA sont vérifiés par le test e2e A7.
 - **Conséquences** : un nouveau thème = un fichier CSS et une valeur de `ThemeSchema`. Aucun
   personnage ni élément graphique protégé (droit d’auteur, marques) n’est utilisé.
+
+## ADR-040 — Assistant IA local (WebLLM) plutôt qu’un service en ligne
+
+- **Contexte** : répondre aux questions pendant l’étude, gratuitement, sans serveur à payer ni
+  données envoyées à un tiers, avec un site statique (GitHub Pages).
+- **Décision** : modèle exécuté dans le navigateur avec `@mlc-ai/web-llm` (Apache-2.0) via
+  WebGPU, dans un Web Worker. Modèles Qwen3.5 2B (standard) et 0.8B (léger), Apache-2.0, poids
+  téléchargés une fois depuis huggingface.co/mlc-ai et gardés dans le cache du navigateur.
+  Désactivé par défaut (`aiEnabled`), puis autorisé par paquet et ses sous-paquets (`aiDecks`).
+  Le contexte envoyé au modèle (fenêtre de 4 096 jetons) est la carte en cours plus les notes du
+  paquet les plus liées à la question (BM25 léger, ≈ 7 000 caractères), placées dans les
+  instructions système et présentées comme des données. Le code WebLLM (≈ 2 Mo compressés) n’est
+  pas précaché par la PWA : il est mis en cache à la première utilisation.
+- **Conséquences** : gratuit et privé, fonctionne hors ligne après le téléchargement ; nécessite
+  WebGPU et un appareil assez puissant (message explicite sinon) ; qualité inférieure à un grand
+  modèle en ligne (mention « peut contenir des erreurs », exigence de transparence de l’AI Act).
+  Un connecteur Ollama ou une clé d’API personnelle pourront être ajoutés plus tard.

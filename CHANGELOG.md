@@ -6,6 +6,15 @@ le [versionnage sémantique](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+### Ajouté
+
+- **Assistant IA gratuit, dans le navigateur** : pendant l’étude, un bouton « Poser une question »
+  ouvre une discussion sur la carte en cours. L’assistant s’appuie sur les cartes du paquet les plus
+  liées à la question et fonctionne entièrement sur l’appareil (WebLLM + WebGPU, modèles Qwen3.5
+  sous licence Apache-2.0, standard ≈ 1,1 Go ou léger ≈ 450 Mo, téléchargés une seule fois). Il est
+  désactivé par défaut, s’active dans les réglages puis paquet par paquet, et le modèle peut être
+  supprimé de l’appareil à tout moment. Rien n’est envoyé sur internet hormis ce téléchargement.
+
 ## [0.1.2] - 2026-10-09
 
 ### Ajouté

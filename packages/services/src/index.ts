@@ -10,3 +10,4 @@ export * from './import';
 export * from './importMedia';
 export * from './export';
 export * from './apkgScheduling';
+export * from './assistant';

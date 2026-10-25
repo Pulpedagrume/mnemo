@@ -95,7 +95,7 @@ jobs:
           VITE_LEGAL_HOST: GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA
           VITE_LEGAL_HOST_PRIVACY: https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement
           VITE_SOURCE_URL: ${{ format('{0}/{1}/tree/{2}', github.server_url, github.repository, github.ref_name) }}
-      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: apps/web/dist
       - id: deploy

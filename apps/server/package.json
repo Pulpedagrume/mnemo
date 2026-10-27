@@ -26,7 +26,7 @@
     "@mnemo/storage": "workspace:*",
     "@mnemo/sync": "workspace:*",
     "@node-rs/argon2": "^2.2.2",
-    "fastify": "^5.12.5",
+    "fastify": "^5.12.6",
     "zod": "^4.6.5"
   },
   "devDependencies": {
